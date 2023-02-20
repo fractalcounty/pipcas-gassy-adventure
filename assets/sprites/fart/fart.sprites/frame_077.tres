@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cvn4kjtykug1g"]
+
+[ext_resource type="Texture2D" uid="uid://crug2a6dll2wo" path="res://assets/sprites/fart/fart-7.png" id="1_qon4k"]
+
+[resource]
+atlas = ExtResource("1_qon4k")
+region = Rect2(805, 1840, 382, 194)
+margin = Rect2(264, 417, 1538, 886)

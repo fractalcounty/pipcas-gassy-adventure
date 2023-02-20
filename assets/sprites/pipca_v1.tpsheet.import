@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://eu6a72deas2j"
+path="res://.godot/imported/pipca_v1.tpsheet-2b9e2a3b06764e8eb7e8d498ececb775.res"
+
+[deps]
+
+files=["res://assets/sprites/pipca_v1.sprites/pipca_walk.tres", "res://assets/sprites/pipca_v1.sprites/pipca_idle.tres", "res://assets/sprites/pipca_v1.sprites/pipca_jump.tres"]
+
+source_file="res://assets/sprites/pipca_v1.tpsheet"
+dest_files=["res://.godot/imported/pipca_v1.tpsheet-2b9e2a3b06764e8eb7e8d498ececb775.res", "res://assets/sprites/pipca_v1.sprites/pipca_walk.tres", "res://assets/sprites/pipca_v1.sprites/pipca_idle.tres", "res://assets/sprites/pipca_v1.sprites/pipca_jump.tres"]
+
+[params]
+

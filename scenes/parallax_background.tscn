@@ -1,0 +1,204 @@
+[gd_scene load_steps=12 format=3 uid="uid://bh4coyprw5b37"]
+
+[ext_resource type="Texture2D" uid="uid://c7v723bm4e4i" path="res://assets/sprites/cloudyboysLayer 1.png" id="1_3inhs"]
+[ext_resource type="Texture2D" uid="uid://c2a7vjkxjpqi4" path="res://assets/sprites/bg_top.png" id="1_ly1ox"]
+[ext_resource type="Texture2D" uid="uid://dsnvpisjkpgis" path="res://assets/sprites/sunguy123Layer 1.png" id="2_jnmlp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5r8r"]
+atlas = ExtResource("2_jnmlp")
+region = Rect2(0, 0, 124, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x3qg"]
+atlas = ExtResource("2_jnmlp")
+region = Rect2(124, 0, 124, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5qpc"]
+atlas = ExtResource("2_jnmlp")
+region = Rect2(0, 113, 124, 113)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u44qx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5r8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x3qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5qpc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn0qn"]
+atlas = ExtResource("1_3inhs")
+region = Rect2(0, 0, 128, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn6jm"]
+atlas = ExtResource("1_3inhs")
+region = Rect2(128, 0, 128, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2n1e"]
+atlas = ExtResource("1_3inhs")
+region = Rect2(0, 66, 128, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8k8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn0qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn6jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2n1e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_base_scale = Vector2(0.3, 0.3)
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+position = Vector2(0, -68)
+motion_mirroring = Vector2(400, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Sky"]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.568627, 0.8, 0.898039, 1)
+
+[node name="Sun" type="ParallaxLayer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sun"]
+texture_filter = 1
+position = Vector2(912, 96)
+sprite_frames = SubResource("SpriteFrames_u44qx")
+autoplay = "default"
+frame_progress = 0.404836
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer 1",
+"o_ex_p": "",
+"o_folder": "res://assets/sprites",
+"o_name": "sunguy123",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/sprites/originals/sun.ase"
+}
+
+[node name="Clouds" type="ParallaxLayer" parent="."]
+
+[node name="CloudGroup1" type="Node2D" parent="Clouds"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Clouds/CloudGroup1"]
+texture_filter = 1
+position = Vector2(96, 96)
+sprite_frames = SubResource("SpriteFrames_y8k8s")
+autoplay = "default"
+frame_progress = 0.498101
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer 1",
+"o_ex_p": "",
+"o_folder": "res://assets/sprites",
+"o_name": "cloudyboys",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/sprites/originals/cloud.ase"
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Clouds/CloudGroup1/AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(720, 48)
+sprite_frames = SubResource("SpriteFrames_y8k8s")
+autoplay = "default"
+frame_progress = 0.626592
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer 1",
+"o_ex_p": "",
+"o_folder": "res://assets/sprites",
+"o_name": "cloudyboys",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/sprites/originals/cloud.ase"
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Clouds/CloudGroup1/AnimatedSprite2D/AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(-144, -96)
+sprite_frames = SubResource("SpriteFrames_y8k8s")
+autoplay = "default"
+frame_progress = 0.626592
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer 1",
+"o_ex_p": "",
+"o_folder": "res://assets/sprites",
+"o_name": "cloudyboys",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/sprites/originals/cloud.ase"
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Clouds/CloudGroup1/AnimatedSprite2D/AnimatedSprite2D/AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(-384, -48)
+sprite_frames = SubResource("SpriteFrames_y8k8s")
+autoplay = "default"
+frame_progress = 0.626592
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer 1",
+"o_ex_p": "",
+"o_folder": "res://assets/sprites",
+"o_name": "cloudyboys",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/sprites/originals/cloud.ase"
+}
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Clouds/CloudGroup1"]
+texture_filter = 1
+position = Vector2(432, 144)
+sprite_frames = SubResource("SpriteFrames_y8k8s")
+autoplay = "default"
+frame_progress = 0.765249
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer 1",
+"o_ex_p": "",
+"o_folder": "res://assets/sprites",
+"o_name": "cloudyboys",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/sprites/originals/cloud.ase"
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Clouds/CloudGroup1/AnimatedSprite2D2"]
+texture_filter = 1
+position = Vector2(48, -48)
+scale = Vector2(0.750663, 0.750663)
+sprite_frames = SubResource("SpriteFrames_y8k8s")
+autoplay = "default"
+frame_progress = 0.765249
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer 1",
+"o_ex_p": "",
+"o_folder": "res://assets/sprites",
+"o_name": "cloudyboys",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/sprites/originals/cloud.ase"
+}
+
+[node name="Mountains" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(430, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Mountains"]
+texture_filter = 1
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("1_ly1ox")
