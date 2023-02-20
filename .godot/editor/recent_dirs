@@ -1,3 +1,5 @@
+res://scenes/pipca
+res://scenes/camera
 res://assets/shaders
 res://scenes
 res://src
@@ -8,4 +10,3 @@ res://src/singletons
 res://assets/tileset
 res://assets/theme
 res://assets/sprites
-res://scenes/states

@@ -95,7 +95,7 @@
 [ext_resource type="Texture2D" uid="uid://bkhyqx230mjr0" path="res://assets/sprites/fart/fart.sprites/frame_085.tres" id="90_q50ax"]
 [ext_resource type="Texture2D" uid="uid://cn0j3fufu8rws" path="res://assets/sprites/fart/fart.sprites/frame_086.tres" id="91_5hoxi"]
 [ext_resource type="Script" path="res://scenes/belch_effect.gd" id="92_7xma2"]
-[ext_resource type="PackedScene" uid="uid://c0x4wfg8t2enb" path="res://scenes/lvl_test.tscn" id="92_il2od"]
+[ext_resource type="PackedScene" uid="uid://c0mrfaibg7yji" path="res://scenes/lvl_test.tscn" id="92_il2od"]
 [ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="123_anw3c"]
 [ext_resource type="AudioStream" uid="uid://dckhglm3kgjbk" path="res://assets/sfx/unpause.wav" id="124_e30ln"]
 [ext_resource type="Script" path="res://scenes/mouse_handler.gd" id="124_tjpea"]

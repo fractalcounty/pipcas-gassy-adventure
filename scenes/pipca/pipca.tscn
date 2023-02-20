@@ -1,23 +1,21 @@
-[gd_scene load_steps=26 format=3]
+[gd_scene load_steps=24 format=3 uid="uid://dhiu1jc2qde0x"]
 
-[ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="1_opxqq"]
-[ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_u55gl"]
-[ext_resource type="Script" path="res://scenes/sounds.gd" id="3_3dq8b"]
-[ext_resource type="AudioStream" uid="uid://ci0ynipdlk0bi" path="res://assets/sfx/belch.wav" id="3_7x8ys"]
-[ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="3_8ogib"]
-[ext_resource type="Script" path="res://addons/random_audio_player/nodes/random_audio_player.gd" id="4_sjhbh"]
-[ext_resource type="AudioStream" uid="uid://dhq8bh8837s1c" path="res://assets/sfx/step1.wav" id="4_vekie"]
-[ext_resource type="Script" path="res://scenes/pipca/states/movement.gd" id="4_w1sli"]
-[ext_resource type="Script" path="res://scenes/pipca/states/in_air.gd" id="5_jdnb5"]
-[ext_resource type="AudioStream" uid="uid://bm5ybd5mvs827" path="res://assets/sfx/step2.wav" id="5_lshi5"]
-[ext_resource type="AudioStream" uid="uid://1ud2i3ldsq78" path="res://assets/sfx/step3.wav" id="6_l0raa"]
-[ext_resource type="Script" path="res://scenes/pipca/states/on_ground.gd" id="6_mw3o7"]
-[ext_resource type="Script" path="res://scenes/pipca/states/idle.gd" id="7_40lj8"]
-[ext_resource type="AudioStream" uid="uid://cribdbujt5pov" path="res://assets/sfx/step4.wav" id="7_66xyx"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="7_ih48a"]
-[ext_resource type="Script" path="res://scenes/pipca/states/blink.gd" id="10_7csun"]
-[ext_resource type="Script" path="res://scenes/pipca/states/belch.gd" id="10_g2kx3"]
-[ext_resource type="Script" path="res://scenes/camera_old.gd" id="18_plyn8"]
+[ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_jagr2"]
+[ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="2_0psm0"]
+[ext_resource type="AudioStream" uid="uid://ci0ynipdlk0bi" path="res://assets/sfx/belch.wav" id="3_1g2fa"]
+[ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_cucdx"]
+[ext_resource type="Script" path="res://scenes/pipca/states/movement.gd" id="5_b38d3"]
+[ext_resource type="Script" path="res://scenes/pipca/states/in_air.gd" id="6_jvapn"]
+[ext_resource type="Script" path="res://scenes/pipca/states/on_ground.gd" id="7_smmrm"]
+[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_5o37a"]
+[ext_resource type="Script" path="res://scenes/pipca/states/idle.gd" id="9_jquvo"]
+[ext_resource type="Script" path="res://scenes/pipca/states/blink.gd" id="10_wtcgp"]
+[ext_resource type="Script" path="res://scenes/pipca/states/belch.gd" id="11_5s3g5"]
+[ext_resource type="Script" path="res://addons/random_audio_player/nodes/random_audio_player.gd" id="12_xbg13"]
+[ext_resource type="AudioStream" uid="uid://dhq8bh8837s1c" path="res://assets/sfx/step1.wav" id="13_j262m"]
+[ext_resource type="AudioStream" uid="uid://bm5ybd5mvs827" path="res://assets/sfx/step2.wav" id="14_w1jr7"]
+[ext_resource type="AudioStream" uid="uid://1ud2i3ldsq78" path="res://assets/sfx/step3.wav" id="15_c8p3s"]
+[ext_resource type="AudioStream" uid="uid://cribdbujt5pov" path="res://assets/sfx/step4.wav" id="16_i3kye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8u6p"]
 size = Vector2(47, 59)
@@ -34,7 +32,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_opxqq")]
+"values": [ExtResource("2_0psm0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,19 +82,32 @@ tracks/4/keys = {
 "update": 1,
 "values": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
-tracks/5/type = "method"
+tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Sounds")
+tracks/5/path = NodePath("Belch")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_belch"
-}]
+"clips": [{
+"end_offset": 0.130488,
+"start_offset": 0.0,
+"stream": ExtResource("3_1g2fa")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Belch:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -50.0]
 }
 
 [sub_resource type="Animation" id="Animation_5cnh6"]
@@ -111,7 +122,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_opxqq")]
+"values": [ExtResource("2_0psm0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -175,7 +186,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_opxqq")]
+"values": [ExtResource("2_0psm0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -239,7 +250,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_opxqq")]
+"values": [ExtResource("2_0psm0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -293,6 +304,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_48l6x"]
 length = 1.6
 loop_mode = 1
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -303,7 +315,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_opxqq")]
+"values": [ExtResource("2_0psm0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -356,11 +368,11 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Sounds")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.9),
+"times": PackedFloat32Array(0.1, 0.85),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -380,18 +392,22 @@ _data = {
 "walk": SubResource("Animation_48l6x")
 }
 
-[node name="Pipca" type="CharacterBody2D"]
+[node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("footstep_sounds", "belch_sounds")]
 z_index = 1
 texture_filter = 1
-script = ExtResource("1_u55gl")
+disable_mode = 2
+script = ExtResource("1_jagr2")
+footstep_sounds = NodePath("Footsteps")
+belch_sounds = NodePath("Belch")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-texture = ExtResource("1_opxqq")
+texture = ExtResource("2_0psm0")
+offset = Vector2(0, 1)
 hframes = 6
 vframes = 6
-frame = 3
+frame = 7
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -412,35 +428,8 @@ libraries = {
 "": SubResource("AnimationLibrary_jqqqw")
 }
 
-[node name="Sounds" type="Node2D" parent="."]
-script = ExtResource("3_3dq8b")
-
-[node name="Footsteps" type="Node2D" parent="Sounds"]
-script = ExtResource("4_sjhbh")
-volume_Db_overwrite = -10.0
-max_distance_overwrite = 10000.0
-
-[node name="Step1" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
-stream = ExtResource("4_vekie")
-volume_db = -10.0
-
-[node name="Step2" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
-stream = ExtResource("5_lshi5")
-volume_db = -10.0
-
-[node name="Step3" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
-stream = ExtResource("6_l0raa")
-volume_db = -10.0
-
-[node name="Step4" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
-stream = ExtResource("7_66xyx")
-volume_db = -10.0
-
-[node name="Belch" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("3_7x8ys")
-
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_8ogib")
+script = ExtResource("4_cucdx")
 history_size = 0
 disabled = false
 debug_mode = false
@@ -449,7 +438,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="Movement" type="Node" parent="StateMachine"]
-script = ExtResource("4_w1sli")
+script = ExtResource("5_b38d3")
 speed = 25.0
 disabled = false
 debug_mode = false
@@ -458,15 +447,15 @@ timed = false
 next_state = NodePath("")
 
 [node name="InAir" type="Node" parent="StateMachine/Movement"]
-script = ExtResource("5_jdnb5")
+script = ExtResource("6_jvapn")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../InAir")
+next_state = NodePath(".")
 
 [node name="OnGround" type="Node" parent="StateMachine/Movement"]
-script = ExtResource("6_mw3o7")
+script = ExtResource("7_smmrm")
 jump_velocity = -100.0
 disabled = false
 debug_mode = false
@@ -475,7 +464,7 @@ timed = false
 next_state = NodePath("../InAir")
 
 [node name="Walk" type="Node" parent="StateMachine/Movement/OnGround"]
-script = ExtResource("7_ih48a")
+script = ExtResource("8_5o37a")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "walk"
 anim_times_to_play = 1
@@ -487,9 +476,9 @@ timed = false
 next_state = NodePath("Still")
 
 [node name="Idle" type="Node" parent="StateMachine/Movement/OnGround"]
-script = ExtResource("7_40lj8")
+script = ExtResource("9_jquvo")
 blink_chance = 0.5
-belch_chance = 0.2
+belch_chance = 0.005
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -497,7 +486,7 @@ timed = false
 next_state = NodePath("Still")
 
 [node name="Still" type="Node" parent="StateMachine/Movement/OnGround/Idle"]
-script = ExtResource("7_ih48a")
+script = ExtResource("8_5o37a")
 animation_player = NodePath("../../../../../AnimationPlayer")
 anim_on_enter = "idle_still"
 anim_times_to_play = 1
@@ -506,10 +495,10 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Still")
+next_state = NodePath(".")
 
 [node name="Blink" type="Node" parent="StateMachine/Movement/OnGround/Idle"]
-script = ExtResource("10_7csun")
+script = ExtResource("10_wtcgp")
 animation_player = NodePath("../../../../../AnimationPlayer")
 anim_on_enter = "idle_blink"
 anim_times_to_play = 1
@@ -521,7 +510,7 @@ timed = false
 next_state = NodePath("../Still")
 
 [node name="Belch" type="Node" parent="StateMachine/Movement/OnGround/Idle"]
-script = ExtResource("10_g2kx3")
+script = ExtResource("11_5s3g5")
 animation_player = NodePath("../../../../../AnimationPlayer")
 anim_on_enter = "idle_belch"
 anim_times_to_play = 1
@@ -532,16 +521,31 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Still")
 
+[node name="Footsteps" type="Node2D" parent="."]
+script = ExtResource("12_xbg13")
+volume_Db_overwrite = -10.0
+max_distance_overwrite = 10000.0
+
+[node name="Step1" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource("13_j262m")
+volume_db = -10.0
+
+[node name="Step2" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource("14_w1jr7")
+volume_db = -10.0
+
+[node name="Step3" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource("15_c8p3s")
+volume_db = -10.0
+
+[node name="Step4" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource("16_i3kye")
+volume_db = -10.0
+
+[node name="Belch" type="AudioStreamPlayer" parent="."]
+volume_db = -50.0
+
 [node name="Mouth" type="Marker2D" parent="."]
 position = Vector2(-6, -6)
 
 [node name="Origin" type="Marker2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-process_mode = 3
-texture_filter = 1
-process_callback = 0
-script = ExtResource("18_plyn8")
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Camera2D"]
-remote_path = NodePath("../..")

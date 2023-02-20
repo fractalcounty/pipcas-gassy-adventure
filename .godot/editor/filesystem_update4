@@ -22,3 +22,5 @@ res://scenes/camera2d_xsm.gd
 res://scenes/cutscenes.gd
 res://src/singletons/global.gd
 res://scenes/TestCutscene.gd
+res://scenes/pipca/pipca.gd
+res://scenes/belch_effect.gd

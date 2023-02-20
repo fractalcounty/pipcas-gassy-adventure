@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1m5w411mglsb"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scenes/pixel_perfect_camera.gd" id="1_n2eo2"]
-[ext_resource type="Script" path="res://scenes/camera.gd" id="2_muc7w"]
+[ext_resource type="Script" path="res://scenes/camera_old.gd" id="2_muc7w"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="3_jlvhh"]
 
 [sub_resource type="Curve" id="Curve_b7wlc"]
