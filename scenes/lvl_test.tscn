@@ -824,7 +824,7 @@ tracks/17/path = NodePath("Test Cutscene")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(20.5833),
+"times": PackedFloat32Array(21.376),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -2559,7 +2559,7 @@ next_state = NodePath("Still")
 [node name="Idle" type="Node" parent="Pipca3/StateMachine/Movement/OnGround"]
 script = ExtResource("17_bsk8k")
 blink_chance = 0.5
-belch_chance = 0.05
+belch_chance = 0.005
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -2768,50 +2768,49 @@ script = ExtResource("25_rvp5b")
 pipca_path = NodePath("../Pipca3")
 base_offset = Vector2(0, -50)
 
-[node name="State" type="Node" parent="Camera2D"]
-script = ExtResource("25_5bas7")
+[node name="Gameplay" type="Node" parent="Camera2D"]
+script = ExtResource("26_gx5jy")
 history_size = 0
 disabled = false
 debug_mode = true
-target_path = NodePath("")
+target_path = NodePath("..")
 timed = false
-next_state = NodePath("Gameplay")
+next_state = NodePath("../../Pipca3/StateMachine/Movement/OnGround/Idle/Still")
 
-[node name="Gameplay" type="Node" parent="Camera2D/State"]
-script = ExtResource("26_gx5jy")
-disabled = false
-debug_mode = true
-target_path = NodePath("../..")
-timed = false
-next_state = NodePath("../../../Pipca3/StateMachine/Movement/OnGround/Idle/Still")
-
-[node name="Panning" type="Node" parent="Camera2D/State/Gameplay"]
+[node name="Panning" type="Node" parent="Camera2D/Gameplay"]
 script = ExtResource("27_r8kpb")
 disabled = false
 debug_mode = false
-target_path = NodePath("../../..")
+target_path = NodePath("../..")
 timed = true
-waiting_time = 3.0
+waiting_time = 1.5
 on_timer_finished = 3
 next_state = NodePath(".")
 
-[node name="Still" type="Node" parent="Camera2D/State/Gameplay"]
+[node name="Still" type="Node" parent="Camera2D/Gameplay"]
 script = ExtResource("28_1ra8f")
 disabled = false
 debug_mode = false
-target_path = NodePath("../../..")
+target_path = NodePath("../..")
 timed = false
 next_state = NodePath("")
 
-[node name="Reset" type="Node" parent="Camera2D/State/Gameplay"]
+[node name="Reset" type="Node" parent="Camera2D/Gameplay"]
 script = ExtResource("30_glit1")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
-timed = true
-waiting_time = 1.5
-on_timer_finished = 0
+timed = false
 next_state = NodePath("")
+
+[node name="State" type="Node" parent="Camera2D"]
+script = ExtResource("25_5bas7")
+history_size = 0
+disabled = true
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Gameplay")
 
 [node name="Test Cutscene" type="AnimationPlayer" parent="." node_paths=PackedStringArray("focus", "pipca")]
 libraries = {
@@ -2828,6 +2827,7 @@ position = Vector2(-169, 150)
 rotation = -0.210056
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_64wxu")
+frame = 85
 centered = false
 script = ExtResource("123_lmw50")
 
@@ -2842,8 +2842,8 @@ auto_start = true
 fall_off = SubResource("Curve_eyrfn")
 
 [node name="Braphog" type="AnimatedSprite2D" parent="Test Cutscene"]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(162, 166)
+rotation = -1.5
 sprite_frames = SubResource("SpriteFrames_u3eit")
 autoplay = "default"
 speed_scale = 1.5
@@ -2888,5 +2888,5 @@ visible_ratio = 0.0243902
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Test Cutscene"]
 
-[connection signal="state_exited" from="Camera2D/State/Gameplay/Reset" to="Test Cutscene" method="_on_reset_state_exited"]
+[connection signal="state_exited" from="Camera2D/Gameplay/Reset" to="Test Cutscene" method="_on_reset_state_exited"]
 [connection signal="body_entered" from="Test Cutscene/CutsceneTriggers/cutscene_1" to="Test Cutscene" method="_on_cutscene_1_body_entered"]

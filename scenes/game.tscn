@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://cpe6qhiqkqlmb"]
+[gd_scene load_steps=107 format=3 uid="uid://cpe6qhiqkqlmb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_vdb4f"]
 [ext_resource type="Shader" path="res://scenes/game.gdshader" id="2_641k5"]
@@ -99,9 +99,7 @@
 [ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="123_anw3c"]
 [ext_resource type="AudioStream" uid="uid://dckhglm3kgjbk" path="res://assets/sfx/unpause.wav" id="124_e30ln"]
 [ext_resource type="Script" path="res://scenes/mouse_handler.gd" id="124_tjpea"]
-[ext_resource type="Script" path="res://scenes/ResumeButton.gd" id="125_inl32"]
 [ext_resource type="AudioStream" uid="uid://cvgl0jusiqqd2" path="res://assets/sfx/select.wav" id="126_qg5yy"]
-[ext_resource type="Script" path="res://scenes/QuitButton.gd" id="127_qa5il"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kcimn"]
 shader = ExtResource("2_641k5")
@@ -388,7 +386,7 @@ length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LevelTitle:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -400,7 +398,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LevelTitle:position")
+tracks/1/path = NodePath("ColorRect:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -415,7 +413,7 @@ resource_name = "ease_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LevelTitle:position")
+tracks/0/path = NodePath("ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -477,7 +475,7 @@ fall_off = SubResource("Curve_m0uke")
 
 [node name="lvl_test" parent="SubViewportContainer/SubViewport" instance=ExtResource("92_il2od")]
 
-[node name="LevelBanner" type="Control" parent="."]
+[node name="LevelBanner" type="Control" parent="." node_paths=PackedStringArray("anim")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -486,9 +484,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("5_ujqm4")
+anim = NodePath("BannerAnimations")
 
-[node name="LevelTitle" type="ColorRect" parent="LevelBanner"]
-modulate = Color(1, 1, 1, 0)
+[node name="ColorRect" type="ColorRect" parent="LevelBanner"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 142)
 layout_mode = 1
@@ -496,13 +494,13 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -690.0
-offset_bottom = -547.999
+offset_top = -390.0
+offset_bottom = -247.999
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.509804)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelBanner/LevelTitle"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelBanner/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -516,23 +514,23 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="LevelBanner/LevelTitle/VBoxContainer"]
+[node name="LevelTitle" type="Label" parent="LevelBanner/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_mlg5w")
 text = "LEVEL   1:"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelBanner/LevelTitle/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelBanner/ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="LevelBanner/LevelTitle/VBoxContainer"]
+[node name="LevelSubtitle" type="Label" parent="LevelBanner/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_mlg5w")
 text = "MEAL   MEADOWS"
 horizontal_alignment = 1
 
-[node name="UIAnimations" type="AnimationPlayer" parent="LevelBanner"]
+[node name="BannerAnimations" type="AnimationPlayer" parent="LevelBanner"]
 libraries = {
 "": SubResource("AnimationLibrary_sfdnw")
 }
@@ -540,7 +538,7 @@ libraries = {
 [node name="MouseHandler" type="Node2D" parent="."]
 script = ExtResource("124_tjpea")
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("resume_button", "pause_sound", "unpause_sound", "select_sound")]
 process_mode = 3
 texture_filter = 1
 layout_mode = 3
@@ -550,6 +548,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_vt38a")
+resume_button = NodePath("ColorRect/CenterContainer/VBoxContainer/ResumeButton")
+pause_sound = NodePath("Pause")
+unpause_sound = NodePath("Unpause")
+select_sound = NodePath("Select")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
 layout_mode = 1
@@ -587,10 +589,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_mlg5w")
 text = "RESUME"
-script = ExtResource("125_inl32")
-
-[node name="SelectSound" type="AudioStreamPlayer" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton"]
-stream = ExtResource("126_qg5yy")
 
 [node name="MarginContainer2" type="MarginContainer" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -601,10 +599,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_mlg5w")
 text = "QUIT"
-script = ExtResource("127_qa5il")
-
-[node name="SelectSound" type="AudioStreamPlayer" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton"]
-stream = ExtResource("126_qg5yy")
 
 [node name="Pause" type="AudioStreamPlayer" parent="PauseMenu"]
 stream = ExtResource("123_anw3c")
@@ -612,10 +606,13 @@ stream = ExtResource("123_anw3c")
 [node name="Unpause" type="AudioStreamPlayer" parent="PauseMenu"]
 stream = ExtResource("124_e30ln")
 
+[node name="Select" type="AudioStreamPlayer" parent="PauseMenu"]
+stream = ExtResource("126_qg5yy")
+
 [connection signal="animation_finished" from="SubViewportContainer/SubViewport/BelchEffect" to="SubViewportContainer/SubViewport/BelchEffect" method="_on_animation_finished"]
 [connection signal="focus_entered" from="PauseMenu" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" method="_on_pause_menu_focus_entered"]
 [connection signal="focus_exited" from="PauseMenu" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" method="_on_pause_menu_focus_exited"]
-[connection signal="focus_entered" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" method="_on_focus_entered"]
+[connection signal="focus_entered" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_focus_entered"]
 [connection signal="pressed" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
-[connection signal="focus_entered" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton" method="_on_focus_entered"]
+[connection signal="focus_entered" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_focus_entered"]
 [connection signal="pressed" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]

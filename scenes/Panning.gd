@@ -21,8 +21,8 @@ func _on_update(_delta: float) -> void:
 
 	if Global.joy_moving:
 		var movedir = Vector2.ZERO
-		movedir.x = Input.get_action_strength("joy_right") - Input.get_action_strength("joy_left")
-		movedir.y = Input.get_action_strength("joy_down") - Input.get_action_strength("joy_up")
+		movedir.x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
+		movedir.y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
 		var multiplier = 100
 		var mixed_pos = ((multiplier * movedir) + target.pipca.global_position) + target.global_offset + target.base_offset
 		var cam_pos : Vector2 = lerp(target.pipca.global_position, mixed_pos, 0.7)
@@ -62,7 +62,6 @@ func _on_exit(_args) -> void:
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
-	print ("timeout")
 	Global.mouse_moving = false
 	get_parent().raw_mouse_pos = Vector2.ZERO
 

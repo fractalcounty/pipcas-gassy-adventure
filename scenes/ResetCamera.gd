@@ -1,14 +1,6 @@
 @tool
 extends State
 
-#var new_focus
-
-#func _on_ready(_args) -> void:
-	#Events.cutscene_start.connect(_on_cutscene_start)
-
-#func _on_cutscene_start(focus) -> void:
-	#new_focus = focus
-
 func _on_update(_delta: float) -> void:
 	pass
 	Global.mouse_moving = false
@@ -19,10 +11,3 @@ func _on_update(_delta: float) -> void:
 	Global.viewport_container.material.set_shader_parameter("cam_offset", subpixel_position)
 	target.global_position = target.actual_cam_pos.round()
 
-# when StateAutomaticTimer timeout()
-#func _state_timeout() -> void:
-	#change_state("Locked")
-
-# Called when any other Timer times out
-#func _on_timeout(_name) -> void:
-	#change_state("Locked")
