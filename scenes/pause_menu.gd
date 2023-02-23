@@ -17,6 +17,7 @@ func _on_pause_menu_open():
 	resume_button.grab_focus()
 
 func _on_resume_button_pressed() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	just_opened = true
 	unpause_sound.play()
 	hide()

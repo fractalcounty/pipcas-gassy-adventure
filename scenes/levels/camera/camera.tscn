@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://df8wwih5esqic"]
+
+[ext_resource type="Script" path="res://scenes/levels/camera/camera.gd" id="1_rd4kw"]
+
+[node name="Camera2D" type="Camera2D"]
+ignore_rotation = false
+script = ExtResource("1_rd4kw")
+grounded_offset = Vector2(0, -75)
+grounded_lerp_weight = 0.5
+grounded_lerp_multiplier = 10.0
+air_lerp_weight = 0.5
+air_lerp_multiplier = 5.0
+min_zoom = 0.65
+max_zoom = 1.0
+zoom_duration = 0.3

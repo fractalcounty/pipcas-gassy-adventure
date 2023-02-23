@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://du0i554ag2i5x"]
+
+[ext_resource type="Script" path="res://scenes/levels/camera/states/camera_states.gd" id="1_2km1b"]
+[ext_resource type="Script" path="res://scenes/levels/camera/states/panning.gd" id="2_wq4kx"]
+[ext_resource type="Script" path="res://scenes/levels/camera/states/still.gd" id="3_lk6do"]
+[ext_resource type="Script" path="res://scenes/levels/camera/states/reset.gd" id="4_p53kw"]
+
+[node name="CameraStates" type="Node"]
+script = ExtResource("1_2km1b")
+history_size = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("..")
+timed = false
+next_state = NodePath("../../Pipca3/StateMachine/Movement/OnGround/Idle/Still")
+
+[node name="Panning" type="Node" parent="."]
+script = ExtResource("2_wq4kx")
+disabled = false
+debug_mode = false
+target_path = NodePath("../..")
+timed = true
+waiting_time = 1.5
+on_timer_finished = 3
+next_state = NodePath(".")
+
+[node name="Still" type="Node" parent="."]
+script = ExtResource("3_lk6do")
+disabled = false
+debug_mode = false
+target_path = NodePath("../..")
+timed = false
+next_state = NodePath("")
+
+[node name="Reset" type="Node" parent="."]
+script = ExtResource("4_p53kw")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
