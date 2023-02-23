@@ -1,7 +1,6 @@
-[gd_scene load_steps=305 format=3 uid="uid://dk78estx6ar8o"]
+[gd_scene load_steps=304 format=3 uid="uid://dk78estx6ar8o"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_rt2c3"]
-[ext_resource type="PackedScene" uid="uid://dhiu1jc2qde0x" path="res://scenes/pipca/pipca.tscn" id="3_f8odk"]
 [ext_resource type="Texture2D" uid="uid://dsnvpisjkpgis" path="res://assets/sprites/sunguy123Layer 1.png" id="4_1wp8e"]
 [ext_resource type="AudioStream" uid="uid://mis3u6wd4gf" path="res://assets/music/temp_song.ogg" id="5_slnt8"]
 [ext_resource type="Texture2D" uid="uid://c7v723bm4e4i" path="res://assets/sprites/cloudyboysLayer 1.png" id="5_vfo5m"]
@@ -2062,14 +2061,10 @@ shadow_offset = Vector2(0, 0)
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_rt2c3")
-banner_title = "LEVEL  1:"
-banner_subtitle = "Meal  Meadows"
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_slnt8")
 autoplay = true
-
-[node name="Pipca" parent="." instance=ExtResource("3_f8odk")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_scale = 0.001
@@ -2287,7 +2282,7 @@ layer_0/tile_data = PackedInt32Array(524321, 65538, 0, 524320, 65538, 0, 524319,
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("pipca") instance=ExtResource("9_02y22")]
 editor_draw_limits = true
-pipca = NodePath("../Pipca")
+pipca = NodePath("")
 
 [node name="Test Cutscene" type="AnimationPlayer" parent="." node_paths=PackedStringArray("focus", "pipca")]
 libraries = {
@@ -2295,7 +2290,7 @@ libraries = {
 }
 script = ExtResource("15_3obme")
 focus = NodePath("Marker2D")
-pipca = NodePath("../Pipca")
+pipca = NodePath("")
 
 [node name="FartEffect" type="AnimatedSprite2D" parent="Test Cutscene"]
 z_index = -1
@@ -2384,5 +2379,4 @@ position = Vector2(-972, 361)
 [node name="AnimatedSprite2D3" parent="." instance=ExtResource("108_5x348")]
 position = Vector2(-1090, 362)
 
-[connection signal="ready" from="Pipca" to="Spawn" method="_on_pipca_ready"]
 [connection signal="body_entered" from="Test Cutscene/CutsceneTriggers/cutscene_1" to="Test Cutscene" method="_on_cutscene_1_body_entered"]

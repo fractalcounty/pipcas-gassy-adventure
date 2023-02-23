@@ -1,3 +1,5 @@
+Control
+CanvasLayer
 ColorRect
 Sprite2D
 AnimationPlayer
@@ -13,7 +15,6 @@ RayCast2D
 AudioStreamPlayer
 Shaker
 AnimatedSprite2D
-Control
 TextureRect
 MarginContainer
 HBoxContainer
@@ -29,4 +30,3 @@ NinePatchRect
 Camera2D
 RemoteTransform2D
 Node
-SubViewport

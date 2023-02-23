@@ -41,11 +41,21 @@ func ground_cam(delta: float) -> void:
 	var zoom_fixed : float = -remap(zoom_mult, -6.5, -10, 145.0, 0.0)
 	var added_offset : Vector2 = Vector2(0, (grounded_offset.y + zoom_fixed))
 	var final_offset : Vector2 = grounded_offset + added_offset
+	
 	var mixed_pos = pipca.global_position + added_offset
+	
 	var cam_pos : Vector2 = lerp(pipca.global_position, mixed_pos, grounded_lerp_weight)
+	
 	actual_cam_pos = actual_cam_pos.lerp(cam_pos, delta*grounded_lerp_multiplier)
+	
 	var subpixel_position = actual_cam_pos.round() - actual_cam_pos
+	
 	Global.viewport_container.material.set_shader_parameter("cam_offset", subpixel_position)
+	
+	var paramer = Global.viewport_container.material.get_shader_parameter("cam_offset")
+	
+	print (paramer)
+	
 	global_position = actual_cam_pos.round()
 
 func air_cam(delta: float) -> void:
