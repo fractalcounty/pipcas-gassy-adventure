@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://c3v43v28hxpce"]
+[gd_scene load_steps=110 format=3 uid="uid://c3v43v28hxpce"]
 
 [ext_resource type="Script" path="res://examples/platformer/player/states/movements/on_ground/on_ground.gd" id="1"]
 [ext_resource type="Script" path="res://examples/platformer/player/states/movements/on_ground/idle.gd" id="2"]
@@ -25,6 +25,8 @@
 [ext_resource type="Script" path="res://examples/platformer/player/states/movements/in_air/corner_hop.gd" id="26"]
 [ext_resource type="Script" path="res://examples/platformer/player/states/movements/dash/dash.gd" id="27"]
 [ext_resource type="Script" path="res://examples/platformer/player/states/movements/on_ground/on_edge.gd" id="28"]
+[ext_resource type="Script" path="res://examples/platformer/player/states/dash_possible/can_pre_dash.gd" id="29"]
+[ext_resource type="Script" path="res://examples/platformer/player/states/dash_possible/can_dash.gd" id="30"]
 [ext_resource type="Script" path="res://examples/platformer/level/shard.gd" id="31"]
 [ext_resource type="Texture2D" uid="uid://ct7r7507orox2" path="res://examples/platformer/assets/sprites/decor/ship.png" id="32"]
 [ext_resource type="Script" path="res://examples/platformer/level/end_ship.gd" id="33"]
@@ -1274,6 +1276,39 @@ next_state = NodePath("")
 
 [node name="CanJump" type="Node" parent="Player/XSM/RegionJumpPossible"]
 script = ExtResource("22")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="RegionDashPossible" type="Node" parent="Player/XSM"]
+script = ExtResource("3")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="NoDash" type="Node" parent="Player/XSM/RegionDashPossible"]
+script = ExtResource("3")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="CanPreDash" type="Node" parent="Player/XSM/RegionDashPossible"]
+script = ExtResource("29")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="CanDash" type="Node" parent="Player/XSM/RegionDashPossible"]
+unique_name_in_owner = true
+script = ExtResource("30")
 disabled = false
 debug_mode = false
 target_path = NodePath("")

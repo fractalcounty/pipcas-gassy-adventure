@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfi818wsnubk8"]
-
-[ext_resource type="Shader" path="res://assets/shaders/charge.gdshader" id="1_lkdal"]
-
-[resource]
-shader = ExtResource("1_lkdal")
-shader_parameter/pulse_frequency = 0.0
-shader_parameter/pulse_amplitude = 0.277
-shader_parameter/pulse_phase = -1.527

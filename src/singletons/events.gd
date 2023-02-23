@@ -7,5 +7,3 @@ signal follow_origin(origin_pos)
 signal cutscene_start
 signal cutscene_end
 signal cutscene_reset
-
-signal flash_banner(banner_title, banner_subtitle)

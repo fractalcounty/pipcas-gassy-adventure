@@ -1,3 +1,8 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://577pvmpr6vqj"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://577pvmpr6vqj"]
+
+[ext_resource type="Shader" path="res://assets/shaders/rotsprite.gdshader" id="1_bjpp8"]
 
 [resource]
+shader = ExtResource("1_bjpp8")
+shader_parameter/highestColor = Vector3(-5, -2, -6)
+shader_parameter/similarThreshold = 0.0

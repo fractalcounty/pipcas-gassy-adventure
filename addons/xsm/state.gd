@@ -451,9 +451,9 @@ func change_state_node(new_state_node: State = null, args_on_enter = null, args_
 		args_before_exit = null, args_on_exit = null, force: bool = false) -> State:
 	var new_state = new_state_node
 
-#	if force:
-#		if is_debugged():
-#			prints("[FORCE]", new_state.get_name())
+	if force:
+		if is_debugged():
+			prints("[FORCE]", new_state.get_name())
 
 	if new_state == null:
 		new_state = self
