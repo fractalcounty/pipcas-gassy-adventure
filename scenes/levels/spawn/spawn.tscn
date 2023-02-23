@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://buf7wy3idmpwl"]
+
+[ext_resource type="Script" path="res://scenes/levels/spawn/spawn.gd" id="1_auyie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukoq4"]
+size = Vector2(47, 60)
+
+[node name="Spawn" type="Marker2D"]
+gizmo_extents = 60.0
+script = ExtResource("1_auyie")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ukoq4")

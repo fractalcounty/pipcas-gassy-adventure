@@ -1,0 +1,602 @@
+[gd_scene load_steps=23 format=3 uid="uid://cpe6qhiqkqlmb"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_r5gc2"]
+[ext_resource type="Shader" path="res://scenes/game.gdshader" id="2_1ppda"]
+[ext_resource type="PackedScene" uid="uid://mj0svhgtmiyt" path="res://addons/debug/debugmeter2d/DebugMeter2D.tscn" id="2_847hj"]
+[ext_resource type="VideoStream" path="res://assets/video/intro.ogv" id="2_hxh1a"]
+[ext_resource type="Material" uid="uid://c8oe83hvejbn1" path="res://assets/shaders/drop_shadow.tres" id="3_5jyxi"]
+[ext_resource type="Script" path="res://scenes/SubViewportContainer.gd" id="3_gba26"]
+[ext_resource type="Script" path="res://scenes/ui.gd" id="93_iaarp"]
+[ext_resource type="Theme" uid="uid://chubprkmexsng" path="res://assets/theme/user_interface.tres" id="94_4pv70"]
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="96_o4xlf"]
+[ext_resource type="FontFile" uid="uid://bfg3x82e0mrlp" path="res://assets/fonts/hog danish.ttf" id="97_36xa4"]
+[ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="98_l61ot"]
+[ext_resource type="AudioStream" uid="uid://dckhglm3kgjbk" path="res://assets/sfx/unpause.wav" id="99_6hfxq"]
+[ext_resource type="AudioStream" uid="uid://cvgl0jusiqqd2" path="res://assets/sfx/select.wav" id="100_m0pq3"]
+[ext_resource type="Script" path="res://scenes/menus/title_screen.gd" id="101_dxsjm"]
+[ext_resource type="Texture2D" uid="uid://bwin2hlvow6js" path="res://assets/menus/clouds-4258726_1280.jpg" id="102_2qa5h"]
+[ext_resource type="Texture2D" uid="uid://b3yy7mvloos1c" path="res://assets/menus/game_logo.png" id="102_t87as"]
+
+[sub_resource type="GDScript" id="GDScript_t0uif"]
+script/source = "@tool
+@icon(\"DebugMeter2D.svg\")
+class_name DebugMeter3D
+extends Control
+
+# Debug Meter 2D version 1.0
+#
+# A very simple debug meter that takes a float input and represents as the height of the meter.
+# The meter accepts any value range, as long as `max_value` is a higher value than `min_value` (the other way around is not tested).
+#
+# The meter can be customized: range, colors and the placement of the target value line.
+#
+# The value passed to the meter will show below the meter.
+
+signal input_reached_target_value()
+signal input_exceeds_range()
+
+@export_category(\"Bar\")
+
+@export var emit_signals: bool = true
+
+## The highest value you expect to pass to the meter. It should be higher than the value set for min_value.
+@export var max_value: float = 100
+
+## The lowest value you expect to pass to the meter. It should be lower than the value set for min_value.
+@export var min_value: float = 0
+
+## The color you want to see when the passed value exceeds the expected range of the meter.
+@export var range_exceeded_bar_color: Color = Color(\"d90031\")
+
+## The value of the meter before input. Should be within the range of the meter.
+@export var initial_value: float = 100
+
+## The color of the meter for when the value passed to the meter is more than zero.
+@export var default_bar_color: Color = Color(\"00a43a\")
+
+@export_category(\"Target Value\")
+
+## Toggle to show or hide the target value line.
+@export var show_target_line: bool = true
+
+## The color of the meter below the target value line.
+@export var bar_color_below_baseline: Color = Color(\"f4c221\")
+
+## The relative vertical position of the target value line: 0 is all the way down, 1 is all the way up. 
+@export_range(0, 100) var relative_position_of_target_line: float = 0
+
+## The color of the bar when it goes below the target value line.
+@export var change_bar_color_below_target_line: bool = false
+
+## The bar height is used to find the relative position of the target value line.
+@onready var _on_screen_bar_height: float = self.size.y - $Value.size.y
+
+## Screen size relative unit to vertically position the bar.
+@onready var _relative_unit: float = _on_screen_bar_height / (abs(max_value) + abs(min_value))
+
+## The input variable as it is shown below the bar.
+@onready var _actual_value: float = initial_value
+
+## Used to center the bar when zero is within the range of the meter.
+var _center_offset: float
+
+## The actual value represented by the target value line
+var _target_line_value: float = 0
+
+
+func _ready() -> void:
+	Global.debug2 = self
+	_setup()
+	_update_target_value_line_as_needed(initial_value)
+	if show_target_line:
+		$Targetvalue.show()
+	else:
+		$Targetvalue.hide()
+
+
+func _process(_delta) -> void:
+	if Engine.is_editor_hint():
+		_setup()
+		_update_target_value_line_as_needed(initial_value)
+		value2(initial_value)
+		if show_target_line:
+			$Targetvalue.show()
+		else:
+			$Targetvalue.hide()
+		
+
+
+## The API for the Meter. Call this with the float you want to see reflected by the meter.
+## The new_value may exceed the range of the meter, which will cause the meter to change color (ref. range_exceeded_bar_color).
+func value2(new_value: float) -> void:
+	if _actual_value != new_value:
+		_actual_value = new_value
+		_update_value_label(_actual_value)
+		_update_bar()
+		_update_bar_color()
+
+
+# Handling Bar Value Updates
+# --------------------------------------------------------------------------------------------------
+
+
+func _setup() -> void:
+	assert(max_value > min_value)
+	_on_screen_bar_height = self.size.y - $Value.size.y
+	var range_of_bar = (max_value - min_value)
+	_relative_unit = _on_screen_bar_height / range_of_bar
+	if 0 > min_value && 0 < max_value:
+		# Value range is from a positive to a negative number: bar grows out from zero
+		_center_offset = ((max_value - min_value) - abs(min_value)) * _relative_unit
+	elif 0 >= max_value:
+		# Value range from zero and lower: bar grows downwards
+		_center_offset = 0
+	else:
+		# Value range is above zero: bar grows upwards
+		_center_offset = _on_screen_bar_height
+
+
+func _update_target_value_line_as_needed(input: float) -> void:
+	$Targetvalue.position.y = (_on_screen_bar_height * (relative_position_of_target_line / 100))
+	var new_value: float
+	if 0 >= min_value && 0 < max_value:
+		new_value = max_value - ((abs(max_value) + abs(min_value)) * (relative_position_of_target_line / 100))
+	else:
+		# Both values are not neatly 
+		new_value = max_value - (abs(abs(max_value) - abs(min_value)) * (relative_position_of_target_line / 100))
+	if new_value != _target_line_value:
+			_target_line_value = new_value
+			_update_value_label(_target_line_value)
+
+
+func _update_value_label(value: float) -> void:
+	$Value.text = (\"%.2f\" % value)
+	
+	
+func _update_bar():
+	var bar_value_within_range = clampf(_actual_value, min_value, max_value)	
+	if max_value < 0:
+		$Bar.size.y = (max_value - bar_value_within_range) * _relative_unit
+		$Bar.position.y = 0
+	else:
+		$Bar.size.y = abs(bar_value_within_range * _relative_unit)
+		if bar_value_within_range < 0:
+			# Fixed position below zero because bar grow downwards			
+			$Bar.position.y = _center_offset
+		else:
+			# Moving bar down to negate bar height
+			$Bar.position.y = _center_offset - $Bar.size.y
+
+
+func _update_bar_color() -> void:
+	if _actual_value > max_value || _actual_value < min_value:
+		$Bar.color = range_exceeded_bar_color
+		emit_signal_for_exceeded_range()
+	elif change_bar_color_below_target_line && _actual_value < _target_line_value:
+		const is_below_value_line = true
+		check_reached_status_of_targetline(is_below_value_line)
+		$Bar.color = bar_color_below_baseline
+	else:
+		const is_below_value_line = false
+		check_reached_status_of_targetline(is_below_value_line)
+		$Bar.color = default_bar_color
+
+
+func check_reached_status_of_targetline(is_below_target_line: bool) -> void:
+	if !emit_signals:
+		return
+	if is_below_target_line && $Bar.color != bar_color_below_baseline:
+		emit_signal(\"input_reached_target_value\")
+	elif !is_below_target_line && $Bar.color == bar_color_below_baseline:
+		emit_signal(\"input_reached_target_value\")
+
+
+func emit_signal_for_exceeded_range() -> void:
+	if !emit_signals:
+		return
+	emit_signal(\"input_exceeds_range\")
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_3w1n0"]
+font_size = 33
+
+[sub_resource type="Animation" id="Animation_63554"]
+resource_name = "ease_in"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1, 2.5, 3.3),
+"transitions": PackedFloat32Array(-2, 1, 1, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 3.5),
+"transitions": PackedFloat32Array(-2, 0, -2, -2),
+"update": 0,
+"values": [Vector2(0, -150), Vector2(0, 150), Vector2(0, 150), Vector2(0, -150)]
+}
+
+[sub_resource type="Animation" id="Animation_5l0ih"]
+resource_name = "ease_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -0.5),
+"update": 0,
+"values": [Vector2(-320, -135), Vector2(-320, -250)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfdnw"]
+_data = {
+"ease_in": SubResource("Animation_63554"),
+"ease_out": SubResource("Animation_5l0ih")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcimn"]
+shader = ExtResource("2_1ppda")
+shader_parameter/cam_offset = Vector2(0, 0)
+
+[node name="Game" type="Node" node_paths=PackedStringArray("intro", "title_screen", "viewport_container", "viewport", "pause_menu")]
+process_mode = 3
+script = ExtResource("1_r5gc2")
+intro = NodePath("Intro")
+title_screen = NodePath("TitleScreen")
+viewport_container = NodePath("SubViewportContainer")
+viewport = NodePath("SubViewportContainer/SubViewport")
+pause_menu = NodePath("PauseMenu")
+
+[node name="DebugMeter2D" parent="." instance=ExtResource("2_847hj")]
+z_index = 300
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 0.0638889
+offset_left = 1805.0
+offset_top = 424.0
+offset_right = 1805.0
+offset_bottom = 1018.0
+max_value = 1.0
+initial_value = 0.0
+change_bar_color_below_target_line = true
+
+[node name="DebugMeter2D2" type="Control" parent="."]
+visible = false
+z_index = 300
+layout_mode = 3
+anchor_right = 0.05
+anchor_bottom = 0.0638889
+offset_left = 1669.0
+offset_top = 424.0
+offset_right = 1669.0
+offset_bottom = 1018.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_t0uif")
+metadata/_edit_use_anchors_ = true
+
+[node name="Bar" type="ColorRect" parent="DebugMeter2D2"]
+texture_filter = 1
+material = ExtResource("3_5jyxi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.643137, 0.227451, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Targetvalue" type="ColorRect" parent="DebugMeter2D2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.915
+anchor_right = 1.0
+anchor_bottom = 0.918
+offset_top = -606.645
+offset_bottom = -606.589
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="DebugMeter2D2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 0.923
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.24
+offset_top = 24.16
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 8.73992e-05
+text = "100.00"
+label_settings = SubResource("LabelSettings_3w1n0")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Intro" type="VideoStreamPlayer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_hxh1a")
+autoplay = true
+
+[node name="LevelBanner" type="Control" parent="." node_paths=PackedStringArray("anim", "level_title", "level_subtitle")]
+visible = false
+z_index = 50
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("93_iaarp")
+anim = NodePath("BannerAnimations")
+level_title = NodePath("ColorRect/VBoxContainer/LevelTitle")
+level_subtitle = NodePath("ColorRect/VBoxContainer/LevelSubtitle")
+
+[node name="ColorRect" type="ColorRect" parent="LevelBanner"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = true
+custom_minimum_size = Vector2(0, 142)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -690.0
+offset_bottom = -547.999
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.509804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelBanner/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -20.0
+offset_right = 72.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelTitle" type="Label" parent="LevelBanner/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("94_4pv70")
+text = "LEVEL   1:"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelBanner/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="LevelSubtitle" type="Label" parent="LevelBanner/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("94_4pv70")
+text = "MEAL   MEADOWS"
+horizontal_alignment = 1
+
+[node name="BannerAnimations" type="AnimationPlayer" parent="LevelBanner"]
+libraries = {
+"": SubResource("AnimationLibrary_sfdnw")
+}
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+process_mode = 1
+material = SubResource("ShaderMaterial_kcimn")
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 632.0
+offset_bottom = 352.0
+scale = Vector2(3, 3)
+focus_mode = 2
+script = ExtResource("3_gba26")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(648, 368)
+size_2d_override = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("resume_button", "pause_sound", "unpause_sound", "select_sound")]
+process_mode = 3
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("96_o4xlf")
+resume_button = NodePath("ColorRect/CenterContainer/VBoxContainer/ResumeButton")
+pause_sound = NodePath("Pause")
+unpause_sound = NodePath("Unpause")
+select_sound = NodePath("Select")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.290196)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/ColorRect/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("97_36xa4")
+theme_override_font_sizes/font_size = 64
+text = "GAME   PAUSED"
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("94_4pv70")
+text = "RESUME"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="QuitButton" type="Button" parent="PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("94_4pv70")
+text = "QUIT"
+
+[node name="Pause" type="AudioStreamPlayer" parent="PauseMenu"]
+stream = ExtResource("98_l61ot")
+
+[node name="Unpause" type="AudioStreamPlayer" parent="PauseMenu"]
+stream = ExtResource("99_6hfxq")
+
+[node name="Select" type="AudioStreamPlayer" parent="PauseMenu"]
+stream = ExtResource("100_m0pq3")
+
+[node name="TitleScreen" type="Control" parent="."]
+process_mode = 3
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("101_dxsjm")
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("102_2qa5h")
+
+[node name="MainMenu" type="MarginContainer" parent="TitleScreen/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 104.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/TextureRect/MainMenu"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 430
+theme_override_constants/margin_right = 430
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(698.137, 0)
+layout_mode = 2
+texture = ExtResource("102_t87as")
+expand_mode = 5
+
+[node name="MarginContainer4" type="MarginContainer" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="MarginContainer2" type="MarginContainer" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 650
+theme_override_constants/margin_right = 650
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("94_4pv70")
+theme_override_fonts/font = ExtResource("97_36xa4")
+theme_override_font_sizes/font_size = 55
+text = "PLAY"
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="SettingsButton" type="Button" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("94_4pv70")
+theme_override_fonts/font = ExtResource("97_36xa4")
+theme_override_font_sizes/font_size = 55
+text = "SETTINGS"
+
+[node name="MarginContainer2" type="MarginContainer" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="QuitButton" type="Button" parent="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("94_4pv70")
+theme_override_fonts/font = ExtResource("97_36xa4")
+theme_override_font_sizes/font_size = 55
+text = "QUIT"
+
+[connection signal="finished" from="Intro" to="." method="_on_intro_finished"]
+[connection signal="focus_entered" from="PauseMenu" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" method="_on_pause_menu_focus_entered"]
+[connection signal="focus_exited" from="PauseMenu" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" method="_on_pause_menu_focus_exited"]
+[connection signal="focus_entered" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_focus_entered"]
+[connection signal="pressed" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="focus_entered" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_focus_entered"]
+[connection signal="pressed" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/PlayButton" to="TitleScreen" method="_on_play_button_pressed"]
+[connection signal="pressed" from="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/QuitButton" to="TitleScreen" method="_on_quit_button_pressed"]

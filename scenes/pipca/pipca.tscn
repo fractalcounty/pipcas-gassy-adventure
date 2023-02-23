@@ -1,31 +1,67 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhiu1jc2qde0x"]
+[gd_scene load_steps=44 format=3 uid="uid://dhiu1jc2qde0x"]
 
 [ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_jagr2"]
 [ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="2_0psm0"]
+[ext_resource type="Script" path="res://scenes/pipca/look.gd" id="2_021t1"]
+[ext_resource type="Material" uid="uid://cfi818wsnubk8" path="res://assets/shaders/pulse.tres" id="2_ligh4"]
 [ext_resource type="AudioStream" uid="uid://ci0ynipdlk0bi" path="res://assets/sfx/belch.wav" id="3_1g2fa"]
+[ext_resource type="Texture2D" uid="uid://em4sk2w5yrhl" path="res://assets/sprites/crosshair001.png" id="3_g31ey"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_cucdx"]
+[ext_resource type="Script" path="res://scenes/pipca/line_renderer.gd" id="4_wpkhe"]
 [ext_resource type="Script" path="res://scenes/pipca/states/movement.gd" id="5_b38d3"]
 [ext_resource type="Script" path="res://scenes/pipca/states/in_air.gd" id="6_jvapn"]
 [ext_resource type="Script" path="res://scenes/pipca/states/on_ground.gd" id="7_smmrm"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_5o37a"]
+[ext_resource type="Script" path="res://scenes/pipca/states/region_fart_possible.gd" id="8_u1tdb"]
+[ext_resource type="Script" path="res://scenes/pipca/states/can_charge.gd" id="9_c6lil"]
 [ext_resource type="Script" path="res://scenes/pipca/states/idle.gd" id="9_jquvo"]
+[ext_resource type="Script" path="res://scenes/pipca/states/brake.gd" id="10_pmxfc"]
+[ext_resource type="Script" path="res://scenes/pipca/states/full.gd" id="10_vcy6m"]
 [ext_resource type="Script" path="res://scenes/pipca/states/blink.gd" id="10_wtcgp"]
 [ext_resource type="Script" path="res://scenes/pipca/states/belch.gd" id="11_5s3g5"]
-[ext_resource type="Script" path="res://addons/random_audio_player/nodes/random_audio_player.gd" id="12_xbg13"]
-[ext_resource type="AudioStream" uid="uid://dhq8bh8837s1c" path="res://assets/sfx/step1.wav" id="13_j262m"]
-[ext_resource type="AudioStream" uid="uid://bm5ybd5mvs827" path="res://assets/sfx/step2.wav" id="14_w1jr7"]
-[ext_resource type="AudioStream" uid="uid://1ud2i3ldsq78" path="res://assets/sfx/step3.wav" id="15_c8p3s"]
-[ext_resource type="AudioStream" uid="uid://cribdbujt5pov" path="res://assets/sfx/step4.wav" id="16_i3kye"]
+[ext_resource type="Script" path="res://scenes/pipca/states/fart.gd" id="12_3gkmx"]
+[ext_resource type="Script" path="res://addons/xsm/state.gd" id="12_iijnr"]
+[ext_resource type="Script" path="res://scenes/pipca/states/falltop.gd" id="14_byqjp"]
+[ext_resource type="Script" path="res://scenes/pipca/states/fall_top.gd" id="15_ocege"]
+[ext_resource type="Script" path="res://scenes/pipca/states/ground_fart.gd" id="16_d0q4w"]
+[ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="21_eqrio"]
+[ext_resource type="Script" path="res://scenes/pipca/states/charging.gd" id="24_4jdpr"]
+[ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="25_n6qg8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8u6p"]
-size = Vector2(47, 59)
+[sub_resource type="Curve" id="Curve_xga5o"]
+_data = [Vector2(0.00360577, 0.898917), 0.0, 0.0, 0, 0, Vector2(0.539663, 0.429603), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Animation" id="Animation_36muk"]
-length = 0.4
+[sub_resource type="Gradient" id="Gradient_wk8tt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn2ue"]
+size = Vector2(46, 59)
+
+[sub_resource type="Animation" id="Animation_qoudx"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Skin:material:shader_parameter/pulse_phase")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.527]
+}
+
+[sub_resource type="Animation" id="Animation_wqbgl"]
+resource_name = "fall"
+length = 0.250005
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -37,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Skin:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -49,7 +85,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("Skin:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -61,7 +97,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/path = NodePath("Skin:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -73,7 +109,70 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("Skin:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [31, 32, 33]
+}
+
+[sub_resource type="Animation" id="Animation_36muk"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_0psm0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skin:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skin:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
@@ -109,13 +208,25 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0, 0.0, -50.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skin:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_5cnh6"]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Skin:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -127,7 +238,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Skin:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -139,7 +250,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("Skin:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -151,7 +262,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/path = NodePath("Skin:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -163,7 +274,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("Skin:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
@@ -179,7 +290,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Skin:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -191,7 +302,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Skin:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -203,7 +314,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("Skin:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -215,7 +326,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/path = NodePath("Skin:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -227,7 +338,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("Skin:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
@@ -238,12 +349,13 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_0q3m1"]
-length = 0.5
+length = 0.250005
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Skin:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -255,7 +367,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Skin:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -267,7 +379,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("Skin:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -279,7 +391,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/path = NodePath("Skin:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -291,11 +403,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("Skin:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [29, 30, 31, 32, 33]
@@ -308,7 +420,7 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Skin:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -320,7 +432,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Skin:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -332,7 +444,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("Skin:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -344,7 +456,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/path = NodePath("Skin:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -356,7 +468,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("Skin:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
@@ -365,26 +477,11 @@ tracks/4/keys = {
 "update": 1,
 "values": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.1, 0.85),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"play"
-}, {
-"args": [],
-"method": &"play"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jqqqw"]
 _data = {
+"RESET": SubResource("Animation_qoudx"),
+"fall": SubResource("Animation_wqbgl"),
 "idle_belch": SubResource("Animation_36muk"),
 "idle_blink": SubResource("Animation_5cnh6"),
 "idle_still": SubResource("Animation_o23x3"),
@@ -392,22 +489,211 @@ _data = {
 "walk": SubResource("Animation_48l6x")
 }
 
-[node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("footstep_sounds", "belch_sounds")]
+[sub_resource type="Curve" id="Curve_o5k8o"]
+_data = [Vector2(0.501202, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_al85t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(1, 0), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_xy45b"]
+length = 0.50001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:material:shader_parameter/pulse_frequency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:material:shader_parameter/pulse_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.277]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:material:shader_parameter/pulse_phase")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.8]
+}
+
+[sub_resource type="Animation" id="Animation_gkxgm"]
+resource_name = "glow"
+length = 5.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("2_ligh4")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:material:shader_parameter/pulse_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.0, 6.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skin:material:shader_parameter/pulse_amplitude")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.277, 0.6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skin:material:shader_parameter/pulse_phase")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.8, 15.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bg8be"]
+_data = {
+"RESET": SubResource("Animation_xy45b"),
+"glow": SubResource("Animation_gkxgm")
+}
+
+[node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("skin", "mouth", "origin", "anim", "charging_shaker", "charged_shaker", "raycast", "collision_shape", "bottom", "look", "mouse_area", "mouse_area_shape", "belch_sounds", "fart_sounds")]
 z_index = 1
 texture_filter = 1
 disable_mode = 2
+floor_snap_length = 20.0
+safe_margin = 2.0
 script = ExtResource("1_jagr2")
-footstep_sounds = NodePath("Footsteps")
+skin = NodePath("Skin")
+mouth = NodePath("Mouth")
+origin = NodePath("Origin")
+anim = NodePath("AnimationPlayer")
+charging_shaker = NodePath("ChargingShaker")
+charged_shaker = NodePath("ChargedShaker")
+raycast = NodePath("RayCast")
+collision_shape = NodePath("")
+bottom = NodePath("Bottom")
+look = NodePath("Look")
+mouse_area = NodePath("")
+mouse_area_shape = NodePath("")
 belch_sounds = NodePath("Belch")
+fart_sounds = NodePath("FartSounds")
+gravity = 1500.0
+air_speed = 200.0
+air_accel = 50.0
+ground_friction = 5.0
+ground_speed = 80.0
+acceleration = 8.0
+walk_margin = 5.0
+fart_anim_speed = 0.0
+fart_rotation_control = 3.0
+fart_charge_duration = 0.0
+meter_multiplier = 0.0
+fart_max_charge_time = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Look" type="Marker2D" parent="." node_paths=PackedStringArray("crosshair_close", "crosshair_far", "crosshair_final", "line")]
+script = ExtResource("2_021t1")
+close_radius = 40.0
+close_deadzone = 40.0
+close_follow_speed = 50.0
+close_recall_speed = 15.0
+far_radius = 150.0
+far_deadzone = 40.0
+far_follow_speed = 3.0
+far_recall_speed = 30.0
+final_radius = 50.0
+final_deadzone = 50.0
+final_follow_speed = 40.0
+final_recall_speed = 40.0
+crosshair_close = NodePath("CrosshairClose")
+crosshair_far = NodePath("")
+crosshair_final = NodePath("CrosshairFinal")
+line = NodePath("Line2D")
+bounds_radius = 1000.0
+
+[node name="CrosshairFinal" type="Sprite2D" parent="Look"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_g31ey")
+
+[node name="CrosshairClose" type="Sprite2D" parent="Look"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_g31ey")
+
+[node name="Line2D" type="Line2D" parent="Look" node_paths=PackedStringArray("pipca_center", "crosshair_final", "crosshair_far", "crosshair_close")]
+visible = false
+z_index = 1
+width_curve = SubResource("Curve_xga5o")
+default_color = Color(0.188235, 1, 1, 1)
+gradient = SubResource("Gradient_wk8tt")
+begin_cap_mode = 1
+end_cap_mode = 1
+script = ExtResource("4_wpkhe")
+pipca_center = NodePath("../../Origin")
+crosshair_final = NodePath("../CrosshairFinal")
+crosshair_far = NodePath("")
+crosshair_close = NodePath("../CrosshairClose")
+
+[node name="Skin" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
+material = ExtResource("2_ligh4")
 texture = ExtResource("2_0psm0")
-offset = Vector2(0, 1)
 hframes = 6
 vframes = 6
-frame = 7
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -420,15 +706,17 @@ metadata/_aseprite_wizard_config_ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_q8u6p")
+z_index = 39
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_bn2ue")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_jqqqw")
 }
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateRegions" type="Node" parent="."]
 script = ExtResource("4_cucdx")
 history_size = 0
 disabled = false
@@ -437,16 +725,63 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="Movement" type="Node" parent="StateMachine"]
-script = ExtResource("5_b38d3")
-speed = 25.0
+[node name="RegionFartPossible" type="Node" parent="StateRegions"]
+script = ExtResource("8_u1tdb")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("CanCharge")
+
+[node name="NoCharge" type="Node" parent="StateRegions/RegionFartPossible"]
+script = ExtResource("12_iijnr")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="InAir" type="Node" parent="StateMachine/Movement"]
+[node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
+script = ExtResource("9_c6lil")
+animation_player = NodePath("../../../EffectsAnim")
+anim_on_enter = "RESET"
+anim_times_to_play = 3
+on_anim_finished = 1
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
+script = ExtResource("24_4jdpr")
+animation_player = NodePath("../../../EffectsAnim")
+anim_on_enter = "glow"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Full" type="Node" parent="StateRegions/RegionFartPossible"]
+script = ExtResource("10_vcy6m")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Movement" type="Node" parent="StateRegions"]
+script = ExtResource("5_b38d3")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../RegionFartPossible")
+
+[node name="InAir" type="Node" parent="StateRegions/Movement"]
 script = ExtResource("6_jvapn")
 disabled = false
 debug_mode = false
@@ -454,28 +789,35 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
 
-[node name="OnGround" type="Node" parent="StateMachine/Movement"]
-script = ExtResource("7_smmrm")
-jump_velocity = -100.0
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../InAir")
-
-[node name="Walk" type="Node" parent="StateMachine/Movement/OnGround"]
-script = ExtResource("8_5o37a")
+[node name="Fall" type="Node" parent="StateRegions/Movement/InAir"]
+script = ExtResource("14_byqjp")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "walk"
+anim_on_enter = "fall"
 anim_times_to_play = 1
 on_anim_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Still")
+next_state = NodePath("")
 
-[node name="Idle" type="Node" parent="StateMachine/Movement/OnGround"]
+[node name="FallTop" type="Node" parent="StateRegions/Movement/InAir"]
+script = ExtResource("15_ocege")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="OnGround" type="Node" parent="StateRegions/Movement"]
+script = ExtResource("7_smmrm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../InAir")
+
+[node name="Idle" type="Node" parent="StateRegions/Movement/OnGround"]
 script = ExtResource("9_jquvo")
 blink_chance = 0.5
 belch_chance = 0.005
@@ -485,7 +827,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("Still")
 
-[node name="Still" type="Node" parent="StateMachine/Movement/OnGround/Idle"]
+[node name="Still" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 script = ExtResource("8_5o37a")
 animation_player = NodePath("../../../../../AnimationPlayer")
 anim_on_enter = "idle_still"
@@ -497,7 +839,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
 
-[node name="Blink" type="Node" parent="StateMachine/Movement/OnGround/Idle"]
+[node name="Blink" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 script = ExtResource("10_wtcgp")
 animation_player = NodePath("../../../../../AnimationPlayer")
 anim_on_enter = "idle_blink"
@@ -509,7 +851,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Still")
 
-[node name="Belch" type="Node" parent="StateMachine/Movement/OnGround/Idle"]
+[node name="Belch" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 script = ExtResource("11_5s3g5")
 animation_player = NodePath("../../../../../AnimationPlayer")
 anim_on_enter = "idle_belch"
@@ -521,31 +863,82 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Still")
 
-[node name="Footsteps" type="Node2D" parent="."]
-script = ExtResource("12_xbg13")
-volume_Db_overwrite = -10.0
-max_distance_overwrite = 10000.0
+[node name="Walk" type="Node" parent="StateRegions/Movement/OnGround"]
+script = ExtResource("8_5o37a")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = "walk"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("Still")
 
-[node name="Step1" type="AudioStreamPlayer" parent="Footsteps"]
-stream = ExtResource("13_j262m")
-volume_db = -10.0
+[node name="Brake" type="Node" parent="StateRegions/Movement/OnGround"]
+script = ExtResource("10_pmxfc")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("Still")
 
-[node name="Step2" type="AudioStreamPlayer" parent="Footsteps"]
-stream = ExtResource("14_w1jr7")
-volume_db = -10.0
+[node name="Farts" type="Node" parent="StateRegions/Movement"]
+script = ExtResource("12_3gkmx")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
 
-[node name="Step3" type="AudioStreamPlayer" parent="Footsteps"]
-stream = ExtResource("15_c8p3s")
-volume_db = -10.0
-
-[node name="Step4" type="AudioStreamPlayer" parent="Footsteps"]
-stream = ExtResource("16_i3kye")
-volume_db = -10.0
+[node name="GroundFart" type="Node" parent="StateRegions/Movement/Farts"]
+script = ExtResource("16_d0q4w")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = "jump"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
 
 [node name="Belch" type="AudioStreamPlayer" parent="."]
-volume_db = -50.0
+
+[node name="FartSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_n6qg8")
 
 [node name="Mouth" type="Marker2D" parent="."]
-position = Vector2(-6, -6)
+position = Vector2(199, -16)
 
 [node name="Origin" type="Marker2D" parent="."]
+
+[node name="ChargingShaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
+script = ExtResource("21_eqrio")
+target_node = NodePath("../Skin")
+target_property = &"position"
+min_value = 2.0
+max_value = 5.0
+duration = 6.0
+fall_off = SubResource("Curve_o5k8o")
+
+[node name="ChargedShaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
+script = ExtResource("21_eqrio")
+target_node = NodePath("../Skin")
+target_property = &"position"
+max_value = 7.0
+duration = 20.0
+fall_off = SubResource("Curve_al85t")
+
+[node name="RayCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 30)
+
+[node name="Bottom" type="Marker2D" parent="."]
+position = Vector2(0, 29)
+
+[node name="EffectsAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bg8be")
+}
+
+[connection signal="state_exited" from="StateRegions/RegionFartPossible/Full" to="StateRegions/RegionFartPossible/Charging" method="_on_full_state_exited"]

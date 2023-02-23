@@ -6,7 +6,7 @@ func _on_belched(mouthpos, dir):
 	Input.start_joy_vibration(0, 1, 1, 0.7)
 	show()
 	shaker.start()
-	print ("SHAKE START")
+	#print ("SHAKE START")
 	position = mouthpos
 	play()
 

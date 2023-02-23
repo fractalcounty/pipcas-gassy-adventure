@@ -13,7 +13,6 @@ func _on_update(_delta: float) -> void:
 		change_state("Belch")
 	if !target.dir == 0:
 		del_timers()
-		change_state("Walk")
 
 func _on_timeout(_idle) -> void:
 	if !is_active("Walk"):
