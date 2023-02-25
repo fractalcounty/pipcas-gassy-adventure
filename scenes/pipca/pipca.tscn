@@ -1,14 +1,14 @@
-[gd_scene load_steps=44 format=3 uid="uid://dhiu1jc2qde0x"]
+[gd_scene load_steps=45 format=3 uid="uid://dhiu1jc2qde0x"]
 
 [ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_jagr2"]
 [ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="2_0psm0"]
 [ext_resource type="Script" path="res://scenes/pipca/look.gd" id="2_021t1"]
-[ext_resource type="Material" uid="uid://cfi818wsnubk8" path="res://assets/shaders/pulse.tres" id="2_ligh4"]
 [ext_resource type="AudioStream" uid="uid://ci0ynipdlk0bi" path="res://assets/sfx/belch.wav" id="3_1g2fa"]
 [ext_resource type="Texture2D" uid="uid://em4sk2w5yrhl" path="res://assets/sprites/crosshair001.png" id="3_g31ey"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_cucdx"]
 [ext_resource type="Script" path="res://scenes/pipca/line_renderer.gd" id="4_wpkhe"]
 [ext_resource type="Script" path="res://scenes/pipca/states/movement.gd" id="5_b38d3"]
+[ext_resource type="Shader" path="res://assets/shaders/charge.gdshader" id="5_omyo4"]
 [ext_resource type="Script" path="res://scenes/pipca/states/in_air.gd" id="6_jvapn"]
 [ext_resource type="Script" path="res://scenes/pipca/states/on_ground.gd" id="7_smmrm"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_5o37a"]
@@ -34,6 +34,15 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_wk8tt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njq02"]
+shader = ExtResource("5_omyo4")
+shader_parameter/pulse_frequency = 0.0
+shader_parameter/pulse_amplitude = 0.0
+shader_parameter/pulse_phase = 0.0
+shader_parameter/highestColor = Vector3(-0.92, 0, 0)
+shader_parameter/similarThreshold = 0.089
+shader_parameter/lineWidth = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn2ue"]
 size = Vector2(46, 59)
@@ -497,8 +506,8 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(1, 0), 0.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="Animation" id="Animation_xy45b"]
-length = 0.50001
+[sub_resource type="Animation" id="Animation_sevtq"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -521,7 +530,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.277]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -533,82 +542,57 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.8]
+"values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_gkxgm"]
-resource_name = "glow"
-length = 5.00001
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_yi28j"]
+resource_name = "charging"
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material")
+tracks/0/path = NodePath("Skin:material:shader_parameter/pulse_frequency")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skin:material")
+tracks/1/path = NodePath("Skin:material:shader_parameter/pulse_amplitude")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ExtResource("2_ligh4")]
+"values": [0.0, 0.3, 0.9]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Skin:material:shader_parameter/pulse_frequency")
+tracks/2/path = NodePath("Skin:material:shader_parameter/pulse_phase")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [6.0, 6.5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skin:material:shader_parameter/pulse_amplitude")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.277, 0.6]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Skin:material:shader_parameter/pulse_phase")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.8, 15.0]
+"values": [-1.527, 80.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bg8be"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqo8o"]
 _data = {
-"RESET": SubResource("Animation_xy45b"),
-"glow": SubResource("Animation_gkxgm")
+"RESET": SubResource("Animation_sevtq"),
+"charging": SubResource("Animation_yi28j")
 }
 
-[node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("skin", "mouth", "origin", "anim", "charging_shaker", "charged_shaker", "raycast", "collision_shape", "bottom", "look", "mouse_area", "mouse_area_shape", "belch_sounds", "fart_sounds")]
-z_index = 1
+[node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("skin", "mouth", "origin", "anim", "charging_shaker", "charged_shaker", "raycast", "collision_shape", "bottom", "look", "belch_sounds", "fart_sounds")]
+z_index = 500
 texture_filter = 1
 disable_mode = 2
 floor_snap_length = 20.0
@@ -621,22 +605,21 @@ anim = NodePath("AnimationPlayer")
 charging_shaker = NodePath("ChargingShaker")
 charged_shaker = NodePath("ChargedShaker")
 raycast = NodePath("RayCast")
-collision_shape = NodePath("")
+collision_shape = NodePath("CollisionShape2D")
 bottom = NodePath("Bottom")
 look = NodePath("Look")
-mouse_area = NodePath("")
-mouse_area_shape = NodePath("")
 belch_sounds = NodePath("Belch")
 fart_sounds = NodePath("FartSounds")
 gravity = 1500.0
+air_top_margin = 3000.0
 air_speed = 200.0
 air_accel = 50.0
 ground_friction = 5.0
-ground_speed = 80.0
+ground_speed = 50.0
 acceleration = 8.0
 walk_margin = 5.0
 fart_anim_speed = 0.0
-fart_rotation_control = 3.0
+fart_rotation_control = 6.0
 fart_charge_duration = 0.0
 meter_multiplier = 0.0
 fart_max_charge_time = 1.0
@@ -644,17 +627,13 @@ fart_max_charge_time = 1.0
 [node name="Look" type="Marker2D" parent="." node_paths=PackedStringArray("crosshair_close", "crosshair_far", "crosshair_final", "line")]
 script = ExtResource("2_021t1")
 close_radius = 40.0
-close_deadzone = 40.0
+close_deadzone = 30.0
 close_follow_speed = 50.0
-close_recall_speed = 15.0
-far_radius = 150.0
-far_deadzone = 40.0
-far_follow_speed = 3.0
-far_recall_speed = 30.0
-final_radius = 50.0
-final_deadzone = 50.0
-final_follow_speed = 40.0
-final_recall_speed = 40.0
+close_recall_speed = 5.0
+final_radius = 500.0
+final_deadzone = 150.0
+final_follow_speed = 30.0
+final_recall_speed = 30.0
 crosshair_close = NodePath("CrosshairClose")
 crosshair_far = NodePath("")
 crosshair_final = NodePath("CrosshairFinal")
@@ -690,7 +669,7 @@ crosshair_close = NodePath("../CrosshairClose")
 [node name="Skin" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-material = ExtResource("2_ligh4")
+material = SubResource("ShaderMaterial_njq02")
 texture = ExtResource("2_0psm0")
 hframes = 6
 vframes = 6
@@ -743,10 +722,10 @@ next_state = NodePath("")
 
 [node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("9_c6lil")
-animation_player = NodePath("../../../EffectsAnim")
+animation_player = NodePath("../../../AnimationPlayer2")
 anim_on_enter = "RESET"
 anim_times_to_play = 3
-on_anim_finished = 1
+on_anim_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -755,8 +734,8 @@ next_state = NodePath("")
 
 [node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("24_4jdpr")
-animation_player = NodePath("../../../EffectsAnim")
-anim_on_enter = "glow"
+animation_player = NodePath("../../../AnimationPlayer2")
+anim_on_enter = "charging"
 anim_times_to_play = 1
 on_anim_finished = 0
 disabled = false
@@ -936,9 +915,7 @@ target_position = Vector2(0, 30)
 [node name="Bottom" type="Marker2D" parent="."]
 position = Vector2(0, 29)
 
-[node name="EffectsAnim" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bg8be")
+"": SubResource("AnimationLibrary_hqo8o")
 }
-
-[connection signal="state_exited" from="StateRegions/RegionFartPossible/Full" to="StateRegions/RegionFartPossible/Charging" method="_on_full_state_exited"]

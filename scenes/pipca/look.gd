@@ -46,6 +46,14 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if Input.is_action_pressed("in_show") or Input.is_action_pressed("in_charge") or Input.is_action_just_pressed("in_release"):
+		follow_crosshair(delta)
+		crosshair_final.show()
+		crosshair_close.show()
+	else:
+		crosshair_final.hide()
+		crosshair_close.hide()
+	
 	var pulled = crosshair_close.global_transform.origin.distance_to(crosshair_final.global_transform.origin)
 	
 	#print (pulled)
@@ -69,12 +77,13 @@ func _physics_process(delta: float) -> void:
 			out_of_bounds = true
 		
 		if not out_of_bounds:
+			final_follow(delta)
 			follow_crosshair(delta)
 			crosshair_close.show()
 			#crosshair_far.show()
 			crosshair_final.show()
 			#crosshair_far.global_position = crosshair_far.global_position
-			crosshair_final.global_position = crosshair_final.global_position
+			#crosshair_final.global_position = crosshair_final.global_position
 		
 		if only_once:
 			#if not out_of_bounds:
@@ -108,7 +117,7 @@ func _physics_process(delta: float) -> void:
 		center_fixed = get_parent().global_position
 		#crosshair_far.global_position = crosshair_far.global_position.lerp(crosshair_close.global_position, delta * far_recall_speed)
 		crosshair_final.global_position = crosshair_final.global_position.lerp(crosshair_close.global_position, delta * final_recall_speed)
-		crosshair_close.global_position = crosshair_close.global_position.lerp(center_fixed, delta * close_recall_speed)
+		#crosshair_close.global_position = crosshair_close.global_position.lerp(center_fixed, delta * close_recall_speed)
 
 func follow_crosshair(delta) -> void:	
 	var center_pos = get_parent().global_transform.origin
@@ -124,7 +133,17 @@ func follow_crosshair(delta) -> void:
 
 	crosshair_close.global_transform.origin = crosshair_close.global_transform.origin.lerp(inner_pos, delta * close_follow_speed)
 	
+func final_follow(delta) -> void:
+	var center_pos = get_parent().global_transform.origin
+	var inner_pos = get_global_mouse_position()
+	var mouse_dir = (inner_pos - center_pos).normalized()
+	var distance = inner_pos.distance_to(center_pos)
 	
+	if distance > close_radius:
+		inner_pos = center_pos + (mouse_dir * close_radius)
+
+	if distance < close_deadzone:
+		inner_pos = center_pos + (mouse_dir * close_deadzone)
 	var center_pos2 = get_parent().global_transform.origin
 	var inner_pos2 = get_global_mouse_position()
 	var mouse_dir2 = (inner_pos - center_pos).normalized()

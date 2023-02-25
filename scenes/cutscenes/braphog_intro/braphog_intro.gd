@@ -2,7 +2,7 @@ extends AnimationPlayer
 
 @export var cutscene : Resource
 @export var focus : Node2D
-@export var pipca : Pipca
+@export var pipca : CharacterBody2D
 
 func _on_ready():
 	Global.focus = pipca

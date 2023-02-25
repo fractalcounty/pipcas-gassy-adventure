@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://577pvmpr6vqj"]
-
-[ext_resource type="Shader" path="res://assets/shaders/rotsprite.gdshader" id="1_qcbdi"]
-
-[resource]
-shader = ExtResource("1_qcbdi")
-shader_parameter/highestColor = Vector3(1, 1, 1)
-shader_parameter/similarThreshold = 0.0
-shader_parameter/lineWidth = 1.0

@@ -1,7 +1,11 @@
 res://assets/shaders
+res://src/singletons
+res://
+res://scenes/pipca
+C:/Users/Ethan/Desktop/texport
+res://src
 res://scenes
 res://scenes/pipca/states
-res://scenes/pipca
 res://scenes/fart
 res://assets/sprites/fries
 res://scenes/levels/props
@@ -10,10 +14,7 @@ res://scenes/gameworld
 res://scenes/menus
 res://scenes/levels/spawn
 res://assets/theme
-res://src
 res://addons/xsm
 res://assets/sprites/braphog/dangling
-res://
-res://src/singletons
 res://assets/tileset
 res://assets/sprites
