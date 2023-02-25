@@ -8,5 +8,5 @@ func _ready() -> void:
 	Events.flash_banner.emit(banner_title, banner_subtitle)
 	#print ("Emitting banner thing")
 
-func _physics_process(delta: float) -> void:
-	print(cam.global_position.y)
+#func _physics_process(delta: float) -> void:
+	#print(cam.global_position.y)

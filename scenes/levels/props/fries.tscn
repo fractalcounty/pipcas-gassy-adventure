@@ -469,10 +469,12 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" node_paths=PackedStringArray("eat_sound", "anim")]
+texture_filter = 1
 position = Vector2(-1299, 363)
 sprite_frames = SubResource("SpriteFrames_fiict")
 autoplay = "default"
-frame_progress = 0.425794
+frame = 3
+frame_progress = 0.507962
 script = ExtResource("2_arrhe")
 eat_sound = NodePath("EatSound")
 anim = NodePath("AnimationPlayer")

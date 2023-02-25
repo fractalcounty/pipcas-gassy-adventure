@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://cpe6qhiqkqlmb"]
+[gd_scene load_steps=24 format=3 uid="uid://cpe6qhiqkqlmb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_r5gc2"]
-[ext_resource type="Shader" path="res://scenes/game.gdshader" id="2_1ppda"]
 [ext_resource type="PackedScene" uid="uid://mj0svhgtmiyt" path="res://addons/debug/debugmeter2d/DebugMeter2D.tscn" id="2_847hj"]
-[ext_resource type="VideoStream" path="res://assets/video/intro.ogv" id="2_hxh1a"]
 [ext_resource type="Material" uid="uid://c8oe83hvejbn1" path="res://assets/shaders/drop_shadow.tres" id="3_5jyxi"]
 [ext_resource type="Script" path="res://scenes/SubViewportContainer.gd" id="3_gba26"]
+[ext_resource type="Shader" path="res://game.gdshader" id="7_6mtxp"]
+[ext_resource type="VideoStream" path="res://assets/video/game_intro.ogv" id="17_mjp3m"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="93_iaarp"]
 [ext_resource type="Theme" uid="uid://chubprkmexsng" path="res://assets/theme/user_interface.tres" id="94_4pv70"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="96_o4xlf"]
@@ -249,11 +249,13 @@ _data = {
 "ease_out": SubResource("Animation_5l0ih")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcimn"]
-shader = ExtResource("2_1ppda")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65vko"]
+shader = ExtResource("7_6mtxp")
 shader_parameter/cam_offset = Vector2(0, 0)
 
-[node name="Game" type="Node" node_paths=PackedStringArray("intro", "title_screen", "viewport_container", "viewport", "pause_menu")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3nak"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("intro", "title_screen", "viewport_container", "viewport", "pause_menu", "game_scene")]
 process_mode = 3
 script = ExtResource("1_r5gc2")
 intro = NodePath("Intro")
@@ -261,8 +263,10 @@ title_screen = NodePath("TitleScreen")
 viewport_container = NodePath("SubViewportContainer")
 viewport = NodePath("SubViewportContainer/SubViewport")
 pause_menu = NodePath("PauseMenu")
+game_scene = NodePath("SubViewportContainer/SubViewport/GameScene")
 
 [node name="DebugMeter2D" parent="." instance=ExtResource("2_847hj")]
+visible = false
 z_index = 300
 anchors_preset = -1
 anchor_right = 0.05
@@ -337,7 +341,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_hxh1a")
+stream = ExtResource("17_mjp3m")
 autoplay = true
 
 [node name="LevelBanner" type="Control" parent="." node_paths=PackedStringArray("anim", "level_title", "level_subtitle")]
@@ -407,26 +411,33 @@ libraries = {
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 1
-material = SubResource("ShaderMaterial_kcimn")
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 632.0
-offset_bottom = 352.0
+material = SubResource("ShaderMaterial_65vko")
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 639.0
+offset_bottom = 359.0
 scale = Vector2(3, 3)
 focus_mode = 2
 script = ExtResource("3_gba26")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
 handle_input_locally = false
-snap_2d_transforms_to_pixel = true
-snap_2d_vertices_to_pixel = true
-canvas_item_default_texture_filter = 0
-size = Vector2i(648, 368)
-size_2d_override = Vector2i(640, 360)
+scaling_3d_mode = 1
+gui_snap_controls_to_pixels = false
+size = Vector2i(642, 362)
 render_target_update_mode = 4
+
+[node name="GameScene" type="Control" parent="SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_u3nak")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("resume_button", "pause_sound", "unpause_sound", "select_sound")]
 process_mode = 3
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15

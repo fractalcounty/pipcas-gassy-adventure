@@ -18,14 +18,14 @@ func _process(delta: float) -> void:
 	
 	var tension = clamp((line) * tension_scale, 0, max_tension)
 	
-	if pointcount == 0 and self.points.is_empty():
-			self.add_point((pipca_center.position), 0)
-			#self.add_point((crosshair_far.position), 1)
-			self.add_point((crosshair_final.position), 2)
-			#self.show()
-	if pointcount != 0 and !self.points.is_empty():
-		self.set_point_position(0, crosshair_close.position)
-		#self.set_point_position(1, crosshair_far.position)
-		self.set_point_position(2, crosshair_final.position)
-		self.width = line_width + tension 
-		#self.show()
+#	if pointcount == 0 and self.points.is_empty():
+#			self.add_point((pipca_center.position), 0)
+#			#self.add_point((crosshair_far.position), 1)
+#			self.add_point((crosshair_final.position), 2)
+#			#self.show()
+#	if pointcount != 0 and !self.points.is_empty():
+#		self.set_point_position(0, crosshair_close.position)
+#		#self.set_point_position(1, crosshair_far.position)
+#		self.set_point_position(2, crosshair_final.position)
+#		self.width = line_width + tension 
+#		#self.show()

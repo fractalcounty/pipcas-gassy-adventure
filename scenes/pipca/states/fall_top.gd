@@ -6,7 +6,7 @@ var lookdir := Vector2.ZERO
 func _on_update(delta: float) -> void:
 	
 	#var reset := Vector2.ZERO
-	lookdir = target.look.crosshair_final.global_transform.origin
+	lookdir = target.get_global_mouse_position()
 	
 	#var pos_new = lerp(reset, lookdir, delta * 100)
 	

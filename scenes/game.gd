@@ -5,6 +5,7 @@ extends Node
 @export var viewport_container : SubViewportContainer
 @export var viewport : SubViewport
 @export var pause_menu : Control
+@export var game_scene : Control
 
 var arrow = load("res://assets/menus/arrow.png")
 var pointing = load("res://assets/menus/grabber.png")
@@ -37,11 +38,32 @@ func load_level() -> void:
 	Global.game_state = Global.state.GAME
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	title_screen.queue_free()
-	viewport_container.show()
 	
 	var scene = preload("res://scenes/levels/level.tscn")
 	var instance = scene.instantiate()
-	viewport.add_child(instance)
+	game_scene.add_child(instance)
+	#spawn_pipca()
+
+
+#func get_transform() -> void:
+#	if Global.remote_transform == null:
+#		push_error("FUCK")
+#	else:
+#		remote_transform = Global.transform
+
+#func spawn_pipca() -> void:
+#	print ("Spawning Pipca...")
+#	var scene = preload("res://scenes/pipca/pipca.tscn")
+#	var instance = scene.instantiate()
+#	add_child(instance)
+#
+#	var level = game_scene.get_node_or_null("level")
+#	var spawn = level.get_node_or_null("Spawn")
+#
+#	spawn.on_pipca_spawn()
+#
+#	viewport_container.show()
+#	print ("Pipca spawned! Pipca win!...")
 
 func _unhandled_input(event):
 	if Global.game_state == Global.state.MENU:

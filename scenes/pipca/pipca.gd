@@ -104,3 +104,5 @@ func emit_fart():
 func _process(delta: float) -> void:
 	coll_normal = raycast.get_collision_normal()
 
+func _exit_tree() -> void:
+	Global.pipca = null

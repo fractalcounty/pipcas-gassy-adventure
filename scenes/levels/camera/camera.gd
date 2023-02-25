@@ -1,7 +1,8 @@
 extends Camera2D
 
 @export_category("Pipca Camera Settings")
-@export var pipca : Pipca
+@export var pipca : CharacterBody2D
+@export var remote_transform : RemoteTransform2D
 
 @export_subgroup("Grounded")
 @export var grounded_offset : Vector2
@@ -13,8 +14,7 @@ extends Camera2D
 @export var air_lerp_weight : float = 0.7
 @export var air_lerp_multiplier : float = 0.5
 
-@export_subgroup("Cutscenes")
-@export var cutscene_offset : Vector2
+@onready var global_offset : Vector2
 
 @export_subgroup("Zoom")
 @export var min_zoom := 0.5
@@ -30,34 +30,59 @@ var mouse_moving = false
 var zoom_level := 1.0: set = _set_zoom_level
 var actual_cam_pos := global_position
 
+func _ready() -> void:
+	Global.camera = self
+
 func _physics_process(delta: float) -> void:
-	if Global.is_grounded:
-		ground_cam(delta)
-	else:
-		air_cam(delta)
+	
+	if Global.pipca != null:
+		if Global.is_grounded:
+			ground_cam(delta)
+		else:
+			air_cam(delta)
+			
+	if Global.viewport_camera != null:
+		var remote_path = remote_transform.get_path_to(Global.viewport_camera)
+		print (remote_path)
+		remote_transform.remote_path = remote_path
+		remote_transform.update_position
+		remote_transform.update_scale
+		remote_transform.use_global_coordinates = false
 
 func ground_cam(delta: float) -> void:
 	var zoom_mult : float = zoom_level * -10
-	var zoom_fixed : float = -remap(zoom_mult, -6.5, -10, 145.0, 0.0)
+	var zoom_fixed : float = -remap(zoom_mult, -6.0, -20, 145.0, 0.0)
 	var added_offset : Vector2 = Vector2(0, (grounded_offset.y + zoom_fixed))
 	var final_offset : Vector2 = grounded_offset + added_offset
-	var mixed_pos = pipca.global_position + added_offset
-	var cam_pos : Vector2 = lerp(pipca.global_position, mixed_pos, grounded_lerp_weight)
+	
+	var mixed_pos = Global.pipca.global_position + added_offset + global_offset
+	
+	var cam_pos : Vector2 = lerp(Global.pipca.global_position, mixed_pos, grounded_lerp_weight)
+	
 	actual_cam_pos = actual_cam_pos.lerp(cam_pos, delta*grounded_lerp_multiplier)
-	var subpixel_position = actual_cam_pos.round() - actual_cam_pos
+	
+	var subpixel_position = actual_cam_pos - actual_cam_pos
+	
 	Global.viewport_container.material.set_shader_parameter("cam_offset", subpixel_position)
-	global_position = actual_cam_pos.round()
+	
+	var paramer = Global.viewport_container.material.get_shader_parameter("cam_offset")
+	
+	#print (paramer)
+	
+	global_position = actual_cam_pos
+	
+	print (zoom)
 
 func air_cam(delta: float) -> void:
-	var mixed_pos = pipca.global_position + air_offset
-	var cam_pos : Vector2 = lerp(pipca.global_position, mixed_pos, air_lerp_weight)
+	var mixed_pos = Global.pipca.global_position + air_offset + global_offset
+	var cam_pos : Vector2 = lerp(Global.pipca.global_position, mixed_pos, air_lerp_weight)
 	actual_cam_pos = actual_cam_pos.lerp(cam_pos, delta*air_lerp_multiplier)
 	var subpixel_position = actual_cam_pos.round() - actual_cam_pos
 	Global.viewport_container.material.set_shader_parameter("cam_offset", subpixel_position)
-	global_position = actual_cam_pos.round()
+	global_position = actual_cam_pos
 	
 func _set_zoom_level(value: float) -> void:
-	zoom_level = clamp(value, min_zoom, max_zoom)
+	zoom_level =  clamp(value, min_zoom, max_zoom)
 	tween = get_tree().create_tween()
 	tween.tween_property(
 		self,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://ckkds52lpsn81"]
 
 [ext_resource type="Script" path="res://scenes/pixel_perfect_camera.gd" id="1_n2eo2"]
 [ext_resource type="Script" path="res://scenes/camera_old.gd" id="2_muc7w"]
@@ -8,11 +8,10 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0588942, 0.963899), 0.0, 0.0, 0, 0, Vector2(0.169471, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="PixelPerfectCamera" type="Node2D" node_paths=PackedStringArray("camera")]
+[node name="PixelPerfectCamera" type="Node2D"]
 texture_filter = 1
 scale = Vector2(3, 3)
 script = ExtResource("1_n2eo2")
-camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -21,9 +20,8 @@ process_callback = 0
 position_smoothing_speed = 0.0
 script = ExtResource("2_muc7w")
 
-[node name="Shaker" type="Node" parent="Camera2D" node_paths=PackedStringArray("target_node")]
+[node name="Shaker" type="Node" parent="Camera2D"]
 script = ExtResource("3_jlvhh")
-target_node = NodePath("..")
 target_property = &"offset"
 min_value = 0.1
 max_value = 0.9
