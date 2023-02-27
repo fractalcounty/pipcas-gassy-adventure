@@ -255,18 +255,18 @@ shader_parameter/cam_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3nak"]
 
-[node name="Game" type="Node" node_paths=PackedStringArray("intro_video", "title_screen", "viewport_container", "viewport", "pause_menu", "game_scene")]
+[node name="Game" type="Node" node_paths=PackedStringArray("intro", "title_screen", "viewport_container", "viewport", "pause_menu", "game_scene")]
 process_mode = 3
 script = ExtResource("1_r5gc2")
-intro_video = NodePath("Intro")
+intro = NodePath("Intro")
 title_screen = NodePath("TitleScreen")
 viewport_container = NodePath("SubViewportContainer")
 viewport = NodePath("SubViewportContainer/SubViewport")
 pause_menu = NodePath("PauseMenu")
 game_scene = NodePath("SubViewportContainer/SubViewport/GameScene")
-skip_all = true
 
 [node name="DebugMeter2D" parent="." instance=ExtResource("2_847hj")]
+visible = false
 z_index = 300
 anchors_preset = -1
 anchor_right = 0.05
@@ -275,6 +275,7 @@ offset_left = 1805.0
 offset_top = 424.0
 offset_right = 1805.0
 offset_bottom = 1018.0
+max_value = 1.0
 initial_value = 0.0
 change_bar_color_below_target_line = true
 
@@ -341,6 +342,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("17_mjp3m")
+autoplay = true
 
 [node name="LevelBanner" type="Control" parent="." node_paths=PackedStringArray("anim", "level_title", "level_subtitle")]
 visible = false

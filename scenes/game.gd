@@ -1,13 +1,11 @@
 extends Node
 
-@export var intro_codex : Control
-@export var intro_video : VideoStreamPlayer
+@export var intro : VideoStreamPlayer
 @export var title_screen : Control
 @export var viewport_container : SubViewportContainer
 @export var viewport : SubViewport
 @export var pause_menu : Control
 @export var game_scene : Control
-@export var skip_all : bool
 
 var arrow = load("res://assets/menus/arrow.png")
 var pointing = load("res://assets/menus/grabber.png")
@@ -17,19 +15,15 @@ func _ready():
 	Global.viewport_container = viewport_container
 	Global.viewport = viewport
 	
-	if !skip_all:
-		load_intro_video()
-	else:
-		load_level()
+	load_intro()
 
-func load_intro_video():
+func load_intro():
 	Global.game_state = Global.state.INTRO
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	intro_video.play()
-	intro_video.show()
+	intro.show()
 
 func _on_intro_finished() -> void:
-	intro_video.queue_free()
+	intro.queue_free()
 	load_title_screen()
 
 func load_title_screen():
