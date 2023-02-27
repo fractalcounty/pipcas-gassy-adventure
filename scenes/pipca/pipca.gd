@@ -46,7 +46,7 @@ class_name Pipca
 @export_subgroup("Charging Stuff")
 @export var max_fart_charge : float = 200.0
 var tension : float
-var fart_charge : float = 0.0
+@export var fart_charge : float = 0.0
 var current_mouse_pos : Vector2
 var original_mouse_pos : Vector2
 var smooth_time : float
@@ -64,6 +64,8 @@ var coll_normal : Vector2
 var coll
 var angle
 
+var charge
+
 
 func _ready():
 	anim.play("idle_still")
@@ -78,7 +80,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		Global.is_grounded = false
 	
-	Global.debug.value(fart_charge)
+	charge = remap(fart_charge, 0.0, 1.0, 0.0, 1500.0)
+	
+	print(charge)
+	
+	
+	Global.debug.value(charge)
 	#Global.debug2.value2(tension)
 	
 	coll = raycast.get_collider()

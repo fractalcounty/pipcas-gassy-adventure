@@ -10,7 +10,7 @@ func _on_update(delta: float) -> void:
 	
 	#var pos_new = lerp(reset, lookdir, delta * 100)
 	
-	target.angle = target.get_angle_to(lookdir)
+	target.angle = target.mouth.get_angle_to(lookdir)
 	
 	var smooth = lerp(0.0, target.angle, delta*target.fart_rotation_control)
 	

@@ -12,7 +12,7 @@ func _on_enter(_args) -> void:
 	fart_sound.pitch_scale = 1.0 + ( randf() - 0.5 ) / 3
 
 func _on_update(delta) -> void:
-	get_active_substate().fart()
+	get_active_substate().fart(delta)
 
 	if not Input.is_action_pressed("in_release"):
 		if target.position.y < entering_y - target.fart_min_height:

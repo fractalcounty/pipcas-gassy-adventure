@@ -507,7 +507,6 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(1, 0), 0.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Animation" id="Animation_sevtq"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -544,10 +543,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:fart_charge")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_yi28j"]
 resource_name = "charging"
-length = 10.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -584,6 +595,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [-1.527, 80.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:fart_charge")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-0.615574, 0.00831746),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hqo8o"]
 _data = {
@@ -610,8 +633,8 @@ bottom = NodePath("Bottom")
 look = NodePath("Look")
 belch_sounds = NodePath("Belch")
 fart_sounds = NodePath("FartSounds")
-gravity = 1500.0
-air_top_margin = 3000.0
+gravity = 1000.0
+air_top_margin = 1.0
 air_speed = 200.0
 air_accel = 50.0
 ground_friction = 5.0
@@ -722,10 +745,24 @@ next_state = NodePath("")
 
 [node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("9_c6lil")
-animation_player = NodePath("../../../AnimationPlayer2")
-anim_on_enter = "RESET"
-anim_times_to_play = 3
-on_anim_finished = 0
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
+
+[node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
+
+[node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
+
+[node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
+script = ExtResource("24_4jdpr")
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -733,16 +770,12 @@ timed = false
 next_state = NodePath("")
 
 [node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
-script = ExtResource("24_4jdpr")
-animation_player = NodePath("../../../AnimationPlayer2")
-anim_on_enter = "charging"
-anim_times_to_play = 1
-on_anim_finished = 0
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
+
+[node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
+
+[node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
+
+[node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
 
 [node name="Full" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("10_vcy6m")
@@ -752,13 +785,15 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="Full" type="Node" parent="StateRegions/RegionFartPossible"]
+
 [node name="Movement" type="Node" parent="StateRegions"]
 script = ExtResource("5_b38d3")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../RegionFartPossible")
+next_state = NodePath("")
 
 [node name="InAir" type="Node" parent="StateRegions/Movement"]
 script = ExtResource("6_jvapn")
@@ -766,19 +801,25 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath(".")
+next_state = NodePath("")
 
 [node name="Fall" type="Node" parent="StateRegions/Movement/InAir"]
 script = ExtResource("14_byqjp")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "fall"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
+
+[node name="Fall" type="Node" parent="StateRegions/Movement/InAir"]
+
+[node name="Fall" type="Node" parent="StateRegions/Movement/InAir"]
+
+[node name="Fall" type="Node" parent="StateRegions/Movement/InAir"]
+
+[node name="Fall" type="Node" parent="StateRegions/Movement/InAir"]
 
 [node name="FallTop" type="Node" parent="StateRegions/Movement/InAir"]
 script = ExtResource("15_ocege")
@@ -788,71 +829,93 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="FallTop" type="Node" parent="StateRegions/Movement/InAir"]
+
+[node name="InAir" type="Node" parent="StateRegions/Movement"]
+
 [node name="OnGround" type="Node" parent="StateRegions/Movement"]
 script = ExtResource("7_smmrm")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../InAir")
+next_state = NodePath("")
 
 [node name="Idle" type="Node" parent="StateRegions/Movement/OnGround"]
 script = ExtResource("9_jquvo")
-blink_chance = 0.5
-belch_chance = 0.005
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Still")
+next_state = NodePath("")
 
 [node name="Still" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 script = ExtResource("8_5o37a")
 animation_player = NodePath("../../../../../AnimationPlayer")
-anim_on_enter = "idle_still"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath(".")
+next_state = NodePath("")
+
+[node name="Still" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Still" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Still" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 
 [node name="Blink" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 script = ExtResource("10_wtcgp")
 animation_player = NodePath("../../../../../AnimationPlayer")
-anim_on_enter = "idle_blink"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Still")
+next_state = NodePath("")
+
+[node name="Blink" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Blink" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Blink" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 
 [node name="Belch" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
 script = ExtResource("11_5s3g5")
 animation_player = NodePath("../../../../../AnimationPlayer")
-anim_on_enter = "idle_belch"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Still")
+next_state = NodePath("")
+
+[node name="Belch" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Belch" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Belch" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Belch" type="Node" parent="StateRegions/Movement/OnGround/Idle"]
+
+[node name="Idle" type="Node" parent="StateRegions/Movement/OnGround"]
 
 [node name="Walk" type="Node" parent="StateRegions/Movement/OnGround"]
 script = ExtResource("8_5o37a")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "walk"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Still")
+next_state = NodePath("")
+
+[node name="Walk" type="Node" parent="StateRegions/Movement/OnGround"]
+
+[node name="Walk" type="Node" parent="StateRegions/Movement/OnGround"]
+
+[node name="Walk" type="Node" parent="StateRegions/Movement/OnGround"]
 
 [node name="Brake" type="Node" parent="StateRegions/Movement/OnGround"]
 script = ExtResource("10_pmxfc")
@@ -860,7 +923,11 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Still")
+next_state = NodePath("")
+
+[node name="Brake" type="Node" parent="StateRegions/Movement/OnGround"]
+
+[node name="OnGround" type="Node" parent="StateRegions/Movement"]
 
 [node name="Farts" type="Node" parent="StateRegions/Movement"]
 script = ExtResource("12_3gkmx")
@@ -873,14 +940,28 @@ next_state = NodePath("")
 [node name="GroundFart" type="Node" parent="StateRegions/Movement/Farts"]
 script = ExtResource("16_d0q4w")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "jump"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
+
+[node name="GroundFart" type="Node" parent="StateRegions/Movement/Farts"]
+
+[node name="GroundFart" type="Node" parent="StateRegions/Movement/Farts"]
+
+[node name="GroundFart" type="Node" parent="StateRegions/Movement/Farts"]
+
+[node name="GroundFart" type="Node" parent="StateRegions/Movement/Farts"]
+
+[node name="Farts" type="Node" parent="StateRegions/Movement"]
+
+[node name="Movement" type="Node" parent="StateRegions"]
+
+[node name="StateRegions" type="Node" parent="."]
+
+[node name="StateRegions" type="Node" parent="."]
 
 [node name="Belch" type="AudioStreamPlayer" parent="."]
 

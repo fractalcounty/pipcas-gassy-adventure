@@ -7,14 +7,15 @@ extends StateAnimation
 var clamped_time : float = 0.0
 
 func _on_enter(_args) -> void:
-	target.fart_charge = 0
 	target.original_mouse_pos = target.current_mouse_pos
+	target.fart_charge = 0
 	target.charging_shaker.start()
 	target.look.pulling = true
 
 func _after_update(delta: float) -> void:
 	if Input.is_action_just_released("in_charge"):
 		release(delta)
+
 
 func release(delta: float) -> void:
 		change_state("GroundFart")
@@ -23,4 +24,3 @@ func release(delta: float) -> void:
 
 func _on_exit(_args) -> void:
 	target.charging_shaker.stop()
-	

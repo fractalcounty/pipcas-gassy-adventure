@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	
 	#print (pulled)
 	
-	get_parent().fart_charge = clampf(remap(pulled, 0.0, 72.0, 0.0, 1.0), 0.0, 1.0)
+	#get_parent().fart_charge = clampf(remap(pulled, 0.0, 72.0, 0.0, 1.0), 0.0, 1.0)
 	
 	#print (pulled)
 	pointcount = line.get_point_count()
