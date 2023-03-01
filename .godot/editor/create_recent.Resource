@@ -1,2 +1,0 @@
-CutsceneResource
-Resource
