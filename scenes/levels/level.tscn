@@ -1,4 +1,4 @@
-[gd_scene load_steps=323 format=3 uid="uid://dk78estx6ar8o"]
+[gd_scene load_steps=411 format=3 uid="uid://dk78estx6ar8o"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_rt2c3"]
 [ext_resource type="Script" path="res://scenes/background/infinite_scrolling_background.gd" id="2_8tjfi"]
@@ -14,91 +14,178 @@
 [ext_resource type="Shader" path="res://assets/shaders/rotsprite_world_obj.gdshader" id="9_2x4hj"]
 [ext_resource type="PackedScene" uid="uid://df8wwih5esqic" path="res://scenes/levels/camera/camera.tscn" id="9_02y22"]
 [ext_resource type="AudioStream" uid="uid://chga21lhgte05" path="res://assets/sfx/RS- Human- Fart_17.mp3" id="10_3tf32"]
+[ext_resource type="Texture2D" uid="uid://bvabqsjxkvd00" path="res://assets/sprites/cado/dance/griddy_00000.png" id="10_c4ibg"]
 [ext_resource type="AudioStream" uid="uid://guo2uen7f7to" path="res://assets/music/braphogs_march.ogg" id="11_4r7fi"]
+[ext_resource type="Texture2D" uid="uid://c0k7kk1dlvd78" path="res://assets/sprites/cado/dance/griddy_00001.png" id="11_bdosi"]
 [ext_resource type="AudioStream" uid="uid://dj2wv73uxhfot" path="res://assets/dialogue/braphog_voice_v2.wav" id="11_tlg1q"]
+[ext_resource type="Texture2D" uid="uid://1wj2p0gw67vh" path="res://assets/sprites/cado/dance/griddy_00002.png" id="12_bqtv0"]
 [ext_resource type="AudioStream" uid="uid://cj3nrj3miv4d6" path="res://assets/sfx/braphog_intro_horn.wav" id="13_1qf84"]
+[ext_resource type="Texture2D" uid="uid://0gsarq6g42xr" path="res://assets/sprites/cado/dance/griddy_00003.png" id="13_ada7j"]
+[ext_resource type="Texture2D" uid="uid://1fal8kufwbdw" path="res://assets/sprites/cado/dance/griddy_00004.png" id="14_2mm0h"]
 [ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="14_rn5or"]
 [ext_resource type="Script" path="res://scenes/cutscenes/braphog_intro/braphog_intro.gd" id="15_3obme"]
+[ext_resource type="Texture2D" uid="uid://bm02da3cvw6u3" path="res://assets/sprites/cado/dance/griddy_00005.png" id="15_7w1iu"]
 [ext_resource type="Texture2D" uid="uid://fxi5m5mygjml" path="res://assets/sprites/fart/fart.sprites/frame_001.tres" id="16_epmqs"]
+[ext_resource type="Texture2D" uid="uid://csc03suoc1dtq" path="res://assets/sprites/cado/dance/griddy_00006.png" id="16_snw7w"]
 [ext_resource type="Texture2D" uid="uid://bmvaregegjlgn" path="res://assets/sprites/fart/fart.sprites/frame_002.tres" id="17_25vpp"]
+[ext_resource type="Texture2D" uid="uid://dnttwhxxx0sti" path="res://assets/sprites/cado/dance/griddy_00007.png" id="17_hty0s"]
 [ext_resource type="Texture2D" uid="uid://ebtc7ou5v58q" path="res://assets/sprites/fart/fart.sprites/frame_003.tres" id="18_53icr"]
+[ext_resource type="Texture2D" uid="uid://bfxvvkudg038n" path="res://assets/sprites/cado/dance/griddy_00008.png" id="18_isb1f"]
+[ext_resource type="Texture2D" uid="uid://c310or63xn3by" path="res://assets/sprites/cado/dance/griddy_00009.png" id="19_802nh"]
 [ext_resource type="Texture2D" uid="uid://b7hwg7yyvob1m" path="res://assets/sprites/fart/fart.sprites/frame_004.tres" id="19_od6k5"]
 [ext_resource type="Texture2D" uid="uid://ka2wiy38wy35" path="res://assets/sprites/fart/fart.sprites/frame_005.tres" id="20_bkfol"]
+[ext_resource type="Texture2D" uid="uid://decy8ku3oeqa" path="res://assets/sprites/cado/dance/griddy_00010.png" id="20_oeovx"]
 [ext_resource type="Texture2D" uid="uid://dcce31nn5xac2" path="res://assets/sprites/fart/fart.sprites/frame_006.tres" id="21_b67us"]
+[ext_resource type="Texture2D" uid="uid://ck675a48q7dxo" path="res://assets/sprites/cado/dance/griddy_00011.png" id="21_xvqjk"]
+[ext_resource type="Texture2D" uid="uid://bdelvyx7ur2fx" path="res://assets/sprites/cado/dance/griddy_00012.png" id="22_aeylc"]
 [ext_resource type="Texture2D" uid="uid://m3n28nb2nnsb" path="res://assets/sprites/fart/fart.sprites/frame_007.tres" id="22_daqge"]
 [ext_resource type="Texture2D" uid="uid://c5d62dpeq6l83" path="res://assets/sprites/fart/fart.sprites/frame_008.tres" id="23_cupcm"]
+[ext_resource type="Texture2D" uid="uid://b0n8bymcc5kth" path="res://assets/sprites/cado/dance/griddy_00013.png" id="23_umdmb"]
+[ext_resource type="Texture2D" uid="uid://bx0vg4bavng5c" path="res://assets/sprites/cado/dance/griddy_00014.png" id="24_ev453"]
 [ext_resource type="Texture2D" uid="uid://mm7uacftwcpe" path="res://assets/sprites/fart/fart.sprites/frame_009.tres" id="24_hmd1t"]
+[ext_resource type="Texture2D" uid="uid://c0lsutuwrddg0" path="res://assets/sprites/cado/dance/griddy_00015.png" id="25_l7jm2"]
 [ext_resource type="Texture2D" uid="uid://35f2687p3b2p" path="res://assets/sprites/fart/fart.sprites/frame_010.tres" id="25_y4y2u"]
+[ext_resource type="Texture2D" uid="uid://bdbeg64p2ivsd" path="res://assets/sprites/cado/dance/griddy_00016.png" id="26_bc4rm"]
 [ext_resource type="Texture2D" uid="uid://feqi0okpgohh" path="res://assets/sprites/fart/fart.sprites/frame_011.tres" id="26_tcgok"]
 [ext_resource type="Texture2D" uid="uid://byymbmr1f1k38" path="res://assets/sprites/fart/fart.sprites/frame_012.tres" id="27_557dd"]
+[ext_resource type="Texture2D" uid="uid://d2d6ljk2wpdfd" path="res://assets/sprites/cado/dance/griddy_00017.png" id="27_bq4pu"]
+[ext_resource type="Texture2D" uid="uid://cu87ktkhd3lcv" path="res://assets/sprites/cado/dance/griddy_00018.png" id="28_bwda1"]
 [ext_resource type="Texture2D" uid="uid://bh5t6f2nvojae" path="res://assets/sprites/fart/fart.sprites/frame_013.tres" id="28_fyd86"]
+[ext_resource type="Texture2D" uid="uid://bk2mh4s6o2rij" path="res://assets/sprites/cado/dance/griddy_00019.png" id="29_1656d"]
 [ext_resource type="Texture2D" uid="uid://bdip8xcg4hjgf" path="res://assets/sprites/fart/fart.sprites/frame_014.tres" id="29_m0t8o"]
 [ext_resource type="Texture2D" uid="uid://bcfkswlpcmvan" path="res://assets/sprites/fart/fart.sprites/frame_015.tres" id="30_nblwe"]
+[ext_resource type="Texture2D" uid="uid://bbwvrgsojl4f7" path="res://assets/sprites/cado/dance/griddy_00020.png" id="30_ybowl"]
+[ext_resource type="Texture2D" uid="uid://b4ka1qj16olcc" path="res://assets/sprites/cado/dance/griddy_00021.png" id="31_kgify"]
 [ext_resource type="Texture2D" uid="uid://wqktrqlfawci" path="res://assets/sprites/fart/fart.sprites/frame_016.tres" id="31_m3wbh"]
 [ext_resource type="Texture2D" uid="uid://d4gcomj1loc8w" path="res://assets/sprites/fart/fart.sprites/frame_017.tres" id="32_q6nx5"]
+[ext_resource type="Texture2D" uid="uid://fujdp81oec82" path="res://assets/sprites/cado/dance/griddy_00022.png" id="32_r71wq"]
 [ext_resource type="Texture2D" uid="uid://c6c6s2brtsx1p" path="res://assets/sprites/fart/fart.sprites/frame_018.tres" id="33_b674a"]
+[ext_resource type="Texture2D" uid="uid://brq3ikbrnv3s3" path="res://assets/sprites/cado/dance/griddy_00023.png" id="33_ehkte"]
+[ext_resource type="Texture2D" uid="uid://b4frjkts58esb" path="res://assets/sprites/cado/dance/griddy_00024.png" id="34_mxjcv"]
 [ext_resource type="Texture2D" uid="uid://dqnw7h1s4x7u6" path="res://assets/sprites/fart/fart.sprites/frame_019.tres" id="34_shvht"]
 [ext_resource type="Texture2D" uid="uid://ck3cb6yaves4y" path="res://assets/sprites/fart/fart.sprites/frame_020.tres" id="35_uncpd"]
+[ext_resource type="Texture2D" uid="uid://depm6rpngo0r3" path="res://assets/sprites/cado/dance/griddy_00025.png" id="35_ygyne"]
+[ext_resource type="Texture2D" uid="uid://bpoe5bu18jicu" path="res://assets/sprites/cado/dance/griddy_00026.png" id="36_1nke0"]
 [ext_resource type="Texture2D" uid="uid://dnra0hag6d8qc" path="res://assets/sprites/fart/fart.sprites/frame_021.tres" id="36_uwe6n"]
+[ext_resource type="Texture2D" uid="uid://l28abbahny4s" path="res://assets/sprites/cado/dance/griddy_00027.png" id="37_ktp1t"]
 [ext_resource type="Texture2D" uid="uid://dw58wpso0v1f3" path="res://assets/sprites/fart/fart.sprites/frame_022.tres" id="37_v7kpp"]
+[ext_resource type="Texture2D" uid="uid://c0awn0v0dyifg" path="res://assets/sprites/cado/dance/griddy_00028.png" id="38_jfheg"]
 [ext_resource type="Texture2D" uid="uid://b3158ipne2h8s" path="res://assets/sprites/fart/fart.sprites/frame_023.tres" id="38_suv07"]
+[ext_resource type="Texture2D" uid="uid://d3hqbv7lvbr2a" path="res://assets/sprites/cado/dance/griddy_00029.png" id="39_5ctn1"]
 [ext_resource type="Texture2D" uid="uid://c31g7j68i8yma" path="res://assets/sprites/fart/fart.sprites/frame_024.tres" id="39_srxah"]
 [ext_resource type="Texture2D" uid="uid://d1q4fuco8e6fs" path="res://assets/sprites/fart/fart.sprites/frame_025.tres" id="40_5qi8r"]
+[ext_resource type="Texture2D" uid="uid://hc5gas63qnyn" path="res://assets/sprites/cado/dance/griddy_00030.png" id="40_rchbf"]
+[ext_resource type="Texture2D" uid="uid://l8foymq0dlb1" path="res://assets/sprites/cado/dance/griddy_00031.png" id="41_2ttmb"]
 [ext_resource type="Texture2D" uid="uid://3nqtqwgrdyun" path="res://assets/sprites/fart/fart.sprites/frame_026.tres" id="41_ii77h"]
+[ext_resource type="Texture2D" uid="uid://bshero77co38c" path="res://assets/sprites/cado/dance/griddy_00032.png" id="42_hdafu"]
 [ext_resource type="Texture2D" uid="uid://doqnp188gn71p" path="res://assets/sprites/fart/fart.sprites/frame_027.tres" id="42_lrfjt"]
 [ext_resource type="Texture2D" uid="uid://s21m060dhnmd" path="res://assets/sprites/fart/fart.sprites/frame_028.tres" id="43_5w05y"]
+[ext_resource type="Texture2D" uid="uid://h0vkfok1b4p5" path="res://assets/sprites/cado/dance/griddy_00033.png" id="43_82nfn"]
 [ext_resource type="Texture2D" uid="uid://bk2ef6hokimgm" path="res://assets/sprites/fart/fart.sprites/frame_029.tres" id="44_2261k"]
+[ext_resource type="Texture2D" uid="uid://btntbg8nbixvb" path="res://assets/sprites/cado/dance/griddy_00034.png" id="44_lp1cg"]
+[ext_resource type="Texture2D" uid="uid://cj4d6yow6b8oa" path="res://assets/sprites/cado/dance/griddy_00035.png" id="45_45qny"]
 [ext_resource type="Texture2D" uid="uid://gah4emvo4drk" path="res://assets/sprites/fart/fart.sprites/frame_030.tres" id="45_o3dmp"]
 [ext_resource type="Texture2D" uid="uid://dorxrfwhdf1vc" path="res://assets/sprites/fart/fart.sprites/frame_031.tres" id="46_6ufiw"]
+[ext_resource type="Texture2D" uid="uid://b8h7h0epudk0s" path="res://assets/sprites/cado/dance/griddy_00036.png" id="46_cs0ij"]
 [ext_resource type="Texture2D" uid="uid://dd3vmogpdsudd" path="res://assets/sprites/fart/fart.sprites/frame_032.tres" id="47_63a7h"]
+[ext_resource type="Texture2D" uid="uid://bmljgot08w7bs" path="res://assets/sprites/cado/dance/griddy_00037.png" id="47_cc47e"]
 [ext_resource type="Texture2D" uid="uid://c7o31bo2r1whj" path="res://assets/sprites/fart/fart.sprites/frame_033.tres" id="48_4hwqb"]
+[ext_resource type="Texture2D" uid="uid://cqipitrjni5tp" path="res://assets/sprites/cado/dance/griddy_00038.png" id="48_je7bm"]
 [ext_resource type="Texture2D" uid="uid://dvdnyfyfsxoco" path="res://assets/sprites/fart/fart.sprites/frame_034.tres" id="49_7l5gx"]
+[ext_resource type="Texture2D" uid="uid://bx1q11vi4eg75" path="res://assets/sprites/cado/dance/griddy_00039.png" id="49_o3fi1"]
 [ext_resource type="Texture2D" uid="uid://b21rhub8tnxgo" path="res://assets/sprites/fart/fart.sprites/frame_035.tres" id="50_jrfbj"]
+[ext_resource type="Texture2D" uid="uid://dld2gmsb0nall" path="res://assets/sprites/cado/dance/griddy_00040.png" id="50_rx4l4"]
 [ext_resource type="Texture2D" uid="uid://05qky8sov4uj" path="res://assets/sprites/fart/fart.sprites/frame_036.tres" id="51_5ufie"]
+[ext_resource type="Texture2D" uid="uid://5gv5nwvbqqfh" path="res://assets/sprites/cado/dance/griddy_00041.png" id="51_p078u"]
+[ext_resource type="Texture2D" uid="uid://c7ve8ikk5tvpd" path="res://assets/sprites/cado/dance/griddy_00042.png" id="52_qfjqp"]
 [ext_resource type="Texture2D" uid="uid://7dkqmohnc00d" path="res://assets/sprites/fart/fart.sprites/frame_037.tres" id="52_r84c1"]
+[ext_resource type="Texture2D" uid="uid://cydo1sxhsh30k" path="res://assets/sprites/cado/dance/griddy_00043.png" id="53_7iisv"]
 [ext_resource type="Texture2D" uid="uid://cnun6yqr72msa" path="res://assets/sprites/fart/fart.sprites/frame_038.tres" id="53_akiv1"]
 [ext_resource type="Texture2D" uid="uid://dyvktagdgc8sj" path="res://assets/sprites/fart/fart.sprites/frame_039.tres" id="54_3xp2u"]
+[ext_resource type="Texture2D" uid="uid://comxonxl7lq55" path="res://assets/sprites/cado/dance/griddy_00044.png" id="54_78rd7"]
 [ext_resource type="Texture2D" uid="uid://cd1t1onrokj8q" path="res://assets/sprites/fart/fart.sprites/frame_040.tres" id="55_j1fis"]
+[ext_resource type="Texture2D" uid="uid://dhi8ug17e64ik" path="res://assets/sprites/cado/dance/griddy_00045.png" id="55_tdq8d"]
 [ext_resource type="Texture2D" uid="uid://ctcqyt10xjwm3" path="res://assets/sprites/fart/fart.sprites/frame_041.tres" id="56_jdbip"]
+[ext_resource type="Texture2D" uid="uid://bkb8w7kjt8n1w" path="res://assets/sprites/cado/dance/griddy_00046.png" id="56_y0xn1"]
+[ext_resource type="Texture2D" uid="uid://c7elp28vnygj3" path="res://assets/sprites/cado/dance/griddy_00047.png" id="57_rkaim"]
 [ext_resource type="Texture2D" uid="uid://2fky1jwd24fq" path="res://assets/sprites/fart/fart.sprites/frame_042.tres" id="57_tsv56"]
 [ext_resource type="Texture2D" uid="uid://kiubekahdy0k" path="res://assets/sprites/fart/fart.sprites/frame_043.tres" id="58_jgnx6"]
+[ext_resource type="Texture2D" uid="uid://18t3kgylq8m1" path="res://assets/sprites/cado/dance/griddy_00048.png" id="58_wc84n"]
 [ext_resource type="Texture2D" uid="uid://cqb5e4sv76rnl" path="res://assets/sprites/fart/fart.sprites/frame_044.tres" id="59_dio24"]
+[ext_resource type="Texture2D" uid="uid://kfwfbsturwga" path="res://assets/sprites/cado/dance/griddy_00049.png" id="59_vtju1"]
+[ext_resource type="Texture2D" uid="uid://n8tvhcp3v08q" path="res://assets/sprites/cado/dance/griddy_00050.png" id="60_a21d0"]
 [ext_resource type="Texture2D" uid="uid://bilcv17d7cen8" path="res://assets/sprites/fart/fart.sprites/frame_045.tres" id="60_y3t1e"]
 [ext_resource type="Texture2D" uid="uid://c5p68k72hgcg7" path="res://assets/sprites/fart/fart.sprites/frame_046.tres" id="61_djaqq"]
+[ext_resource type="Texture2D" uid="uid://ben8puvnshrru" path="res://assets/sprites/cado/dance/griddy_00051.png" id="61_elumi"]
 [ext_resource type="Texture2D" uid="uid://c7cvxglnd63yl" path="res://assets/sprites/fart/fart.sprites/frame_047.tres" id="62_6sh1m"]
+[ext_resource type="Texture2D" uid="uid://bpowgy65wp4er" path="res://assets/sprites/cado/dance/griddy_00052.png" id="62_8ytah"]
 [ext_resource type="Texture2D" uid="uid://sxtrh4l31syy" path="res://assets/sprites/fart/fart.sprites/frame_048.tres" id="63_edb36"]
+[ext_resource type="Texture2D" uid="uid://jdgg35po7ojp" path="res://assets/sprites/cado/dance/griddy_00053.png" id="63_qqk3x"]
 [ext_resource type="Texture2D" uid="uid://dn1cl8lmr034v" path="res://assets/sprites/fart/fart.sprites/frame_049.tres" id="64_ccjjn"]
+[ext_resource type="Texture2D" uid="uid://jxy5wdx0mk5w" path="res://assets/sprites/cado/dance/griddy_00054.png" id="64_r1rsu"]
+[ext_resource type="Texture2D" uid="uid://bi3bcchocwxd6" path="res://assets/sprites/cado/dance/griddy_00055.png" id="65_eik53"]
 [ext_resource type="Texture2D" uid="uid://pcuk34rkywte" path="res://assets/sprites/fart/fart.sprites/frame_050.tres" id="65_pdkh0"]
+[ext_resource type="Texture2D" uid="uid://b1iueuj2vwc8h" path="res://assets/sprites/cado/dance/griddy_00056.png" id="66_gmg7d"]
 [ext_resource type="Texture2D" uid="uid://ufashatdti1p" path="res://assets/sprites/fart/fart.sprites/frame_051.tres" id="66_yqix0"]
+[ext_resource type="Texture2D" uid="uid://dmr54ve2tb0ul" path="res://assets/sprites/cado/dance/griddy_00057.png" id="67_r257n"]
 [ext_resource type="Texture2D" uid="uid://b4oh4mjk6vsp7" path="res://assets/sprites/fart/fart.sprites/frame_052.tres" id="67_vtrus"]
+[ext_resource type="Texture2D" uid="uid://d2xb3voaruljp" path="res://assets/sprites/cado/dance/griddy_00058.png" id="68_4sk1t"]
 [ext_resource type="Texture2D" uid="uid://dc1pqg234306s" path="res://assets/sprites/fart/fart.sprites/frame_053.tres" id="68_mxt04"]
+[ext_resource type="Texture2D" uid="uid://30828x1pbej" path="res://assets/sprites/cado/dance/griddy_00059.png" id="69_m1kfy"]
 [ext_resource type="Texture2D" uid="uid://bmrgndw2noqr8" path="res://assets/sprites/fart/fart.sprites/frame_054.tres" id="69_y1i78"]
 [ext_resource type="Texture2D" uid="uid://dqmu5awctvk47" path="res://assets/sprites/fart/fart.sprites/frame_055.tres" id="70_4yfqu"]
+[ext_resource type="Texture2D" uid="uid://bts07v4xwi6wj" path="res://assets/sprites/cado/dance/griddy_00060.png" id="70_oedsn"]
+[ext_resource type="Texture2D" uid="uid://boaf8tst4pn0u" path="res://assets/sprites/cado/dance/griddy_00061.png" id="71_g82nt"]
 [ext_resource type="Texture2D" uid="uid://uailqvmc2l84" path="res://assets/sprites/fart/fart.sprites/frame_056.tres" id="71_u4jlu"]
 [ext_resource type="Texture2D" uid="uid://bj2fdtp48yga8" path="res://assets/sprites/fart/fart.sprites/frame_057.tres" id="72_2508a"]
+[ext_resource type="Texture2D" uid="uid://cdvbugkbdj4kn" path="res://assets/sprites/cado/dance/griddy_00062.png" id="72_dcl6j"]
+[ext_resource type="Texture2D" uid="uid://ti8gmjsjq0ak" path="res://assets/sprites/cado/dance/griddy_00063.png" id="73_1qwv4"]
 [ext_resource type="Texture2D" uid="uid://dkcombn3wj1w0" path="res://assets/sprites/fart/fart.sprites/frame_058.tres" id="73_6vycq"]
+[ext_resource type="Texture2D" uid="uid://dx12s8jlw2vk4" path="res://assets/sprites/cado/dance/griddy_00064.png" id="74_1y11k"]
 [ext_resource type="Texture2D" uid="uid://cwhs6edlx06dr" path="res://assets/sprites/fart/fart.sprites/frame_059.tres" id="74_blpn3"]
+[ext_resource type="Texture2D" uid="uid://dxskreisgc6s2" path="res://assets/sprites/cado/dance/griddy_00065.png" id="75_cn47x"]
 [ext_resource type="Texture2D" uid="uid://078g8wu6lplc" path="res://assets/sprites/fart/fart.sprites/frame_060.tres" id="75_y71t0"]
 [ext_resource type="Texture2D" uid="uid://8mhlu06mydim" path="res://assets/sprites/fart/fart.sprites/frame_061.tres" id="76_hdg5x"]
+[ext_resource type="Texture2D" uid="uid://ctoofj4hcibit" path="res://assets/sprites/cado/dance/griddy_00066.png" id="76_m73ai"]
+[ext_resource type="Texture2D" uid="uid://mqyjlrnadllv" path="res://assets/sprites/cado/dance/griddy_00067.png" id="77_g122c"]
 [ext_resource type="Texture2D" uid="uid://wvnca7kbi4tc" path="res://assets/sprites/fart/fart.sprites/frame_062.tres" id="77_khr5y"]
+[ext_resource type="Texture2D" uid="uid://ccni1c06dvqyp" path="res://assets/sprites/cado/dance/griddy_00068.png" id="78_c7tfl"]
 [ext_resource type="Texture2D" uid="uid://bpm170t1l1ulw" path="res://assets/sprites/fart/fart.sprites/frame_063.tres" id="78_qf26o"]
+[ext_resource type="Texture2D" uid="uid://bwd5w5r7n6qud" path="res://assets/sprites/cado/dance/griddy_00069.png" id="79_elig6"]
 [ext_resource type="Texture2D" uid="uid://iahpf6boxm8r" path="res://assets/sprites/fart/fart.sprites/frame_064.tres" id="79_pr3rn"]
 [ext_resource type="Texture2D" uid="uid://c2uss5imv1834" path="res://assets/sprites/fart/fart.sprites/frame_065.tres" id="80_rok5m"]
+[ext_resource type="Texture2D" uid="uid://dq6facadl8vs8" path="res://assets/sprites/cado/dance/griddy_00070.png" id="80_tmf0c"]
 [ext_resource type="Texture2D" uid="uid://coqillgvf5h8n" path="res://assets/sprites/fart/fart.sprites/frame_066.tres" id="81_je2ku"]
+[ext_resource type="Texture2D" uid="uid://bgy8dl50oogfv" path="res://assets/sprites/cado/dance/griddy_00071.png" id="81_ttnnc"]
+[ext_resource type="Texture2D" uid="uid://c2pjiggurya13" path="res://assets/sprites/cado/dance/griddy_00072.png" id="82_1xr7t"]
 [ext_resource type="Texture2D" uid="uid://co0ibkr2pgods" path="res://assets/sprites/fart/fart.sprites/frame_067.tres" id="82_5ower"]
 [ext_resource type="Texture2D" uid="uid://3k8s47dgsyco" path="res://assets/sprites/fart/fart.sprites/frame_068.tres" id="83_5aw64"]
+[ext_resource type="Texture2D" uid="uid://xqteevswwgrh" path="res://assets/sprites/cado/dance/griddy_00073.png" id="83_ke6mb"]
 [ext_resource type="Texture2D" uid="uid://brlqoqhfyhi23" path="res://assets/sprites/fart/fart.sprites/frame_069.tres" id="84_1w07e"]
+[ext_resource type="Texture2D" uid="uid://babddnmy6n4xk" path="res://assets/sprites/cado/dance/griddy_00074.png" id="84_02ly7"]
 [ext_resource type="Texture2D" uid="uid://b0ff2ufli7iay" path="res://assets/sprites/fart/fart.sprites/frame_070.tres" id="85_aji6i"]
+[ext_resource type="Texture2D" uid="uid://sln8tqlet368" path="res://assets/sprites/cado/dance/griddy_00075.png" id="85_xq61p"]
 [ext_resource type="Texture2D" uid="uid://c16vk23htjaq" path="res://assets/sprites/fart/fart.sprites/frame_071.tres" id="86_m3hee"]
+[ext_resource type="Texture2D" uid="uid://ceuqlmn7vsbgd" path="res://assets/sprites/cado/dance/griddy_00076.png" id="86_phhcw"]
+[ext_resource type="Texture2D" uid="uid://yvif3ruxoxf1" path="res://assets/sprites/cado/dance/griddy_00077.png" id="87_0yg0y"]
 [ext_resource type="Texture2D" uid="uid://7p7ybksdtnke" path="res://assets/sprites/fart/fart.sprites/frame_072.tres" id="87_5owt5"]
 [ext_resource type="Texture2D" uid="uid://cf20sqjgi5i1f" path="res://assets/sprites/fart/fart.sprites/frame_073.tres" id="88_eknir"]
+[ext_resource type="Texture2D" uid="uid://c111gb5v3exqy" path="res://assets/sprites/cado/dance/griddy_00078.png" id="88_x8x7f"]
+[ext_resource type="Texture2D" uid="uid://5m3aeyropxkd" path="res://assets/sprites/cado/dance/griddy_00079.png" id="89_bd0q5"]
 [ext_resource type="Texture2D" uid="uid://bjkxqfluaxs2g" path="res://assets/sprites/fart/fart.sprites/frame_074.tres" id="89_ibiae"]
+[ext_resource type="Texture2D" uid="uid://dqkndq6e1r00b" path="res://assets/sprites/cado/dance/griddy_00080.png" id="90_e0ck1"]
 [ext_resource type="Texture2D" uid="uid://cm1yljgmrqrs" path="res://assets/sprites/fart/fart.sprites/frame_075.tres" id="90_ptf0k"]
+[ext_resource type="Texture2D" uid="uid://bvpdnplcfl2ki" path="res://assets/sprites/cado/dance/griddy_00081.png" id="91_aec1b"]
 [ext_resource type="Texture2D" uid="uid://c34wjukwxfjqa" path="res://assets/sprites/fart/fart.sprites/frame_076.tres" id="91_j4kc1"]
 [ext_resource type="Texture2D" uid="uid://cvn4kjtykug1g" path="res://assets/sprites/fart/fart.sprites/frame_077.tres" id="92_htcmo"]
+[ext_resource type="Texture2D" uid="uid://dfugxyxl0kp0x" path="res://assets/sprites/cado/dance/griddy_00082.png" id="92_lga35"]
+[ext_resource type="Texture2D" uid="uid://c6q5mil7io7va" path="res://assets/sprites/cado/dance/griddy_00083.png" id="93_23xfu"]
 [ext_resource type="Texture2D" uid="uid://bf38igecwbrjk" path="res://assets/sprites/fart/fart.sprites/frame_078.tres" id="93_i14e5"]
+[ext_resource type="Texture2D" uid="uid://is87s2jwb1kl" path="res://assets/sprites/cado/dance/griddy_00084.png" id="94_awcvy"]
 [ext_resource type="Texture2D" uid="uid://drdxkqd56n5ag" path="res://assets/sprites/fart/fart.sprites/frame_079.tres" id="94_cyyyg"]
 [ext_resource type="Texture2D" uid="uid://d1j31ardvh03v" path="res://assets/sprites/fart/fart.sprites/frame_080.tres" id="95_e2wcq"]
+[ext_resource type="Texture2D" uid="uid://c5v3nlm1k1m1g" path="res://assets/sprites/cado/dance/griddy_00085.png" id="95_yggkb"]
+[ext_resource type="Texture2D" uid="uid://dlg4dykiosrkm" path="res://assets/sprites/cado/dance/griddy_00086.png" id="96_3dotn"]
 [ext_resource type="Texture2D" uid="uid://c306cagyhcacv" path="res://assets/sprites/fart/fart.sprites/frame_081.tres" id="96_k1b1u"]
 [ext_resource type="Texture2D" uid="uid://b1ad6p8r85ryc" path="res://assets/sprites/fart/fart.sprites/frame_082.tres" id="97_o4536"]
 [ext_resource type="Texture2D" uid="uid://cqf0murcvtvtd" path="res://assets/sprites/fart/fart.sprites/frame_083.tres" id="98_ccai6"]
@@ -184,6 +271,275 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d70iw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_c4ibg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bdosi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bqtv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ada7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2mm0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7w1iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_snw7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hty0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_isb1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_802nh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_oeovx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_xvqjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_aeylc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_umdmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ev453")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_l7jm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_bc4rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_bq4pu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_bwda1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_1656d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ybowl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_kgify")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_r71wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ehkte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_mxjcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ygyne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_1nke0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ktp1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_jfheg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_5ctn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_rchbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_2ttmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_hdafu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_82nfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_lp1cg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_45qny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_cs0ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_cc47e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_je7bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_o3fi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_rx4l4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_p078u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_qfjqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_7iisv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_78rd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_tdq8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_y0xn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_rkaim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_wc84n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_vtju1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_a21d0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_elumi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_8ytah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_qqk3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_r1rsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_eik53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_gmg7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_r257n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_4sk1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_m1kfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_oedsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_g82nt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_dcl6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_1qwv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_1y11k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_cn47x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_m73ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_g122c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_c7tfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_elig6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_tmf0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_ttnnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_1xr7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_ke6mb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_02ly7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_xq61p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_phhcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_0yg0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_x8x7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_bd0q5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_e0ck1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_aec1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_lga35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_23xfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_awcvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_yggkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_3dotn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
 }]
 
 [sub_resource type="Animation" id="Animation_lj40l"]
@@ -2360,7 +2716,7 @@ color = Color(0.568627, 0.8, 0.898039, 1)
 [node name="Sun" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/Sun"]
-position = Vector2(197.452, 212.01)
+position = Vector2(2296.34, -218.018)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.95, 0.95)
@@ -2393,12 +2749,12 @@ scroll_limit_end = Vector2(5, 1)
 script = ExtResource("3_6j628")
 
 [node name="Mountains2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(-1.60908, 196.988)
+position = Vector2(1324, -75.1426)
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(1200, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(-1.3409, 214.157)
+position = Vector2(1103.34, -12.6188)
 motion_scale = Vector2(0.5, 0.5)
 motion_offset = Vector2(0, 50)
 motion_mirroring = Vector2(1496, 0)
@@ -2406,7 +2762,7 @@ motion_mirroring = Vector2(1496, 0)
 [node name="CloudsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsFar"]
-position = Vector2(-2.46725, 152.157)
+position = Vector2(2030.14, -264.291)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.92, 0.92)
@@ -2541,7 +2897,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsMid" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsMid"]
-position = Vector2(-2.41361, 145.589)
+position = Vector2(1986.01, -261.807)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.9, 0.9)
@@ -3111,7 +3467,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsClose"]
-position = Vector2(-2.35998, 139.02)
+position = Vector2(1941.87, -259.322)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.88, 0.88)
@@ -3318,7 +3674,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="MountainsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsFar"]
-position = Vector2(18.1227, 304.902)
+position = Vector2(1564.67, -11.9608)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.7, 0.7)
@@ -3341,10 +3697,25 @@ scale = Vector2(2.92521, 1.32276)
 color = Color(0.333333, 0.509804, 0.529412, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="Node2D" type="Node2D" parent="Background"]
+
+[node name="Parallax" type="Node2D" parent="Background/Node2D"]
+position = Vector2(1324, -24.5378)
+script = ExtResource("2_i3rr4")
+enabled_in_editor = true
+motion_scale = Vector2(0.6, 0.6)
+motion_offset = Vector2(0, 50)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Node2D/Parallax"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_d70iw")
+autoplay = "default"
+frame_progress = 0.5881
+
 [node name="MountainsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsClose"]
-position = Vector2(-26.3409, 334.216)
+position = Vector2(1078.34, 107.885)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.5, 0.5)

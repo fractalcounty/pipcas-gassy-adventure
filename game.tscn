@@ -266,7 +266,6 @@ pause_menu = NodePath("PauseMenu")
 game_scene = NodePath("SubViewportContainer/SubViewport/GameScene")
 
 [node name="DebugMeter2D" parent="." instance=ExtResource("2_847hj")]
-visible = false
 z_index = 300
 anchors_preset = -1
 anchor_right = 0.05
