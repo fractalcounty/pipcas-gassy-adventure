@@ -1,5 +1,7 @@
 extends Node
 
+@export var skip : bool = false
+
 @export var intro : VideoStreamPlayer
 @export var title_screen : Control
 @export var viewport_container : SubViewportContainer
@@ -15,7 +17,10 @@ func _ready():
 	Global.viewport_container = viewport_container
 	Global.viewport = viewport
 	
-	load_intro()
+	if skip:
+		load_level()
+	else:
+		load_intro()
 
 func load_intro():
 	Global.game_state = Global.state.INTRO
@@ -41,7 +46,7 @@ func load_level() -> void:
 	
 	var scene = preload("res://scenes/levels/level.tscn")
 	var instance = scene.instantiate()
-	game_scene.add_child(instance)
+	add_child(instance)
 	#spawn_pipca()
 
 
