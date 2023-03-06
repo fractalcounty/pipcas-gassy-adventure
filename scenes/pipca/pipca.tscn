@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dhiu1jc2qde0x"]
+[gd_scene load_steps=43 format=3 uid="uid://dhiu1jc2qde0x"]
 
 [ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_jagr2"]
 [ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="2_0psm0"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_cucdx"]
 [ext_resource type="Script" path="res://scenes/pipca/line_renderer.gd" id="4_wpkhe"]
 [ext_resource type="Script" path="res://scenes/pipca/states/movement.gd" id="5_b38d3"]
-[ext_resource type="Shader" path="res://assets/shaders/charge.gdshader" id="5_omyo4"]
 [ext_resource type="Script" path="res://scenes/pipca/states/in_air.gd" id="6_jvapn"]
 [ext_resource type="Script" path="res://scenes/pipca/states/on_ground.gd" id="7_smmrm"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_5o37a"]
@@ -34,15 +33,6 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_wk8tt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_njq02"]
-shader = ExtResource("5_omyo4")
-shader_parameter/pulse_frequency = 0.0
-shader_parameter/pulse_amplitude = 0.0
-shader_parameter/pulse_phase = 0.0
-shader_parameter/highestColor = Vector3(-0.92, 0, 0)
-shader_parameter/similarThreshold = 0.089
-shader_parameter/lineWidth = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn2ue"]
 size = Vector2(46, 59)
@@ -615,8 +605,8 @@ air_top_margin = 3000.0
 air_speed = 200.0
 air_accel = 50.0
 ground_friction = 5.0
-ground_speed = 50.0
-acceleration = 8.0
+ground_speed = 30.0
+acceleration = 10.0
 walk_margin = 5.0
 fart_anim_speed = 0.0
 fart_rotation_control = 6.0
@@ -669,7 +659,6 @@ crosshair_close = NodePath("../CrosshairClose")
 [node name="Skin" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-material = SubResource("ShaderMaterial_njq02")
 texture = ExtResource("2_0psm0")
 hframes = 6
 vframes = 6
