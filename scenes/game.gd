@@ -2,10 +2,10 @@ extends Node
 
 @export var skip : bool = false
 
+@export var subviewport_container : SubViewportContainer
+@export var subviewport : SubViewport
 @export var intro : VideoStreamPlayer
 @export var title_screen : Control
-@export var viewport_container : SubViewportContainer
-@export var viewport : SubViewport
 @export var pause_menu : Control
 @export var game_scene : Control
 
@@ -14,8 +14,6 @@ var pointing = load("res://assets/menus/grabber.png")
 
 func _ready():
 	get_tree().root.title = "Pipca's Gassy Adventure"
-	Global.viewport_container = viewport_container
-	Global.viewport = viewport
 	
 	if skip:
 		load_level()
@@ -46,7 +44,7 @@ func load_level() -> void:
 	
 	var scene = preload("res://scenes/levels/level.tscn")
 	var instance = scene.instantiate()
-	add_child(instance)
+	subviewport.add_child(instance)
 	#spawn_pipca()
 
 

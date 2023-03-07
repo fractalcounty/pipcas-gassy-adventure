@@ -6,11 +6,13 @@
 ignore_rotation = false
 zoom = Vector2(4, 4)
 process_callback = 0
+limit_smoothed = true
 script = ExtResource("1_rd4kw")
 cam_follow_lerp_weight = 0.5
 cam_follow_lerp_multiplier = 15.0
+zoom_default = 3.0
 zoom_min = 2.0
-zoom_max = 4.0
-zoom_reset_speed = 0.75
-zoom_factor = 0.2
-zoom_duration = 0.3
+zoom_reset_timer = 3.0
+zoom_reset_speed = 1.0
+zoom_factor = 0.25
+zoom_duration = 0.25
