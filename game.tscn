@@ -256,7 +256,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r5gc2")
-skip = true
 subviewport_container = NodePath("SubViewportContainer")
 subviewport = NodePath("SubViewportContainer/SubViewport")
 intro = NodePath("Intro")
@@ -334,17 +333,8 @@ label_settings = SubResource("LabelSettings_3w1n0")
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Intro" type="VideoStreamPlayer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("17_mjp3m")
-
 [node name="LevelBanner" type="Control" parent="." node_paths=PackedStringArray("anim", "level_title", "level_subtitle")]
+process_mode = 1
 visible = false
 z_index = 50
 layout_mode = 1
@@ -413,15 +403,27 @@ libraries = {
 layout_mode = 3
 anchors_preset = 0
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
 [node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("resume_button", "pause_sound", "unpause_sound", "select_sound")]
 process_mode = 3
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("96_o4xlf")
@@ -486,29 +488,14 @@ stream = ExtResource("99_6hfxq")
 [node name="Select" type="AudioStreamPlayer" parent="PauseMenu"]
 stream = ExtResource("100_m0pq3")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
 [node name="TitleScreen" type="Control" parent="."]
 process_mode = 3
 visible = false
 z_index = 100
-layout_mode = 2
-anchors_preset = 0
-offset_left = 960.0
-offset_top = 540.0
-offset_right = 960.0
-offset_bottom = 540.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
@@ -596,7 +583,14 @@ theme_override_fonts/font = ExtResource("97_36xa4")
 theme_override_font_sizes/font_size = 55
 text = "QUIT"
 
-[connection signal="finished" from="Intro" to="." method="_on_intro_finished"]
+[node name="Intro" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+stream = ExtResource("17_mjp3m")
+autoplay = true
+paused = true
+
 [connection signal="focus_entered" from="PauseMenu" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" method="_on_pause_menu_focus_entered"]
 [connection signal="focus_exited" from="PauseMenu" to="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" method="_on_pause_menu_focus_exited"]
 [connection signal="focus_entered" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_focus_entered"]
@@ -605,3 +599,4 @@ text = "QUIT"
 [connection signal="pressed" from="PauseMenu/ColorRect/CenterContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/PlayButton" to="TitleScreen" method="_on_play_button_pressed"]
 [connection signal="pressed" from="TitleScreen/TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/QuitButton" to="TitleScreen" method="_on_quit_button_pressed"]
+[connection signal="finished" from="Intro" to="." method="_on_intro_finished"]

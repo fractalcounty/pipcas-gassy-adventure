@@ -23,6 +23,7 @@ func _ready():
 func load_intro():
 	Global.game_state = Global.state.INTRO
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	intro.paused = false
 	intro.show()
 
 func _on_intro_finished() -> void:
