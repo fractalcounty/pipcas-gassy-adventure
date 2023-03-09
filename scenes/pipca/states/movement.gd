@@ -12,9 +12,3 @@ func _on_update(_delta: float) -> void:
 	
 	if target.enable_physics:
 		target.velocity.y += _delta * target.gravity
-
-func _after_update(_delta: float) -> void:
-	if target.velocity.x > 0:
-		target.skin.scale.x = 1
-	elif target.velocity.x < 0:
-		target.skin.scale.x = -1

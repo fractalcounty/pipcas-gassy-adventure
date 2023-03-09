@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Pipca's Gassy Adventure"
+config/name="PGA"
 run/main_scene="res://scenes/boot/boot.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 run/max_fps=120
@@ -20,11 +20,13 @@ config/icon="res://icon.svg"
 
 Events="*res://src/singletons/events.gd"
 Global="*res://src/singletons/global.gd"
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=2560
 window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
@@ -35,7 +37,7 @@ script/templates_search_path="res://addons/xsm/templates/"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/xsm/plugin.cfg", "res://addons/random_audio_player/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/codeandweb.texturepacker/plugin.cfg", "res://addons/nklbdev.previewing_parallax_background/plugin.cfg", "res://addons/nklbdev.parallax/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/xsm/plugin.cfg", "res://addons/random_audio_player/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/nklbdev.previewing_parallax_background/plugin.cfg", "res://addons/nklbdev.parallax/plugin.cfg", "res://addons/codeandweb.texturepacker/plugin.cfg", "res://addons/better-terrain/plugin.cfg")
 
 [input]
 
@@ -150,9 +152,9 @@ common/physics_ticks_per_second=120
 
 [rendering]
 
-renderer/rendering_method="mobile"
 textures/default_filters/anisotropic_filtering_level=0
 textures/decals/filter=0
 textures/light_projectors/filter=0
 environment/defaults/default_clear_color=Color(0.568627, 0.8, 0.898039, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
 textures/canvas_textures/default_texture_filter=0

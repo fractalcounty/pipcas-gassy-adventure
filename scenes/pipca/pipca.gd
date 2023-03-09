@@ -73,6 +73,11 @@ func _physics_process(delta: float) -> void:
 	if enable_physics:
 		move_and_slide()
 	
+	if velocity.x > 0:
+		skin.flip_h = false
+	elif velocity.x < 0:
+		skin.flip_h = true
+	
 	if self.is_on_floor():
 		Global.is_grounded = true
 	else:

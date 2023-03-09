@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpe6qhiqkqlmb"]
+[gd_scene load_steps=21 format=3 uid="uid://cpe6qhiqkqlmb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_r5gc2"]
 [ext_resource type="PackedScene" uid="uid://mj0svhgtmiyt" path="res://addons/debug/debugmeter2d/DebugMeter2D.tscn" id="2_847hj"]
+[ext_resource type="PackedScene" uid="uid://dsqqsg6qfoqcp" path="res://scenes/levels/level_3.tscn" id="2_shdue"]
 [ext_resource type="Material" uid="uid://c8oe83hvejbn1" path="res://assets/shaders/drop_shadow.tres" id="3_5jyxi"]
 [ext_resource type="VideoStream" path="res://assets/video/game_intro.ogv" id="17_mjp3m"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="93_iaarp"]
@@ -256,6 +257,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r5gc2")
+game_level = ExtResource("2_shdue")
 subviewport_container = NodePath("SubViewportContainer")
 subviewport = NodePath("SubViewportContainer/SubViewport")
 intro = NodePath("Intro")

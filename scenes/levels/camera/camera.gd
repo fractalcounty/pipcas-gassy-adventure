@@ -35,8 +35,6 @@ func _tracking_physics(delta) -> void:
 		var cam_pos : Vector2 = lerp(Global.pipca.global_position, mixed_pos, cam_follow_lerp_weight)
 		actual_cam_pos = actual_cam_pos.lerp(cam_pos, delta*cam_follow_lerp_multiplier)
 		global_position = actual_cam_pos
-		
-		print(zoom)
 	
 	if zoom_level != zoom_default:
 		_zoom_timer(delta)

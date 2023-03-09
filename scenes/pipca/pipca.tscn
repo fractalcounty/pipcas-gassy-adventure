@@ -561,70 +561,34 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skin:material:shader_parameter/pulse_frequency")
+tracks/0/path = NodePath("Skin:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skin:material:shader_parameter/pulse_amplitude")
+tracks/1/path = NodePath("Skin:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Skin:material:shader_parameter/pulse_phase")
+tracks/2/path = NodePath("Skin:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skin:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Skin:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skin:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -638,70 +602,34 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skin:material:shader_parameter/pulse_frequency")
+tracks/0/path = NodePath("Skin:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skin:material:shader_parameter/pulse_amplitude")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.3, 0.9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skin:material:shader_parameter/pulse_phase")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.527, 80.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skin:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 3.53333, 10),
 "transitions": PackedFloat32Array(0.5, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Skin:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.0166667, 3.53333, 10),
 "transitions": PackedFloat32Array(0.5, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 16), Vector2(0, 0)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skin:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 3.56667, 10),
 "transitions": PackedFloat32Array(0.5, 1, 0.5),
 "update": 0,
@@ -715,6 +643,8 @@ _data = {
 }
 
 [node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("skin", "mouth", "origin", "anim", "charging_shaker", "charged_shaker", "raycast", "collision_shape", "bottom", "look", "belch_sounds", "fart_sounds")]
+top_level = true
+light_mask = 0
 z_index = 500
 texture_filter = 1
 disable_mode = 2
@@ -747,21 +677,8 @@ fart_charge_duration = 0.0
 meter_multiplier = 0.0
 fart_max_charge_time = 1.0
 
-[node name="Look" type="Marker2D" parent="." node_paths=PackedStringArray("crosshair_close", "crosshair_far", "crosshair_final", "line")]
+[node name="Look" type="Marker2D" parent="."]
 script = ExtResource("2_021t1")
-close_radius = 40.0
-close_deadzone = 30.0
-close_follow_speed = 50.0
-close_recall_speed = 5.0
-final_radius = 500.0
-final_deadzone = 150.0
-final_follow_speed = 30.0
-final_recall_speed = 30.0
-crosshair_close = NodePath("CrosshairClose")
-crosshair_far = NodePath("")
-crosshair_final = NodePath("CrosshairFinal")
-line = NodePath("Line2D")
-bounds_radius = 1000.0
 
 [node name="CrosshairFinal" type="Sprite2D" parent="Look"]
 texture_filter = 1
@@ -795,7 +712,7 @@ texture_filter = 1
 texture = ExtResource("2_0psm0")
 hframes = 6
 vframes = 6
-frame = 30
+frame = 13
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",

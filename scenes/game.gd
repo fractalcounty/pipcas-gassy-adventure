@@ -2,6 +2,7 @@ extends Node
 
 @export var skip : bool = false
 
+@export var game_level : PackedScene
 @export var subviewport_container : SubViewportContainer
 @export var subviewport : SubViewport
 @export var intro : VideoStreamPlayer
@@ -43,8 +44,7 @@ func load_level() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	title_screen.queue_free()
 	
-	var scene = preload("res://scenes/levels/level.tscn")
-	var instance = scene.instantiate()
+	var instance = game_level.instantiate()
 	subviewport.add_child(instance)
 	#spawn_pipca()
 
