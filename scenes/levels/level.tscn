@@ -2702,7 +2702,7 @@ color = Color(0.568627, 0.8, 0.898039, 1)
 [node name="Sun" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/Sun"]
-position = Vector2(673.271, 195.702)
+position = Vector2(251.933, -154.387)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.95, 0.95)
@@ -2734,12 +2734,12 @@ scroll_limit_end = Vector2(5, 1)
 script = ExtResource("3_6j628")
 
 [node name="Mountains2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(298.908, 186.335)
+position = Vector2(32.8, -34.4)
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(1200, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(249.09, 205.279)
+position = Vector2(27.3333, 21.3333)
 motion_scale = Vector2(0.5, 0.5)
 motion_offset = Vector2(0, 50)
 motion_mirroring = Vector2(1496, 0)
@@ -2747,7 +2747,7 @@ motion_mirroring = Vector2(1496, 0)
 [node name="CloudsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsFar"]
-position = Vector2(458.326, 136.364)
+position = Vector2(50.2933, -202.67)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.92, 0.92)
@@ -2875,7 +2875,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsMid" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsMid"]
-position = Vector2(448.362, 130.139)
+position = Vector2(49.2, -201.525)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.9, 0.9)
@@ -3412,7 +3412,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsClose"]
-position = Vector2(438.398, 123.913)
+position = Vector2(48.1067, -200.38)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.88, 0.88)
@@ -3608,7 +3608,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="MountainsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsFar"]
-position = Vector2(368.726, 292.886)
+position = Vector2(58.2667, 34.925)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.7, 0.7)
@@ -3634,7 +3634,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Node2D" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/Node2D"]
-position = Vector2(298.908, 236.759)
+position = Vector2(32.8, 15.65)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.6, 0.6)
@@ -3649,7 +3649,7 @@ frame_progress = 0.5881
 [node name="MountainsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsClose"]
-position = Vector2(224.09, 325.633)
+position = Vector2(2.33333, 141.375)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.5, 0.5)

@@ -1,8 +1,12 @@
 extends CharacterBody2D
 class_name Pipca
 
+@export_group("Physics")
+@export var push_force : float = 500.0
+
 @export_group("Pipca Anatomy")
 @export var skin : Sprite2D
+@export var shadow : LightOccluder2D
 @export var mouth : Marker2D
 @export var origin : Marker2D
 @export var anim : AnimationPlayer
@@ -75,8 +79,10 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.x > 0:
 		skin.flip_h = false
+		shadow.scale.x = 1
 	elif velocity.x < 0:
 		skin.flip_h = true
+		shadow.scale.x = -1
 	
 	if self.is_on_floor():
 		Global.is_grounded = true
@@ -89,6 +95,16 @@ func _physics_process(delta: float) -> void:
 	coll = raycast.get_collider()
 	var origin_pos : Vector2 = (self.position)
 	Events.follow_origin.emit(origin_pos)
+	
+#	push_object()
+#
+#func push_object() -> void:
+#	if enable_physics: # true if collided
+#		for i in get_slide_collision_count():
+#			var col = get_slide_collision(i)
+#			if col.get_collider().is_in_group("phys_objects"):
+#				print ("pushing")
+#				col.get_collider().apply_central_impulse(col.get_normal() * -push_force)
 
 func play_belch():
 	belch_sounds.play()
