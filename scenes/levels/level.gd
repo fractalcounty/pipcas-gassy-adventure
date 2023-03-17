@@ -5,7 +5,7 @@ extends Node2D
 @onready var cam : Camera2D = $Camera2D
 
 func _ready() -> void:
-	Events.flash_banner.emit(banner_title, banner_subtitle)
+	pass
 	#print ("Emitting banner thing")
 
 #func _physics_process(delta: float) -> void:

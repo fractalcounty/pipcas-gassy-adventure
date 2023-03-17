@@ -1,89 +1,129 @@
 extends Node
 
-@export var skip : bool = false
-
-@export var game_level : PackedScene
+@export_category("Game")
+@export var level : PackedScene
+@export var pipca : PackedScene
 @export var subviewport_container : SubViewportContainer
 @export var subviewport : SubViewport
-@export var intro : VideoStreamPlayer
-@export var title_screen : Control
-@export var pause_menu : Control
-@export var game_scene : Control
 
-var arrow = load("res://assets/menus/arrow.png")
-var pointing = load("res://assets/menus/grabber.png")
+@export_category("UI")
+@export var skip_intro : bool = false
+@export var intro : VideoStreamPlayer
+@export var pause_menu : PackedScene
+@export var title_screen : PackedScene
+@export var level_banner : PackedScene
+
+@export var transition_player : AnimationPlayer
+
+@onready var arrow = load("res://assets/menus/arrow.png")
+@onready var pointing = load("res://assets/menus/grabber.png")
+
+@onready var pause_menu_instance : Control = null
+@onready var level_instance : Node2D = null
+@onready var level_banner_instance : Control = null
+@onready var pipca_instance : Node2D = null
+@onready var title_screen_instance : Control = null
+@onready var trans_in_progress : bool = false
 
 func _ready():
 	get_tree().root.title = "Pipca's Gassy Adventure"
 	
-	if skip:
+	if skip_intro:
 		load_level()
 	else:
-		load_intro()
+		_load_intro()
 
-func load_intro():
+func _load_intro():
 	Global.game_state = Global.state.INTRO
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	intro.paused = false
 	intro.show()
 
 func _on_intro_finished() -> void:
+	_load_title_screen()
 	intro.queue_free()
-	load_title_screen()
 
-func load_title_screen():
-	get_viewport().set_input_as_handled()
+func _load_title_screen():
+	
+	Global.subviewport = subviewport
+	
+	title_screen_instance = title_screen.instantiate()
+	add_child(title_screen_instance)
+	
+	await is_instance_valid(title_screen_instance)
+	Global.game_state = Global.state.MENU
+	
 	Input.set_custom_mouse_cursor(arrow)
 	Input.set_custom_mouse_cursor(pointing, Input.CURSOR_POINTING_HAND)
 	Global.game_state = Global.state.MENU
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	title_screen.show()
+	title_screen_instance.show()
 
 func load_level() -> void:
 	Global.game_state = Global.state.GAME
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
-	title_screen.queue_free()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	trans_in_progress = true
+	transition_player.play("fade_in")
+	await transition_player.animation_finished
+	title_screen_instance.queue_free()
 	
-	var instance = game_level.instantiate()
-	subviewport.add_child(instance)
-	#spawn_pipca()
+	level_instance = level.instantiate()
+	subviewport.add_child(level_instance)
+	
+	await is_instance_valid(level_instance)
+	if get_tree().paused:
+		get_tree().paused == false
+	_spawn_pipca(level_instance)
 
+func _spawn_pipca(level_instance) -> void:
+	pipca_instance = pipca.instantiate()
+	level_instance.add_child(pipca_instance)
+	await is_instance_valid(pipca_instance)
+	_load_banner(level_instance)
 
-#func get_transform() -> void:
-#	if Global.remote_transform == null:
-#		push_error("FUCK")
-#	else:
-#		remote_transform = Global.transform
+func _load_banner(level_instance) -> void:
+	level_banner_instance = level_banner.instantiate()
+	add_child(level_banner_instance)
+	await is_instance_valid(level_banner_instance)
+	Events.flash_banner.emit(level_instance.banner_title, level_instance.banner_subtitle)
+	_load_pause_menu()
 
-#func spawn_pipca() -> void:
-#	print ("Spawning Pipca...")
-#	var scene = preload("res://scenes/pipca/pipca.tscn")
-#	var instance = scene.instantiate()
-#	add_child(instance)
-#
-#	var level = game_scene.get_node_or_null("level")
-#	var spawn = level.get_node_or_null("Spawn")
-#
-#	spawn.on_pipca_spawn()
-#
-#	viewport_container.show()
-#	print ("Pipca spawned! Pipca win!...")
+func _load_pause_menu():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	pause_menu_instance = pause_menu.instantiate()
+	add_child(pause_menu_instance)
+	await is_instance_valid(pause_menu_instance)
+	transition_player.play_backwards("fade_in")
+	await transition_player.animation_finished
+	trans_in_progress = false
+
+func _fade_out() -> void:
+	pass
+
+func _fade_in() -> void:
+	pass
+
+func return_to_menu():
+	transition_player.play("fade_in")
+	await transition_player.animation_finished
+	if is_instance_valid(level_banner_instance):
+		level_banner_instance.queue_free()
+	level_instance.queue_free()
+	pause_menu_instance.queue_free()
+	_load_title_screen()
+	transition_player.play_backwards("fade_in")
 
 func _unhandled_input(event):
-	if Global.game_state == Global.state.MENU:
-		title_screen.focus_mode = Control.FOCUS_ALL
-	
 	if event.is_action_pressed("in_pause"):
 		if Global.game_state == Global.state.INTRO:
 			_on_intro_finished()
 		if Global.game_state == Global.state.GAME:
 			var tree = get_tree()
 			tree.paused = not tree.paused
-			if tree.paused:
+			if tree.paused and pause_menu_instance != null:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				pause_menu._on_pause_menu_open()
-			else:
-				pause_menu._on_resume_button_pressed()
+				pause_menu_instance.on_pause_menu_open()
+			elif pause_menu_instance != null:
+				pause_menu_instance._on_resume_button_pressed()
 				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 			get_viewport().set_input_as_handled()
 

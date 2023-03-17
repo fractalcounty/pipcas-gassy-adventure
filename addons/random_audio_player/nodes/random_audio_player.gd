@@ -1,5 +1,5 @@
-@icon("random_audio_player.svg") 
 @tool
+@icon("random_audio_player.svg")
 extends Node2D
 class_name RandomAudioPlayer
 
@@ -7,7 +7,7 @@ class_name RandomAudioPlayer
 @export var volume_Db_overwrite = 0.0:
 	set(new_value):
 		volume_Db_overwrite = new_value
-		var children = get_children_of_type(self, AudioStreamPlayer)
+		var children = get_children_of_type(self, AudioStreamPlayer2D)
 		for child in children: 
 			child.set_volume_db(new_value)
 			
@@ -15,7 +15,7 @@ class_name RandomAudioPlayer
 @export var max_distance_overwrite = 0.0:
 	set(new_value):
 		max_distance_overwrite = new_value
-		var children = get_children_of_type(self, AudioStreamPlayer)
+		var children = get_children_of_type(self, AudioStreamPlayer2D)
 		for child in children: 
 			child.set_max_distance(new_value)
 
@@ -37,13 +37,13 @@ static func get_children_of_type(node: Node, child_type):
 	var list = []
 	for i in range(node.get_child_count()):
 		var child = node.get_child(i)
-		if child is child_type:
+		if child is AudioStreamPlayer2D:
 			list.append(child)
 	return list
 
 func _get_configuration_warnings():
 	var has_valid_children = false
-	if len(get_children_of_type(self, AudioStreamPlayer)) < 1:
+	if len(get_children_of_type(self, AudioStreamPlayer2D)) < 1:
 		return ["AudioStreamPlayer2D is required"]
 	return []
 	

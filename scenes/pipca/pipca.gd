@@ -67,9 +67,12 @@ var sprite : AnimatedSprite2D
 var coll_normal : Vector2
 var coll
 var angle
+var slopeAngle = 0
+var slopeNormal = Vector2.ZERO
 
 
 func _ready():
+	Events.pipca_spawned.emit(self)
 	anim.play("idle_still")
 	Global.pipca = self
 
@@ -84,12 +87,29 @@ func _physics_process(delta: float) -> void:
 		skin.flip_h = true
 		shadow.scale.x = -1
 	
-	if self.is_on_floor():
+	if is_on_floor():
 		Global.is_grounded = true
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			slopeAngle = -get_floor_angle()
+			skin.rotation = slopeAngle
+			var tweener = get_tree().create_tween()
+			tweener.tween_property(skin, "rotation", slopeAngle, 0.8)
+			if skin.rotation != 0:
+				#var lerpy = lerp(0, 10, 0.5 * delta)
+				#skin.offset.y = lerpy
+				var tween = get_tree().create_tween()
+				tween.tween_property(skin, "offset:y", 6.0, 0.5)
+				print (skin.offset.y)
+			else:
+				var tween = get_tree().create_tween()
+				tween.tween_property(skin, "offset:y", 0.0, 0.1)
+		
+			
 	else:
 		Global.is_grounded = false
 	
-	Global.debug.value(fart_charge)
+	#Global.debug.value(fart_charge)
 	#Global.debug2.value2(tension)
 	
 	coll = raycast.get_collider()
@@ -112,15 +132,15 @@ func play_belch():
 func set_smooth_time(value: float):
 	smooth_time = value
 
-func emit_fart():
-	var fart_scene = load("res://scenes/fart/fart_sprite.tscn")
-	var fart_instance = fart_scene.instantiate()
-	add_child(fart_instance)
-	sprite = $FartSprite
-	if coll_normal.x < 0:
-		sprite.scale.x = -1
-	else:
-		sprite.scale.x = 1
+#func emit_fart():
+##	var fart_scene = load("res://scenes/fart/fart_sprite.tscn")
+##	var fart_instance = fart_scene.instantiate()
+##	add_child(fart_instance)
+##	sprite = $FartSprite
+#	if coll_normal.x < 0:
+#		sprite.scale.x = -1
+#	else:
+#		sprite.scale.x = 1
 	
 func _process(delta: float) -> void:
 	coll_normal = raycast.get_collision_normal()

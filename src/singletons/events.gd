@@ -9,3 +9,5 @@ signal cutscene_end
 signal cutscene_reset
 
 signal flash_banner(banner_title, banner_subtitle)
+
+signal pipca_spawned(pipca)

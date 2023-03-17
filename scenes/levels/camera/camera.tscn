@@ -8,6 +8,7 @@ zoom = Vector2(4, 4)
 process_callback = 0
 limit_smoothed = true
 script = ExtResource("1_rd4kw")
+mouse_movement = true
 cam_follow_lerp_weight = 0.5
 cam_follow_lerp_multiplier = 15.0
 zoom_default = 3.0

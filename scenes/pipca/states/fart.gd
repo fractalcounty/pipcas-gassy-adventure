@@ -4,7 +4,7 @@ extends State
 var entering_y := 0.0
 
 func _on_enter(_args) -> void:
-	target.emit_fart()
+	#target.emit_fart()
 	change_state("NoFart")
 	entering_y = target.position.y
 	var fart_sound = target.fart_sounds
