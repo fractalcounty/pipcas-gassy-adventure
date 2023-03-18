@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://clwb00tc8ogtr"]
+[gd_scene load_steps=3 format=3 uid="uid://clwb00tc8ogtr"]
+
+[ext_resource type="FontFile" uid="uid://dsv2qv5b5bxmm" path="res://assets/fonts/BerkeleyMonoTrial-Regular.otf" id="1_pxfqq"]
 
 [sub_resource type="Theme" id="Theme_dksur"]
-default_font_size = 16
+default_font = ExtResource("1_pxfqq")
+default_font_size = 32
 
 [node name="LogOverlay" type="RichTextLabel"]
 modulate = Color(1, 1, 1, 0.501961)

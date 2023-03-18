@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Object) -> void:
 	if body is CharacterBody2D:
-		print ("body entered")
+		#print ("body entered")
 		#kick_sound.pitch_scale = 1.0 + ( randf() - 0.5 ) / 3
 		var kick_direction : Vector2 = (position - body.position)
 		apply_central_impulse(kick_direction * -kick_force)
@@ -34,7 +34,7 @@ func _on_body_entered(body: Object) -> void:
 
 	if body is TileMap:
 		if !cooldown:
-			print ("ground collide")
+			#print ("ground collide")
 			ground_sound.play()
 			ground_sound.pitch_scale = 1.0 + ( randf() - 0.5 ) / 3
 			cooldown = true

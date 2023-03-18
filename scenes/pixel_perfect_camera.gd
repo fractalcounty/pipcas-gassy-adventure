@@ -100,7 +100,6 @@ func keep_visible(current_pos: Vector2, keep_visible: Vector2) -> Vector2:
  
  
 func follow(node: Node2D) -> void:
-	#print ("FOLLOWING")
 	pan_state = PanState.WIDE
 	following = node
 	global_position = node.global_position

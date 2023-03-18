@@ -16,24 +16,25 @@ extends Control
 var just_opened : bool
 
 func _ready() -> void:
+	Events.pause_opened.emit()
 	hide()
 	timer.stop()
 	timer.one_shot = true
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and is_visible_in_tree():
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
-		if is_visible_in_tree():
+	if is_visible_in_tree():
+		if event is InputEventMouseMotion:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
 			UIAudio.click.play()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		resume_button.grab_focus()
+	if is_visible_in_tree():
+		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			resume_button.grab_focus()
 
-func on_pause_menu_open():
-	UIAudio.double_click.play()
+func on_pause_open() -> void:
 	timer.start(time_cooldown)
 	var tween = get_tree().create_tween()
 	self.modulate.a = 0
@@ -46,12 +47,13 @@ func on_pause_menu_open():
 	tween.set_trans(Tween.TRANS_SINE)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	await tween.finished
+	Global.game_state = Global.state.PAUSE
 	resume_button.disabled = false
 	quit_button.disabled = false
 	just_opened = true
-	
 
-func _on_resume_button_pressed() -> void:
+func on_pause_close() -> void:
+	Events.pause_closed.emit()
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -60,59 +62,44 @@ func _on_resume_button_pressed() -> void:
 	tween.set_trans(Tween.TRANS_SINE)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	just_opened = true
-	get_tree().paused = false
 	resume_button.disabled = true
 	quit_button.disabled = true
 	await tween.finished
+	if Global.game_state == Global.state.PAUSE:
+		Global.game_state = Global.state.GAME
+	queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	hide()
+	queue_free()
+
+func _on_resume_button_pressed() -> void:
+	on_pause_close()
 
 func _on_quit_button_pressed() -> void:
-	print ("quit button pressed")
 	get_parent().return_to_menu()
 
-#func _on_resume_button_focus_entered() -> void:
-#	print ("resume button focus entered")
-#	if !just_opened and timer.is_stopped():
-#		select_sound.play()
-#
-#func _on_quit_button_focus_entered() -> void:
-#	print ("quit button focus entered")
-#	just_opened = false
-#	if timer.is_stopped():
-#		select_sound.play()
-
 func _on_resume_button_mouse_entered() -> void:
-	print ("resume button mouse entered")
 	if timer.is_stopped():
 		UIAudio.click.play()
 	resume_button.release_focus()
 	quit_button.release_focus()
-
 
 func _on_quit_button_mouse_entered() -> void:
-	print ("quit button mouse entered")
 	if timer.is_stopped():
 		UIAudio.click.play()
 	quit_button.release_focus()
 	resume_button.release_focus()
 
-
 func _on_resume_button_mouse_exited() -> void:
-	print ("resume button mouse exited")
 	quit_button.release_focus()
 	resume_button.release_focus()
-
 
 func _on_quit_button_mouse_exited() -> void:
-	print ("quit button mouse exited")
 	quit_button.release_focus()
 	resume_button.release_focus()
-
 
 func _on_resume_button_button_down() -> void:
 	pass
-
 
 func _on_resume_button_button_up() -> void:
 	UIAudio.unclick.play()

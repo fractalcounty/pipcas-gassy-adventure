@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://blof152vahbbs"]
+[gd_scene load_steps=16 format=3 uid="uid://blof152vahbbs"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_r5gc2"]
 [ext_resource type="PackedScene" uid="uid://dk78estx6ar8o" path="res://scenes/levels/level.tscn" id="2_0p1rw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhiu1jc2qde0x" path="res://scenes/pipca/pipca.tscn" id="3_p0cit"]
 [ext_resource type="PackedScene" uid="uid://b3gjnn0npytvq" path="res://scenes/menus/title_screen.tscn" id="5_n1rgl"]
 [ext_resource type="PackedScene" uid="uid://i4go24n1ygry" path="res://scenes/menus/pause_menu.tscn" id="5_nq6vy"]
+[ext_resource type="PackedScene" uid="uid://dbbq00jp5k1sk" path="res://scenes/menus/counter.tscn" id="7_oss6w"]
 [ext_resource type="AudioStream" uid="uid://rggq4c6xkoqd" path="res://assets/sfx/Fnf' confirmed menu sound effect.wav" id="8_d0dqy"]
 [ext_resource type="Shader" path="res://assets/shaders/transition.gdshader" id="8_singh"]
 [ext_resource type="VideoStream" path="res://assets/video/game_intro.ogv" id="17_mjp3m"]
@@ -166,7 +167,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_mode = 2
 mouse_filter = 2
 script = ExtResource("1_r5gc2")
 level = ExtResource("2_0p1rw")
@@ -177,25 +177,8 @@ intro = NodePath("Intro")
 pause_menu = ExtResource("5_nq6vy")
 title_screen = ExtResource("5_n1rgl")
 level_banner = ExtResource("3_opved")
+counter = ExtResource("7_oss6w")
 transition_player = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-process_mode = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-disable_3d = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-audio_listener_enable_2d = true
-gui_disable_input = true
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
 
 [node name="TransitionSubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
@@ -210,6 +193,7 @@ offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
+mouse_filter = 2
 
 [node name="TransitionSubViewport" type="SubViewport" parent="TransitionSubViewportContainer"]
 disable_3d = true
@@ -238,6 +222,26 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+gui_disable_input = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Intro" type="VideoStreamPlayer" parent="."]
 layout_mode = 0

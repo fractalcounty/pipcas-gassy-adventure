@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwtxlf25ofrb1"]
+
+[ext_resource type="Script" path="res://src/singletons/music.gd" id="1_3xjrn"]
+[ext_resource type="AudioStream" uid="uid://mis3u6wd4gf" path="res://assets/music/temp_song.ogg" id="2_wpqr3"]
+
+[node name="Music" type="Node" node_paths=PackedStringArray("level_music_player", "timer")]
+process_mode = 3
+script = ExtResource("1_3xjrn")
+level_music_player = NodePath("LevelMusicPlayer")
+pause_muffle_lerp = 41.943
+new_cutoff_hz = 500.0
+timer = NodePath("Timer")
+
+[node name="LevelMusicPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_wpqr3")
+bus = &"Music"
+
+[node name="Timer" type="Timer" parent="."]

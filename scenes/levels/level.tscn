@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://mis3u6wd4gf" path="res://assets/music/temp_song.ogg" id="5_slnt8"]
 [ext_resource type="Texture2D" uid="uid://c7v723bm4e4i" path="res://assets/sprites/cloudyboysLayer 1.png" id="5_vfo5m"]
 [ext_resource type="Texture2D" uid="uid://cwi0olj2ew2yv" path="res://assets/sprites/mount.png" id="6_2wnb6"]
-[ext_resource type="TileSet" uid="uid://cio3rn5xp8yrr" path="res://assets/tileset/tileset.tres" id="7_1l278"]
+[ext_resource type="TileSet" uid="uid://dqltataktikd8" path="res://assets/tileset/tileset.tres" id="7_1l278"]
 [ext_resource type="PackedScene" uid="uid://df8wwih5esqic" path="res://scenes/levels/camera/camera.tscn" id="9_02y22"]
 [ext_resource type="Texture2D" uid="uid://bvabqsjxkvd00" path="res://assets/sprites/cado/dance/griddy_00000.png" id="10_c4ibg"]
 [ext_resource type="Texture2D" uid="uid://c0k7kk1dlvd78" path="res://assets/sprites/cado/dance/griddy_00001.png" id="11_bdosi"]
@@ -428,9 +428,11 @@ animations = [{
 }]
 
 [node name="level" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_rt2c3")
 banner_title = "Level 1:"
 banner_subtitle = "MEAL MEADOWS"
+level_music = ExtResource("5_slnt8")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
@@ -445,12 +447,13 @@ motion_mirroring = Vector2(1920, 1080)
 custom_minimum_size = Vector2(640, 360)
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 color = Color(0.568627, 0.8, 0.898039, 1)
 
 [node name="Sun" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/Sun"]
-position = Vector2(1154.44, 785.389)
+position = Vector2(237.059, -43.6249)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.95, 0.95)
@@ -482,12 +485,10 @@ scroll_limit_end = Vector2(5, 1)
 script = ExtResource("3_6j628")
 
 [node name="Mountains2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(602.357, 559.193)
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(1200, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(501.964, 515.994)
 motion_scale = Vector2(0.5, 0.5)
 motion_offset = Vector2(0, 50)
 motion_mirroring = Vector2(1496, 0)
@@ -495,7 +496,7 @@ motion_mirroring = Vector2(1496, 0)
 [node name="CloudsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsFar"]
-position = Vector2(924.303, 707.43)
+position = Vector2(35.8889, -95.4051)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.92, 0.92)
@@ -623,7 +624,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsMid" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsMid"]
-position = Vector2(904.209, 688.79)
+position = Vector2(35.1087, -96.592)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.9, 0.9)
@@ -1160,7 +1161,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsClose"]
-position = Vector2(884.116, 670.15)
+position = Vector2(34.3285, -97.7788)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.88, 0.88)
@@ -1356,7 +1357,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="MountainsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsFar"]
-position = Vector2(723.274, 727.392)
+position = Vector2(47.3067, 116.54)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.7, 0.7)
@@ -1383,7 +1384,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Parallax" type="Node2D" parent="Background/Node2D"]
 visible = false
-position = Vector2(602.806, 609.193)
+position = Vector2(23.4058, 85.6053)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.6, 0.6)
@@ -1398,7 +1399,7 @@ frame_progress = 0.5881
 [node name="MountainsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsClose"]
-position = Vector2(477.338, 635.994)
+position = Vector2(-5.49519, 199.671)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.5, 0.5)
@@ -1418,12 +1419,9 @@ offset_top = 53.9195
 offset_right = -1360.89
 offset_bottom = 594.919
 scale = Vector2(3.30168, 3.24113)
+mouse_filter = 2
 color = Color(0.333333, 0.509804, 0.529412, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_slnt8")
-autoplay = true
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -1440,13 +1438,228 @@ zoom_duration = 0.2
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Camera2D"]
 
 [node name="Spawn" parent="." instance=ExtResource("107_c65on")]
-position = Vector2(-45, 343)
+position = Vector2(4, 345)
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(113, 360)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D2" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(170, 360)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D3" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(218, 360)
+lerp_time = 0.5
 
 [node name="AnimatedSprite2D4" parent="." instance=ExtResource("108_5x348")]
-position = Vector2(-316, 357)
+position = Vector2(264, 361)
+lerp_time = 0.5
 
 [node name="AnimatedSprite2D5" parent="." instance=ExtResource("108_5x348")]
-position = Vector2(-407, 357)
+position = Vector2(312, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D6" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(361, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D7" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(405, 361)
+lerp_time = 0.5
 
 [node name="AnimatedSprite2D8" parent="." instance=ExtResource("108_5x348")]
-position = Vector2(-362, 357)
+position = Vector2(457, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D9" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(502, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D10" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(553, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D11" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(599, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D12" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(646, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D13" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(692, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D14" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(743, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D15" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(790.5, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D16" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(847.5, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D17" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(895.5, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D18" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(941.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D19" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(989.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D20" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1038.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D21" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1082.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D22" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1134.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D23" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1179.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D24" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1230.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D25" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1276.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D26" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1323.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D27" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1369.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D28" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1420.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D29" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1464.5, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D30" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1521.5, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D31" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1569.5, 361)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D32" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1615.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D33" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1663.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D34" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1712.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D35" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1756.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D36" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1808.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D37" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1853.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D38" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1904.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D39" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1950.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D40" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(1997.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D41" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2043.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D42" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2094.5, 362)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D43" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2136.5, 364)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D44" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2193.5, 364)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D45" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2241.5, 364)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D46" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2287.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D47" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2335.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D48" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2384.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D49" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2428.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D50" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2480.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D51" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2525.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D52" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2576.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D53" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2622.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D54" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2669.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D55" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2715.5, 365)
+lerp_time = 0.5
+
+[node name="AnimatedSprite2D56" parent="." instance=ExtResource("108_5x348")]
+position = Vector2(2766.5, 365)
+lerp_time = 0.5

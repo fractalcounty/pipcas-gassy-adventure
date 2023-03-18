@@ -3,12 +3,11 @@
 [ext_resource type="Script" path="res://scenes/levels/camera/camera.gd" id="1_rd4kw"]
 
 [node name="Camera2D" type="Camera2D"]
-ignore_rotation = false
 zoom = Vector2(4, 4)
 process_callback = 0
-limit_smoothed = true
 script = ExtResource("1_rd4kw")
-mouse_movement = true
+freelook_distance = 0.8
+freelook_lerp = 5.0
 cam_follow_lerp_weight = 0.5
 cam_follow_lerp_multiplier = 15.0
 zoom_default = 3.0
@@ -17,3 +16,9 @@ zoom_reset_timer = 3.0
 zoom_reset_speed = 1.0
 zoom_factor = 0.25
 zoom_duration = 0.25
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

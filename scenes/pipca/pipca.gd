@@ -5,6 +5,8 @@ class_name Pipca
 @export var push_force : float = 500.0
 
 @export_group("Pipca Anatomy")
+@export var particle_label : PackedScene
+@export var eat_particles : PackedScene
 @export var skin : Sprite2D
 @export var shadow : LightOccluder2D
 @export var mouth : Marker2D
@@ -46,7 +48,6 @@ class_name Pipca
 @export var fart_max_height : float = 48
 @export var fart_max_charge_time : float = 3.0
 
-
 @export_subgroup("Charging Stuff")
 @export var max_fart_charge : float = 200.0
 var tension : float
@@ -55,13 +56,17 @@ var current_mouse_pos : Vector2
 var original_mouse_pos : Vector2
 var smooth_time : float
 
-
 @onready var time_charged : float = 0.0
 @onready var enable_physics : bool = true
 @onready var lifetime : float
 @onready var dir : float
 @onready var pull_length : float
 
+
+@onready var points : float = 0.0
+@onready var max_points : float = 10.0
+@onready var particle_label_instance : Label
+@onready var eat_particles_instance : GPUParticles2D
 
 var sprite : AnimatedSprite2D
 var coll_normal : Vector2
@@ -83,9 +88,13 @@ func _physics_process(delta: float) -> void:
 	if velocity.x > 0:
 		skin.flip_h = false
 		shadow.scale.x = 1
+		if is_instance_valid(eat_particles_instance):
+			eat_particles_instance.position.x = 20
 	elif velocity.x < 0:
 		skin.flip_h = true
 		shadow.scale.x = -1
+		if is_instance_valid(eat_particles_instance):
+			eat_particles_instance.position.x = -20
 	
 	if is_on_floor():
 		Global.is_grounded = true
@@ -100,7 +109,7 @@ func _physics_process(delta: float) -> void:
 				#skin.offset.y = lerpy
 				var tween = get_tree().create_tween()
 				tween.tween_property(skin, "offset:y", 6.0, 0.5)
-				print (skin.offset.y)
+				#print (skin.offset.y)
 			else:
 				var tween = get_tree().create_tween()
 				tween.tween_property(skin, "offset:y", 0.0, 0.1)
@@ -125,6 +134,20 @@ func _physics_process(delta: float) -> void:
 #			if col.get_collider().is_in_group("phys_objects"):
 #				print ("pushing")
 #				col.get_collider().apply_central_impulse(col.get_normal() * -push_force)
+
+func spawn_eat_particles() -> void:
+	eat_particles_instance = eat_particles.instantiate()
+	add_child(eat_particles_instance)
+	if Global.pipca.velocity.x > 0:
+		eat_particles_instance.process_material.direction = Vector3(200, -120 ,0)
+	else:
+		eat_particles_instance.process_material.direction = Vector3(-200, -120 ,0)
+
+func spawn_particle_label(value) -> void:
+	particle_label_instance = particle_label.instantiate()
+	add_child(particle_label_instance)
+	particle_label_instance.text = str(value)
+	particle_label_instance.global_position = global_position
 
 func play_belch():
 	belch_sounds.play()

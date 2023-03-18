@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://dhiu1jc2qde0x"]
+[gd_scene load_steps=47 format=3 uid="uid://dhiu1jc2qde0x"]
 
 [ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_jagr2"]
 [ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="2_0psm0"]
 [ext_resource type="Script" path="res://scenes/pipca/look.gd" id="2_021t1"]
+[ext_resource type="PackedScene" uid="uid://d1nqptj5gcqhe" path="res://scenes/menus/particle_label.tscn" id="2_rmaoy"]
 [ext_resource type="AudioStream" uid="uid://ci0ynipdlk0bi" path="res://assets/sfx/belch.wav" id="3_1g2fa"]
 [ext_resource type="Texture2D" uid="uid://em4sk2w5yrhl" path="res://assets/sprites/crosshair001.png" id="3_g31ey"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_cucdx"]
@@ -26,6 +27,7 @@
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="21_eqrio"]
 [ext_resource type="Script" path="res://scenes/pipca/states/charging.gd" id="24_4jdpr"]
 [ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="25_n6qg8"]
+[ext_resource type="PackedScene" uid="uid://cel1llli5754b" path="res://scenes/pipca/eat_particles.tscn" id="28_wnyrm"]
 
 [sub_resource type="Curve" id="Curve_xga5o"]
 _data = [Vector2(0.00360577, 0.898917), 0.0, 0.0, 0, 0, Vector2(0.539663, 0.429603), 0.0, 0.0, 0, 0]
@@ -646,6 +648,9 @@ _data = {
 cull_mode = 1
 polygon = PackedVector2Array(-13, -9, -10, -2, -15, 4, -8, 20, 5, 12, 15, 20, 17, 6, 15, -2, 5, -12, 9, -18, 1, -26, -9, -26, -13, -19)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbfd6"]
+size = Vector2(67, 59)
+
 [node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("skin", "shadow", "mouth", "origin", "anim", "charging_shaker", "charged_shaker", "raycast", "collision_shape", "bottom", "look", "belch_sounds", "fart_sounds")]
 top_level = true
 light_mask = 524288
@@ -659,6 +664,8 @@ floor_snap_length = 27.3
 platform_wall_layers = 3
 safe_margin = 0.001
 script = ExtResource("1_jagr2")
+particle_label = ExtResource("2_rmaoy")
+eat_particles = ExtResource("28_wnyrm")
 skin = NodePath("Skin")
 shadow = NodePath("LightOccluder2D")
 mouth = NodePath("Mouth")
@@ -974,3 +981,11 @@ libraries = {
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(1, 3)
 occluder = SubResource("OccluderPolygon2D_c48yb")
+
+[node name="ConsumeBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConsumeBox"]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_bbfd6")
+
+[node name="EatParticles" parent="." instance=ExtResource("28_wnyrm")]

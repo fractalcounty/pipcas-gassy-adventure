@@ -16,7 +16,7 @@ func _ready():
 		expected_duration = file.get_float()
 	
 	ResourceLoader.load_threaded_request(game_path, "PackedScene", threaded_loading)
-	print("Loading game scene at ", game_path)
+	print("[BOOT] Loading game scene at ", game_path)
 
 func _process(_delta):
 	duration = Time.get_ticks_msec()
@@ -24,18 +24,17 @@ func _process(_delta):
 	var new_dur = str(int(clamp(remap((clamped_duration * 100),50 , 100, 1, 100), 1, 100)))
 	
 	if stage == LoadingStage.LOADING:
-		#print (new_dur + "%")
 		label.set_text(str(new_dur) + "%")
 		var progress = []
 		var status = ResourceLoader.load_threaded_get_status(game_path, progress)
 		
 		if progress[0] == 1:
-			print ("ResourceLoader completed job successfully")
+			print ("[BOOT] ResourceLoader completed job successfully")
 			spawn_main_scene()
 			stage = LoadingStage.SPAWNING
 
 func spawn_main_scene() -> void:	
-	print ("Initializing game scene")
+	print ("[BOOT] Initializing game scene")
 	var scene = ResourceLoader.load_threaded_get(game_path)
 	var game_scene : Node = scene.instantiate()
 	get_tree().root.add_child(game_scene)

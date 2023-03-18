@@ -11,7 +11,6 @@ func _ready():
 
 func _input(event) -> void:
 	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
-		print ("input")
 		UIAudio.click.play()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event is InputEventMouseMotion:

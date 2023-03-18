@@ -18,9 +18,11 @@ var debug2 : Control = null
 var is_grounded : bool
 var game_scene : Node
 
+var counter : Control = null
+
 enum state {INTRO, MENU, GAME, PAUSE, CUTSCENE}
 
 var game_state: state = state.INTRO:
 	set(value):
-		#prints("Game state changed to", value, "a.k.a", state.keys()[value])
+		print("[game] Gamestate changed to ", value, " (", state.keys()[value], ")")
 		game_state = value
