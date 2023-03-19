@@ -89,21 +89,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, true, false]
 }
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer/AudioStreamPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0661955,
-"stream": null
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_qtxrj"]
 resource_name = "fade_out"
@@ -154,7 +139,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lvfyo"]
 shader = ExtResource("7_rgthi")
-shader_parameter/progress = 0.42061
+shader_parameter/progress = 0.8
 shader_parameter/diamondPixelSize = 21.752
 shader_parameter/magicNumber = 4.0
 
@@ -219,8 +204,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 1

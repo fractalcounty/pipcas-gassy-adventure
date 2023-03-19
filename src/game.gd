@@ -67,6 +67,7 @@ func load_level() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	trans_in_progress = true
 	transition_player.play("fade_in")
+	UIAudio.whistle_up.play()
 	await transition_player.animation_finished
 	title_screen_instance.queue_free()
 	
@@ -96,6 +97,7 @@ func _load_banner(level_instance) -> void:
 	await is_instance_valid(level_banner_instance)
 	Events.flash_banner.emit(level_instance.banner_title, level_instance.banner_subtitle)
 	transition_player.play_backwards("fade_in")
+	UIAudio.whistle_down.play()
 	set_process(true)
 	await transition_player.animation_finished
 	trans_in_progress = false
@@ -116,6 +118,8 @@ func _process(delta: float) -> void:
 	
 func return_to_menu() -> void:
 	transition_player.play("fade_in")
+	UIAudio.whistle_down.play()
+	Music.fade_out()
 	await transition_player.animation_finished
 	if is_instance_valid(level_banner_instance):
 		level_banner_instance.queue_free()

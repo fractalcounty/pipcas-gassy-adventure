@@ -5,6 +5,7 @@ class_name level_music
 @export_exp_easing("positive_only") var pause_muffle_lerp : float
 @export var new_cutoff_hz : float
 @export var timer : Timer
+@export var anim : AnimationPlayer
 
 @onready var music_bus : int = AudioServer.get_bus_index("Music")
 @onready var old_vol : float = AudioServer.get_bus_volume_db(music_bus)
@@ -18,8 +19,15 @@ func _ready() -> void:
 	AudioServer.set_bus_effect_enabled(music_bus, 0, false)
 
 func play(level_music) -> void:
+	level_music_player.set_volume_db(0.0)
 	level_music_player.set_stream(level_music)
 	level_music_player.play()
+
+func fade_out() -> void:
+	anim.play("fade_out")
+
+func stop() -> void:
+	level_music_player.stop()
 
 func _on_pause_closed() -> void:
 	paused = false
@@ -40,3 +48,4 @@ func _process(delta: float) -> void:
 		audio_effect.cutoff_hz = new_hz
 		if timer.is_stopped():
 			AudioServer.set_bus_effect_enabled(music_bus, 0, false)
+

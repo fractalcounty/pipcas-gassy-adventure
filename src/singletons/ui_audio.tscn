@@ -1,16 +1,22 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://eoh62rt7rv7w"]
 
 [ext_resource type="AudioStream" uid="uid://tpddofwlxig2" path="res://assets/sounds/sfx/ui/wood_block_2.wav" id="1_ctny8"]
 [ext_resource type="Script" path="res://src/singletons/ui_audio.gd" id="1_uh48l"]
 [ext_resource type="AudioStream" uid="uid://bcve1j6tddhrf" path="res://assets/sounds/sfx/ui/wood_block_1.wav" id="2_dw44i"]
 [ext_resource type="AudioStream" uid="uid://cx31083yj60se" path="res://assets/sounds/sfx/ui/wood_block_3.wav" id="3_142h2"]
+[ext_resource type="AudioStream" uid="uid://qmk8uaoqnp8g" path="res://assets/sounds/sfx/ui/confirm.wav" id="5_8a071"]
+[ext_resource type="AudioStream" uid="uid://ddic0pjh5c2is" path="res://assets/sounds/sfx/slide_whistle/542151-zapsplat-cartoon-slide-whistle-ascend-004-60884.mp3" id="6_4c7xq"]
+[ext_resource type="AudioStream" uid="uid://buesyk04wy7om" path="res://assets/sounds/sfx/slide_whistle/542165-zapsplat-cartoon-slide-whistle-descend-fast-002-60892.mp3" id="7_20evx"]
 
-[node name="UIAudio" type="Node" node_paths=PackedStringArray("double_click", "click", "unclick")]
+[node name="UIAudio" type="Node" node_paths=PackedStringArray("double_click", "click", "unclick", "confirm", "whistle_up", "whistle_down")]
 process_mode = 3
 script = ExtResource("1_uh48l")
 double_click = NodePath("DoubleClick")
 click = NodePath("Click")
 unclick = NodePath("Unclick")
+confirm = NodePath("Confirm")
+whistle_up = NodePath("WhistleUp")
+whistle_down = NodePath("WhistleDown")
 
 [node name="DoubleClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ctny8")
@@ -20,3 +26,12 @@ stream = ExtResource("2_dw44i")
 
 [node name="Unclick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_142h2")
+
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8a071")
+
+[node name="WhistleUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4c7xq")
+
+[node name="WhistleDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_20evx")
