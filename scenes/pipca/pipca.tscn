@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dhiu1jc2qde0x"]
+[gd_scene load_steps=48 format=3 uid="uid://dhiu1jc2qde0x"]
 
 [ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_jagr2"]
 [ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="2_0psm0"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="21_eqrio"]
 [ext_resource type="Script" path="res://scenes/pipca/states/charging.gd" id="24_4jdpr"]
 [ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="25_n6qg8"]
+[ext_resource type="Script" path="res://scenes/pipca/states/dash.gd" id="25_tckub"]
 [ext_resource type="PackedScene" uid="uid://cel1llli5754b" path="res://scenes/pipca/eat_particles.tscn" id="28_wnyrm"]
 
 [sub_resource type="Curve" id="Curve_xga5o"]
@@ -683,6 +684,8 @@ gravity = 1500.0
 air_top_margin = 3000.0
 air_speed = 200.0
 air_accel = 50.0
+dash_speed = 850.0
+dash_acceleration = 1.0
 ground_friction = 5.0
 ground_speed = 30.0
 acceleration = 10.0
@@ -775,7 +778,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../CanCharge")
 
 [node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("9_c6lil")
@@ -787,7 +790,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Charging")
 
 [node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("24_4jdpr")
@@ -799,7 +802,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Full")
 
 [node name="Full" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("10_vcy6m")
@@ -835,7 +838,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../FallTop")
 
 [node name="FallTop" type="Node" parent="StateRegions/Movement/InAir"]
 script = ExtResource("15_ocege")
@@ -848,10 +851,10 @@ next_state = NodePath("")
 [node name="OnGround" type="Node" parent="StateRegions/Movement"]
 script = ExtResource("7_smmrm")
 disabled = false
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../InAir")
+next_state = NodePath("../Farts")
 
 [node name="Idle" type="Node" parent="StateRegions/Movement/OnGround"]
 script = ExtResource("9_jquvo")
@@ -918,6 +921,14 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("Still")
+
+[node name="Dash" type="Node" parent="StateRegions/Movement/OnGround"]
+script = ExtResource("25_tckub")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
 
 [node name="Farts" type="Node" parent="StateRegions/Movement"]
 script = ExtResource("12_3gkmx")

@@ -453,7 +453,7 @@ color = Color(0.568627, 0.8, 0.898039, 1)
 [node name="Sun" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/Sun"]
-position = Vector2(237.059, -43.6249)
+position = Vector2(241.354, -95.6829)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.95, 0.95)
@@ -485,10 +485,12 @@ scroll_limit_end = Vector2(5, 1)
 script = ExtResource("3_6j628")
 
 [node name="Mountains2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(26.0806, 2.68916)
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(1200, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(21.7338, 52.241)
 motion_scale = Vector2(0.5, 0.5)
 motion_offset = Vector2(0, 50)
 motion_mirroring = Vector2(1496, 0)
@@ -496,7 +498,7 @@ motion_mirroring = Vector2(1496, 0)
 [node name="CloudsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsFar"]
-position = Vector2(35.8889, -95.4051)
+position = Vector2(40.0476, -145.819)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.92, 0.92)
@@ -624,7 +626,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsMid" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsMid"]
-position = Vector2(35.1087, -96.592)
+position = Vector2(39.177, -145.91)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.9, 0.9)
@@ -1161,7 +1163,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsClose"]
-position = Vector2(34.3285, -97.7788)
+position = Vector2(38.3064, -146.001)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.88, 0.88)
@@ -1357,7 +1359,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="MountainsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsFar"]
-position = Vector2(47.3067, 116.54)
+position = Vector2(50.471, 78.1811)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.7, 0.7)
@@ -1384,7 +1386,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Parallax" type="Node2D" parent="Background/Node2D"]
 visible = false
-position = Vector2(23.4058, 85.6053)
+position = Vector2(26.118, 52.7266)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.6, 0.6)
@@ -1399,7 +1401,7 @@ frame_progress = 0.5881
 [node name="MountainsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsClose"]
-position = Vector2(-5.49519, 199.671)
+position = Vector2(-3.23499, 172.272)
 script = ExtResource("2_i3rr4")
 enabled_in_editor = true
 motion_scale = Vector2(0.5, 0.5)

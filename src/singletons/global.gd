@@ -1,5 +1,8 @@
 extends Node
 
+var max_points : float = 10000.0
+var points : float  = 0.0
+
 var pipca = null
 var pipca_origin : Marker2D = null
 var camera : Camera2D = null

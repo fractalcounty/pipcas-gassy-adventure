@@ -25,6 +25,8 @@ extends Node
 @onready var pipca_instance : Node2D = null
 @onready var title_screen_instance : Control = null
 @onready var trans_in_progress : bool = false
+@onready var counter_instance : Control = null
+
 
 func _ready():
 	set_process(false)
@@ -84,7 +86,7 @@ func _spawn_pipca(level_instance) -> void:
 	_load_counter(level_instance)
 	
 func _load_counter(level_instance) -> void:
-	var counter_instance = counter.instantiate()
+	counter_instance = counter.instantiate()
 	add_child(counter_instance)
 	await is_instance_valid(counter_instance)
 	Global.counter = counter_instance
@@ -120,6 +122,8 @@ func return_to_menu() -> void:
 	if is_instance_valid(level_banner_instance):
 		level_banner_instance.queue_free()
 	level_instance.queue_free()
+	if is_instance_valid(counter_instance):
+		counter_instance.queue_free()
 	if is_instance_valid(pause_menu_instance):
 		pause_menu_instance.on_pause_close()
 	_load_title_screen()

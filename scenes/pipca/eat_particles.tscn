@@ -54,15 +54,17 @@ turbulence_influence_max = 0.08
 turbulence_initial_displacement_min = -44.3
 turbulence_initial_displacement_max = 43.4
 attractor_interaction_enabled = false
+collision_mode = 1
+collision_friction = 0.07
+collision_bounce = 0.87
+collision_use_scale = true
 
 [node name="EatParticles" type="GPUParticles2D"]
 z_index = 2360
 position = Vector2(19, -14)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_q0ea4")
-lifetime = 1.5
 one_shot = true
-preprocess = 0.16
 explosiveness = 0.87
 randomness = 0.15
 fixed_fps = 120

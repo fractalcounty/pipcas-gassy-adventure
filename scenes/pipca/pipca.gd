@@ -32,6 +32,10 @@ class_name Pipca
 @export var air_accel : float = 6.0
 @export var air_friction : float = 10.0
 
+@export_subgroup("Dash Physics")
+@export var dash_speed : float = 450.0
+@export var dash_acceleration : float = 6.0
+
 @export_subgroup("Ground Physics")
 @export var ground_friction : float = 10.0
 @export var ground_speed : float = 450.0

@@ -213,7 +213,6 @@ pivot_offset = Vector2(-200.105, 54.218)
 script = ExtResource("1_2hcrb")
 label = NodePath("MarginContainer/HBoxContainer/PointsLabel")
 particle_label = ExtResource("3_lieh6")
-max_points = 500.0
 anim = NodePath("AnimationPlayer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

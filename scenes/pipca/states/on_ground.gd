@@ -13,11 +13,19 @@ func _on_update(_delta: float) -> void:
 		else:
 			change_state("Brake")
 	
-	else:
+	elif !Input.is_action_pressed("in_dash"):
 		change_state("Walk")
 		target.velocity.x = lerp(target.velocity.x,
 			target.ground_speed * target.dir,
 			target.acceleration * _delta)
+		
+	else: 
+		if Global.points != 0:
+			change_state("Dash")
+			target.velocity.x = lerp(target.velocity.x,
+			target.dash_speed * target.dir,
+			target.dash_acceleration*2 * _delta)
+			Global.points -= -1
 	
 	if not target.is_on_floor():
 		var _s1 = change_state("OnGround")
