@@ -9,6 +9,7 @@ func _on_enter(_args) -> void:
 	add_timer("Idle", idle_timer)
 
 func _on_update(_delta: float) -> void:
+	
 	if Input.is_action_just_pressed("in_belch"):
 		change_state("Belch")
 	if !target.dir == 0:

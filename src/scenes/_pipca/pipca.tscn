@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cutkdk2633rr7"]
+[gd_scene load_steps=47 format=3 uid="uid://cutkdk2633rr7"]
 
 [ext_resource type="Script" path="res://src/scenes/_pipca/pipca.gd" id="1_nv1se"]
 [ext_resource type="PackedScene" uid="uid://bfmvjw1l7e0y4" path="res://src/ui/points_label.tscn" id="2_r1jf1"]
@@ -26,7 +26,9 @@
 [ext_resource type="Script" path="res://src/scenes/_pipca/states/fart.gd" id="26_lgb4f"]
 [ext_resource type="Script" path="res://src/scenes/_pipca/states/ground_fart.gd" id="27_3vw7n"]
 [ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sounds/sfx/farts/fart_iconic.wav" id="28_cuqcc"]
+[ext_resource type="Theme" uid="uid://befmjph1k4vuc" path="res://assets/themes/ui.tres" id="28_eodko"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="29_dfp03"]
+[ext_resource type="FontFile" uid="uid://dk47kjvrloydw" path="res://assets/themes/fonts/hog_danish.otf" id="29_neafk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn2ue"]
 size = Vector2(9, 58)
@@ -643,7 +645,10 @@ _data = {
 "charging": SubResource("Animation_yi28j")
 }
 
-[node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("skin", "occluder", "anim", "charging_shaker", "charged_shaker", "raycast", "collision_shape", "belch_sounds", "fart_sounds", "consumer")]
+[sub_resource type="FontVariation" id="FontVariation_m6qw1"]
+base_font = ExtResource("29_neafk")
+
+[node name="Pipca" type="CharacterBody2D" node_paths=PackedStringArray("state_label", "skin", "occluder", "anim", "charging_shaker", "charged_shaker", "raycast", "collision_shape", "belch_sounds", "fart_sounds", "consumer")]
 top_level = true
 light_mask = 524288
 z_index = 500
@@ -656,6 +661,7 @@ floor_snap_length = 27.3
 platform_wall_layers = 3
 safe_margin = 0.001
 script = ExtResource("1_nv1se")
+state_label = NodePath("StateLabel")
 skin = NodePath("Skin")
 occluder = NodePath("LightOccluder2D")
 anim = NodePath("Animation/SpriteAnimationPlayer")
@@ -674,7 +680,7 @@ dash_acceleration = 1.0
 ground_friction = 5.0
 ground_speed = 30.0
 acceleration = 10.0
-walk_margin = 5.0
+walk_margin = 4.0
 fart_anim_speed = 0.0
 fart_max_charge_time = 1.0
 
@@ -781,7 +787,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../CanCharge")
 
 [node name="CanCharge" type="Node" parent="StateMachine/RegionFartPossible"]
 script = ExtResource("12_2lxag")
@@ -793,7 +799,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Charging")
 
 [node name="Charging" type="Node" parent="StateMachine/RegionFartPossible"]
 script = ExtResource("13_o77by")
@@ -805,7 +811,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Full")
 
 [node name="Full" type="Node" parent="StateMachine/RegionFartPossible"]
 script = ExtResource("14_01w6y")
@@ -841,7 +847,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../FallTop")
 
 [node name="FallTop" type="Node" parent="StateMachine/Movement/InAir"]
 script = ExtResource("18_25u71")
@@ -857,7 +863,7 @@ disabled = false
 debug_mode = true
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Farts")
 
 [node name="Idle" type="Node" parent="StateMachine/Movement/OnGround"]
 script = ExtResource("20_fc0ad")
@@ -952,3 +958,19 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -48.0
+offset_top = -58.0
+offset_right = 52.0
+offset_bottom = -31.0
+theme = ExtResource("28_eodko")
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = SubResource("FontVariation_m6qw1")
+theme_override_font_sizes/font_size = 16
+text = "FART DASH"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -33,3 +33,14 @@ func _on_update(_delta: float) -> void:
 	
 	else:
 		target.rotation = lerp(target.rotation, 0.0, _delta*10)
+
+
+func _after_update(_delta: float) -> void:
+	if is_active("Idle"):
+		Global.pipca.state_label.set_text("IDLE")
+	if is_active("Walk"):
+		Global.pipca.state_label.set_text("WALK")
+	if is_active("Brake"):
+		Global.pipca.state_label.set_text("BRAKE")
+	if is_active("Dash"):
+		Global.pipca.state_label.set_text("FART DASH")
