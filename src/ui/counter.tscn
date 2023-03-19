@@ -1,0 +1,249 @@
+[gd_scene load_steps=14 format=3 uid="uid://dhdkmlx8a7ocx"]
+
+[ext_resource type="Script" path="res://src/ui/counter.gd" id="1_yok6j"]
+[ext_resource type="PackedScene" uid="uid://bfmvjw1l7e0y4" path="res://src/ui/points_label.tscn" id="2_atdlq"]
+[ext_resource type="Shader" path="res://assets/shaders/flag_wave.gdshader" id="3_koch5"]
+[ext_resource type="FontFile" uid="uid://dk47kjvrloydw" path="res://assets/themes/fonts/hog_danish.otf" id="4_j6hl4"]
+[ext_resource type="LabelSettings" path="res://assets/themes/counter.tres" id="5_2m7m2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_leq8h"]
+shader = ExtResource("3_koch5")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 3.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="SystemFont" id="SystemFont_d8wfu"]
+font_names = PackedStringArray("Sans-Serif")
+
+[sub_resource type="FontVariation" id="FontVariation_iocxo"]
+base_font = ExtResource("4_j6hl4")
+fallbacks = Array[Font]([SubResource("SystemFont_d8wfu")])
+spacing_glyph = 4
+spacing_space = 15
+spacing_top = 12
+spacing_bottom = -3
+
+[sub_resource type="LabelSettings" id="LabelSettings_vrbsy"]
+font = SubResource("FontVariation_iocxo")
+font_size = 80
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="Animation" id="Animation_jv6pi"]
+resource_name = "text_juice_1"
+length = 0.266668
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
+"transitions": PackedFloat32Array(-0.5, 0.5, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.985, 0.985), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 4
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
+"transitions": PackedFloat32Array(-0.5, 0.5, 2),
+"update": 0,
+"values": [0.0, 0.00349066, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/PointsLabel:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0833333, 0.266667),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0.0980392, 1), Color(0.0705882, 0.768627, 0.596078, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dvohj"]
+resource_name = "text_juice_2"
+length = 0.266668
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
+"transitions": PackedFloat32Array(-0.5, 0.5, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 4
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
+"transitions": PackedFloat32Array(-0.5, 0.5, 2),
+"update": 0,
+"values": [0.0, 0.00698132, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/PointsLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0833333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 1, 1), Color(0.0901961, 0.596078, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7k5rv"]
+resource_name = "text_juice_3"
+length = 0.266668
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
+"transitions": PackedFloat32Array(-0.5, 0.5, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.98, 0.98), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 4
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
+"transitions": PackedFloat32Array(-0.5, 0.5, 2),
+"update": 0,
+"values": [0.0, -0.010472, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/PointsLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0833333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.890196, 0.329412, 1, 1), Color(0.654902, 0.627451, 0.854902, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqq45"]
+_data = {
+"text_juice_1": SubResource("Animation_jv6pi"),
+"text_juice_2": SubResource("Animation_dvohj"),
+"text_juice_3": SubResource("Animation_7k5rv")
+}
+
+[node name="Counter" type="Control" node_paths=PackedStringArray("label", "anim")]
+layout_mode = 3
+anchors_preset = 0
+pivot_offset = Vector2(-200.105, 54.218)
+script = ExtResource("1_yok6j")
+label = NodePath("MarginContainer/HBoxContainer/PointsLabel")
+points_label = ExtResource("2_atdlq")
+anim = NodePath("AnimationPlayer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 351.0
+offset_bottom = 118.0
+pivot_offset = Vector2(171, 64)
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 17
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_leq8h")
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0"
+label_settings = SubResource("LabelSettings_vrbsy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_leq8h")
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = " POINTS"
+label_settings = ExtResource("5_2m7m2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pqq45")
+}

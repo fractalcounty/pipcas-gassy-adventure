@@ -1,0 +1,365 @@
+[gd_scene load_steps=89 format=3]
+
+[ext_resource type="Texture2D" uid="uid://ddgcnn82faksd" path="res://assets/sprites/effects/fart/fart.sprites/frame_001.tres" id="1_i6opa"]
+[ext_resource type="Texture2D" uid="uid://dmryalo11oos1" path="res://assets/sprites/effects/fart/fart.sprites/frame_002.tres" id="2_rwm4p"]
+[ext_resource type="Texture2D" uid="uid://c77gfwy6iy7jx" path="res://assets/sprites/effects/fart/fart.sprites/frame_003.tres" id="3_xl8vj"]
+[ext_resource type="Texture2D" uid="uid://i8dv6l86meop" path="res://assets/sprites/effects/fart/fart.sprites/frame_004.tres" id="4_yewo8"]
+[ext_resource type="Texture2D" uid="uid://bw68dx3td2rcy" path="res://assets/sprites/effects/fart/fart.sprites/frame_005.tres" id="5_0h7jx"]
+[ext_resource type="Texture2D" uid="uid://d2o4xdjb1blkq" path="res://assets/sprites/effects/fart/fart.sprites/frame_006.tres" id="6_aebn8"]
+[ext_resource type="Texture2D" uid="uid://brjtutpm8p0vo" path="res://assets/sprites/effects/fart/fart.sprites/frame_007.tres" id="7_selkb"]
+[ext_resource type="Texture2D" uid="uid://c86heihppesvb" path="res://assets/sprites/effects/fart/fart.sprites/frame_008.tres" id="8_c0jhu"]
+[ext_resource type="Texture2D" uid="uid://bstwu7gr2cw0h" path="res://assets/sprites/effects/fart/fart.sprites/frame_009.tres" id="9_ees15"]
+[ext_resource type="Texture2D" uid="uid://b7xvfvnlewapw" path="res://assets/sprites/effects/fart/fart.sprites/frame_010.tres" id="10_fwwte"]
+[ext_resource type="Texture2D" uid="uid://omim26tog4qb" path="res://assets/sprites/effects/fart/fart.sprites/frame_011.tres" id="11_je70q"]
+[ext_resource type="Texture2D" uid="uid://b3ckuer2ayys" path="res://assets/sprites/effects/fart/fart.sprites/frame_012.tres" id="12_hcy7t"]
+[ext_resource type="Texture2D" uid="uid://kp1est735i60" path="res://assets/sprites/effects/fart/fart.sprites/frame_013.tres" id="13_s7urs"]
+[ext_resource type="Texture2D" uid="uid://baplx7p30acys" path="res://assets/sprites/effects/fart/fart.sprites/frame_014.tres" id="14_1ji2g"]
+[ext_resource type="Texture2D" uid="uid://chgo6wy4xyjr4" path="res://assets/sprites/effects/fart/fart.sprites/frame_015.tres" id="15_coxik"]
+[ext_resource type="Texture2D" uid="uid://dx1age67q5lvy" path="res://assets/sprites/effects/fart/fart.sprites/frame_016.tres" id="16_8tta7"]
+[ext_resource type="Texture2D" uid="uid://b04xqydfq8jut" path="res://assets/sprites/effects/fart/fart.sprites/frame_017.tres" id="17_6oj8s"]
+[ext_resource type="Texture2D" uid="uid://c3y43b63k1v68" path="res://assets/sprites/effects/fart/fart.sprites/frame_018.tres" id="18_yfs5s"]
+[ext_resource type="Texture2D" uid="uid://cvk4v8bii68ke" path="res://assets/sprites/effects/fart/fart.sprites/frame_019.tres" id="19_nxa30"]
+[ext_resource type="Texture2D" uid="uid://deu3gle27wp1" path="res://assets/sprites/effects/fart/fart.sprites/frame_020.tres" id="20_3fea1"]
+[ext_resource type="Texture2D" uid="uid://bfksdagt7o4p2" path="res://assets/sprites/effects/fart/fart.sprites/frame_021.tres" id="21_pikcb"]
+[ext_resource type="Texture2D" uid="uid://dku0kvy1tc2a8" path="res://assets/sprites/effects/fart/fart.sprites/frame_022.tres" id="22_5hjbu"]
+[ext_resource type="Texture2D" uid="uid://cbm2xr8ljp0s" path="res://assets/sprites/effects/fart/fart.sprites/frame_023.tres" id="23_bwwim"]
+[ext_resource type="Texture2D" uid="uid://b6kfewgumfkst" path="res://assets/sprites/effects/fart/fart.sprites/frame_024.tres" id="24_w6qp0"]
+[ext_resource type="Texture2D" uid="uid://12euxv8hxjqt" path="res://assets/sprites/effects/fart/fart.sprites/frame_025.tres" id="25_15bt4"]
+[ext_resource type="Texture2D" uid="uid://cq40et0ax2jq8" path="res://assets/sprites/effects/fart/fart.sprites/frame_026.tres" id="26_s8chx"]
+[ext_resource type="Texture2D" uid="uid://dwvnu00nu6t6c" path="res://assets/sprites/effects/fart/fart.sprites/frame_027.tres" id="27_uywjx"]
+[ext_resource type="Texture2D" uid="uid://hjoqkscho4ht" path="res://assets/sprites/effects/fart/fart.sprites/frame_028.tres" id="28_aavin"]
+[ext_resource type="Texture2D" uid="uid://moqo6geiev5y" path="res://assets/sprites/effects/fart/fart.sprites/frame_029.tres" id="29_8o8k6"]
+[ext_resource type="Texture2D" uid="uid://b2hd4qs22cosk" path="res://assets/sprites/effects/fart/fart.sprites/frame_030.tres" id="30_nah2e"]
+[ext_resource type="Texture2D" uid="uid://ckhcudjifb2h" path="res://assets/sprites/effects/fart/fart.sprites/frame_031.tres" id="31_abis0"]
+[ext_resource type="Texture2D" uid="uid://bcf4tj7rlr7u0" path="res://assets/sprites/effects/fart/fart.sprites/frame_032.tres" id="32_jxg6i"]
+[ext_resource type="Texture2D" uid="uid://t3oyrqpnj7nq" path="res://assets/sprites/effects/fart/fart.sprites/frame_033.tres" id="33_0qmo1"]
+[ext_resource type="Texture2D" uid="uid://ytb1o6gdv0jl" path="res://assets/sprites/effects/fart/fart.sprites/frame_034.tres" id="34_g1axl"]
+[ext_resource type="Texture2D" uid="uid://be86m5jmc5urt" path="res://assets/sprites/effects/fart/fart.sprites/frame_035.tres" id="35_b1rsx"]
+[ext_resource type="Texture2D" uid="uid://wieecucfdu6q" path="res://assets/sprites/effects/fart/fart.sprites/frame_036.tres" id="36_0wekb"]
+[ext_resource type="Texture2D" uid="uid://cdqv5qn52ohmn" path="res://assets/sprites/effects/fart/fart.sprites/frame_037.tres" id="37_j6y66"]
+[ext_resource type="Texture2D" uid="uid://b8gc8t3btnau0" path="res://assets/sprites/effects/fart/fart.sprites/frame_038.tres" id="38_yq50n"]
+[ext_resource type="Texture2D" uid="uid://bnm7ywabl85if" path="res://assets/sprites/effects/fart/fart.sprites/frame_039.tres" id="39_ptrak"]
+[ext_resource type="Texture2D" uid="uid://dsxqlanor3geb" path="res://assets/sprites/effects/fart/fart.sprites/frame_040.tres" id="40_4ilt1"]
+[ext_resource type="Texture2D" uid="uid://xq5vrnyn7a58" path="res://assets/sprites/effects/fart/fart.sprites/frame_041.tres" id="41_ppy1l"]
+[ext_resource type="Texture2D" uid="uid://dvfpjdiluejln" path="res://assets/sprites/effects/fart/fart.sprites/frame_042.tres" id="42_spcwv"]
+[ext_resource type="Texture2D" uid="uid://bkg3fjpfi34yk" path="res://assets/sprites/effects/fart/fart.sprites/frame_043.tres" id="43_687o4"]
+[ext_resource type="Texture2D" uid="uid://6ktg5qv4ujcs" path="res://assets/sprites/effects/fart/fart.sprites/frame_044.tres" id="44_vi863"]
+[ext_resource type="Texture2D" uid="uid://djx63jx6ms3da" path="res://assets/sprites/effects/fart/fart.sprites/frame_045.tres" id="45_clhox"]
+[ext_resource type="Texture2D" uid="uid://dke7vl6n8fuiy" path="res://assets/sprites/effects/fart/fart.sprites/frame_046.tres" id="46_uq6i5"]
+[ext_resource type="Texture2D" uid="uid://b142s3nwwp04g" path="res://assets/sprites/effects/fart/fart.sprites/frame_047.tres" id="47_71e42"]
+[ext_resource type="Texture2D" uid="uid://bqt2h1fwysh07" path="res://assets/sprites/effects/fart/fart.sprites/frame_048.tres" id="48_vpx2q"]
+[ext_resource type="Texture2D" uid="uid://b03ko45apg053" path="res://assets/sprites/effects/fart/fart.sprites/frame_049.tres" id="49_i1lsn"]
+[ext_resource type="Texture2D" uid="uid://qbu8rwrh3dto" path="res://assets/sprites/effects/fart/fart.sprites/frame_050.tres" id="50_2fm2a"]
+[ext_resource type="Texture2D" uid="uid://bfulquxdfocsm" path="res://assets/sprites/effects/fart/fart.sprites/frame_051.tres" id="51_jequi"]
+[ext_resource type="Texture2D" uid="uid://c71for1dnjg7c" path="res://assets/sprites/effects/fart/fart.sprites/frame_052.tres" id="52_14wvl"]
+[ext_resource type="Texture2D" uid="uid://dt00e4lc2ngib" path="res://assets/sprites/effects/fart/fart.sprites/frame_053.tres" id="53_vvocx"]
+[ext_resource type="Texture2D" uid="uid://bw2j26aacctly" path="res://assets/sprites/effects/fart/fart.sprites/frame_054.tres" id="54_cfd8v"]
+[ext_resource type="Texture2D" uid="uid://rml3t6hyfhbn" path="res://assets/sprites/effects/fart/fart.sprites/frame_055.tres" id="55_bbrns"]
+[ext_resource type="Texture2D" uid="uid://b4ntwvn6pdnox" path="res://assets/sprites/effects/fart/fart.sprites/frame_056.tres" id="56_awcj1"]
+[ext_resource type="Texture2D" uid="uid://fpk2qevdf7ix" path="res://assets/sprites/effects/fart/fart.sprites/frame_057.tres" id="57_fn1te"]
+[ext_resource type="Texture2D" uid="uid://f1mnv5av3khq" path="res://assets/sprites/effects/fart/fart.sprites/frame_058.tres" id="58_fgryk"]
+[ext_resource type="Texture2D" uid="uid://bakke2xgr0vby" path="res://assets/sprites/effects/fart/fart.sprites/frame_059.tres" id="59_t0pbh"]
+[ext_resource type="Texture2D" uid="uid://cp4fy4od7ujyu" path="res://assets/sprites/effects/fart/fart.sprites/frame_060.tres" id="60_w5d46"]
+[ext_resource type="Texture2D" uid="uid://cemuocb5fn5vh" path="res://assets/sprites/effects/fart/fart.sprites/frame_061.tres" id="61_asmeq"]
+[ext_resource type="Texture2D" uid="uid://c004aeircvxhm" path="res://assets/sprites/effects/fart/fart.sprites/frame_062.tres" id="62_885qf"]
+[ext_resource type="Texture2D" uid="uid://gcabyeb0dcti" path="res://assets/sprites/effects/fart/fart.sprites/frame_063.tres" id="63_e7f81"]
+[ext_resource type="Texture2D" uid="uid://d0oi7prrrufn1" path="res://assets/sprites/effects/fart/fart.sprites/frame_064.tres" id="64_xtge5"]
+[ext_resource type="Texture2D" uid="uid://bl0i8bgr26khf" path="res://assets/sprites/effects/fart/fart.sprites/frame_065.tres" id="65_id4mq"]
+[ext_resource type="Texture2D" uid="uid://ik51f73peeau" path="res://assets/sprites/effects/fart/fart.sprites/frame_066.tres" id="66_53hef"]
+[ext_resource type="Texture2D" uid="uid://bmh3b57vaw55v" path="res://assets/sprites/effects/fart/fart.sprites/frame_067.tres" id="67_j1ej1"]
+[ext_resource type="Texture2D" uid="uid://cw5f75bh4dm3m" path="res://assets/sprites/effects/fart/fart.sprites/frame_068.tres" id="68_pc0l1"]
+[ext_resource type="Texture2D" uid="uid://xw5gc21cal36" path="res://assets/sprites/effects/fart/fart.sprites/frame_069.tres" id="69_58s4b"]
+[ext_resource type="Texture2D" uid="uid://1cq0synlc2f5" path="res://assets/sprites/effects/fart/fart.sprites/frame_070.tres" id="70_xvlly"]
+[ext_resource type="Texture2D" uid="uid://da34sw1cogwls" path="res://assets/sprites/effects/fart/fart.sprites/frame_071.tres" id="71_uc25p"]
+[ext_resource type="Texture2D" uid="uid://bxg8u5nx3daou" path="res://assets/sprites/effects/fart/fart.sprites/frame_072.tres" id="72_u7nst"]
+[ext_resource type="Texture2D" uid="uid://dttkawl7s53aa" path="res://assets/sprites/effects/fart/fart.sprites/frame_073.tres" id="73_puah8"]
+[ext_resource type="Texture2D" uid="uid://bh1hh0dwiessh" path="res://assets/sprites/effects/fart/fart.sprites/frame_074.tres" id="74_xqphb"]
+[ext_resource type="Texture2D" uid="uid://b6gmrol1eayvq" path="res://assets/sprites/effects/fart/fart.sprites/frame_075.tres" id="75_f1ald"]
+[ext_resource type="Texture2D" uid="uid://qk1ntkuxxf2e" path="res://assets/sprites/effects/fart/fart.sprites/frame_076.tres" id="76_gtfjd"]
+[ext_resource type="Texture2D" uid="uid://be04n2sy72i0y" path="res://assets/sprites/effects/fart/fart.sprites/frame_077.tres" id="77_24q33"]
+[ext_resource type="Texture2D" uid="uid://dnp0mayh3i46n" path="res://assets/sprites/effects/fart/fart.sprites/frame_078.tres" id="78_ds3pq"]
+[ext_resource type="Texture2D" uid="uid://dcdlinlnwjl2n" path="res://assets/sprites/effects/fart/fart.sprites/frame_079.tres" id="79_dm6oo"]
+[ext_resource type="Texture2D" uid="uid://bdcmcvft30ylt" path="res://assets/sprites/effects/fart/fart.sprites/frame_080.tres" id="80_7we5t"]
+[ext_resource type="Texture2D" uid="uid://bwu8u5wn2tped" path="res://assets/sprites/effects/fart/fart.sprites/frame_081.tres" id="81_fdp3r"]
+[ext_resource type="Texture2D" uid="uid://bi0hbv56oqlqy" path="res://assets/sprites/effects/fart/fart.sprites/frame_082.tres" id="82_2qhkn"]
+[ext_resource type="Texture2D" uid="uid://i2plqdgwkuuw" path="res://assets/sprites/effects/fart/fart.sprites/frame_083.tres" id="83_x0q16"]
+[ext_resource type="Texture2D" uid="uid://dhpgroejmuune" path="res://assets/sprites/effects/fart/fart.sprites/frame_084.tres" id="84_3ou3l"]
+[ext_resource type="Texture2D" uid="uid://dvtdn2261ao6d" path="res://assets/sprites/effects/fart/fart.sprites/frame_085.tres" id="85_t6qag"]
+[ext_resource type="Texture2D" uid="uid://romgig761p7e" path="res://assets/sprites/effects/fart/fart.sprites/frame_086.tres" id="86_u3b3q"]
+[ext_resource type="Script" path="res://src/scenes/_effects/belch_effect.gd" id="87_rt2cm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ar4ab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i6opa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rwm4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xl8vj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yewo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0h7jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aebn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_selkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c0jhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ees15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fwwte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_je70q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hcy7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_s7urs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1ji2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_coxik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8tta7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6oj8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yfs5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nxa30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_3fea1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pikcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_5hjbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_bwwim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_w6qp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_15bt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_s8chx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_uywjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_aavin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_8o8k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nah2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_abis0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_jxg6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0qmo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_g1axl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_b1rsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_0wekb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_j6y66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_yq50n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ptrak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_4ilt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ppy1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_spcwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_687o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_vi863")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_clhox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_uq6i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_71e42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_vpx2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_i1lsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_2fm2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_jequi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_14wvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_vvocx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_cfd8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_bbrns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_awcj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_fn1te")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_fgryk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_t0pbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_w5d46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_asmeq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_885qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_e7f81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_xtge5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_id4mq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_53hef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_j1ej1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_pc0l1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_58s4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_xvlly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_uc25p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_u7nst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_puah8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_xqphb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_f1ald")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_gtfjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_24q33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_ds3pq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_dm6oo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_7we5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_fdp3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_2qhkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_x0q16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_3ou3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_t6qag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_u3b3q")
+}],
+"loop": false,
+"name": &"short_fart",
+"speed": 60.0
+}]
+
+[node name="FartSprite" type="AnimatedSprite2D"]
+z_index = 1
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_ar4ab")
+animation = &"short_fart"
+offset = Vector2(638.333, -40)
+script = ExtResource("87_rt2cm")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished" flags=18]

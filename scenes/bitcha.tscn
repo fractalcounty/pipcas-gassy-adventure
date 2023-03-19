@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba8yl0lc8wgt1"]
-
-[ext_resource type="Script" path="res://scenes/pipca/player.gd" id="1_r15bh"]
-
-[node name="Pipca" type="CharacterBody2D"]
-z_index = 1
-texture_filter = 1
-script = ExtResource("1_r15bh")
