@@ -1,13 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://blof152vahbbs"]
+[gd_scene load_steps=15 format=3 uid="uid://gq34p1c3of1i"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_r5gc2"]
-[ext_resource type="PackedScene" uid="uid://dk78estx6ar8o" path="res://scenes/levels/level.tscn" id="2_0p1rw"]
-[ext_resource type="PackedScene" uid="uid://cnmpjq3i3pnk" path="res://scenes/menus/level_banner.tscn" id="3_opved"]
-[ext_resource type="PackedScene" uid="uid://dhiu1jc2qde0x" path="res://scenes/pipca/pipca.tscn" id="3_p0cit"]
-[ext_resource type="PackedScene" uid="uid://b3gjnn0npytvq" path="res://scenes/menus/title_screen.tscn" id="5_n1rgl"]
-[ext_resource type="PackedScene" uid="uid://i4go24n1ygry" path="res://scenes/menus/pause_menu.tscn" id="5_nq6vy"]
-[ext_resource type="PackedScene" uid="uid://dbbq00jp5k1sk" path="res://scenes/menus/counter.tscn" id="7_oss6w"]
-[ext_resource type="AudioStream" uid="uid://rggq4c6xkoqd" path="res://assets/sfx/Fnf' confirmed menu sound effect.wav" id="8_d0dqy"]
+[ext_resource type="PackedScene" uid="uid://dwlx6wyf7ox70" path="res://scenes/levels/level.tscn" id="2_0p1rw"]
+[ext_resource type="PackedScene" uid="uid://b34ja8kvkdlvu" path="res://scenes/menus/level_banner.tscn" id="3_opved"]
+[ext_resource type="PackedScene" uid="uid://ctq4emdkipiwu" path="res://scenes/pipca/pipca.tscn" id="3_p0cit"]
+[ext_resource type="PackedScene" path="res://scenes/menus/title_screen.tscn" id="5_n1rgl"]
+[ext_resource type="PackedScene" path="res://scenes/menus/pause_menu.tscn" id="5_nq6vy"]
+[ext_resource type="PackedScene" uid="uid://csk1avdonklfp" path="res://scenes/menus/counter.tscn" id="7_oss6w"]
 [ext_resource type="Shader" path="res://assets/shaders/transition.gdshader" id="8_singh"]
 [ext_resource type="VideoStream" path="res://assets/video/game_intro.ogv" id="17_mjp3m"]
 
@@ -100,7 +99,7 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0661955,
-"stream": ExtResource("8_d0dqy")
+"stream": null
 }],
 "times": PackedFloat32Array(0)
 }

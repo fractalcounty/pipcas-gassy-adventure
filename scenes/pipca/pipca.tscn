@@ -1,17 +1,17 @@
-[gd_scene load_steps=48 format=3 uid="uid://dhiu1jc2qde0x"]
+[gd_scene load_steps=48 format=3 uid="uid://uqmtpc5s848c"]
 
 [ext_resource type="Script" path="res://scenes/pipca/pipca.gd" id="1_jagr2"]
-[ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/pipca.png" id="2_0psm0"]
 [ext_resource type="Script" path="res://scenes/pipca/look.gd" id="2_021t1"]
-[ext_resource type="PackedScene" uid="uid://d1nqptj5gcqhe" path="res://scenes/menus/particle_label.tscn" id="2_rmaoy"]
-[ext_resource type="AudioStream" uid="uid://ci0ynipdlk0bi" path="res://assets/sfx/belch.wav" id="3_1g2fa"]
-[ext_resource type="Texture2D" uid="uid://em4sk2w5yrhl" path="res://assets/sprites/crosshair001.png" id="3_g31ey"]
+[ext_resource type="PackedScene" uid="uid://bhaau2ksedakj" path="res://scenes/menus/particle_label.tscn" id="2_rmaoy"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_cucdx"]
 [ext_resource type="Script" path="res://scenes/pipca/line_renderer.gd" id="4_wpkhe"]
 [ext_resource type="Script" path="res://scenes/pipca/states/movement.gd" id="5_b38d3"]
+[ext_resource type="Texture2D" uid="uid://em4sk2w5yrhl" path="res://assets/sprites/ui/crosshair.png" id="5_qllui"]
 [ext_resource type="Script" path="res://scenes/pipca/states/in_air.gd" id="6_jvapn"]
+[ext_resource type="Texture2D" uid="uid://cllm2jqdi7kds" path="res://assets/sprites/characters/pipca/pipca.png" id="7_rsjnw"]
 [ext_resource type="Script" path="res://scenes/pipca/states/on_ground.gd" id="7_smmrm"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_5o37a"]
+[ext_resource type="AudioStream" uid="uid://ci0ynipdlk0bi" path="res://assets/sounds/sfx/burps/belch.wav" id="8_eeqsc"]
 [ext_resource type="Script" path="res://scenes/pipca/states/region_fart_possible.gd" id="8_u1tdb"]
 [ext_resource type="Script" path="res://scenes/pipca/states/can_charge.gd" id="9_c6lil"]
 [ext_resource type="Script" path="res://scenes/pipca/states/idle.gd" id="9_jquvo"]
@@ -26,8 +26,8 @@
 [ext_resource type="Script" path="res://scenes/pipca/states/ground_fart.gd" id="16_d0q4w"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="21_eqrio"]
 [ext_resource type="Script" path="res://scenes/pipca/states/charging.gd" id="24_4jdpr"]
-[ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sfx/pause.wav" id="25_n6qg8"]
 [ext_resource type="Script" path="res://scenes/pipca/states/dash.gd" id="25_tckub"]
+[ext_resource type="AudioStream" uid="uid://cx108rp0rq81y" path="res://assets/sounds/sfx/farts/fart_iconic.wav" id="28_6awjd"]
 [ext_resource type="PackedScene" uid="uid://cel1llli5754b" path="res://scenes/pipca/eat_particles.tscn" id="28_wnyrm"]
 
 [sub_resource type="Curve" id="Curve_xga5o"]
@@ -82,7 +82,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0psm0")]
+"values": [ExtResource("7_rsjnw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -157,7 +157,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0psm0")]
+"values": [ExtResource("7_rsjnw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -217,7 +217,7 @@ tracks/5/keys = {
 "clips": [{
 "end_offset": 0.130488,
 "start_offset": 0.0,
-"stream": ExtResource("3_1g2fa")
+"stream": ExtResource("8_eeqsc")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -259,7 +259,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0psm0")]
+"values": [ExtResource("7_rsjnw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -323,7 +323,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0psm0")]
+"values": [ExtResource("7_rsjnw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -400,7 +400,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0psm0")]
+"values": [ExtResource("7_rsjnw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -477,7 +477,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0psm0")]
+"values": [ExtResource("7_rsjnw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -703,13 +703,13 @@ script = ExtResource("2_021t1")
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_g31ey")
+texture = ExtResource("5_qllui")
 
 [node name="CrosshairClose" type="Sprite2D" parent="Look"]
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_g31ey")
+texture = ExtResource("5_qllui")
 
 [node name="Line2D" type="Line2D" parent="Look" node_paths=PackedStringArray("pipca_center", "crosshair_final", "crosshair_far", "crosshair_close")]
 visible = false
@@ -729,7 +729,7 @@ crosshair_close = NodePath("../CrosshairClose")
 light_mask = 524288
 z_index = 1
 texture_filter = 1
-texture = ExtResource("2_0psm0")
+texture = ExtResource("7_rsjnw")
 hframes = 6
 vframes = 6
 metadata/_aseprite_wizard_config_ = {
@@ -778,7 +778,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CanCharge")
+next_state = NodePath("")
 
 [node name="CanCharge" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("9_c6lil")
@@ -790,7 +790,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Charging")
+next_state = NodePath("")
 
 [node name="Charging" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("24_4jdpr")
@@ -802,7 +802,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Full")
+next_state = NodePath("")
 
 [node name="Full" type="Node" parent="StateRegions/RegionFartPossible"]
 script = ExtResource("10_vcy6m")
@@ -838,7 +838,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../FallTop")
+next_state = NodePath("")
 
 [node name="FallTop" type="Node" parent="StateRegions/Movement/InAir"]
 script = ExtResource("15_ocege")
@@ -854,7 +854,7 @@ disabled = false
 debug_mode = true
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Farts")
+next_state = NodePath("")
 
 [node name="Idle" type="Node" parent="StateRegions/Movement/OnGround"]
 script = ExtResource("9_jquvo")
@@ -953,7 +953,7 @@ next_state = NodePath("")
 [node name="Belch" type="AudioStreamPlayer" parent="."]
 
 [node name="FartSounds" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_n6qg8")
+stream = ExtResource("28_6awjd")
 volume_db = -80.0
 
 [node name="Mouth" type="Marker2D" parent="."]

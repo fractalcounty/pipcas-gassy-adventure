@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwtxlf25ofrb1"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://src/singletons/music.gd" id="1_3xjrn"]
-[ext_resource type="AudioStream" uid="uid://mis3u6wd4gf" path="res://assets/music/temp_song.ogg" id="2_wpqr3"]
+[ext_resource type="AudioStream" uid="uid://mis3u6wd4gf" path="res://assets/sounds/music/temp_song.ogg" id="2_wpqr3"]
 
 [node name="Music" type="Node" node_paths=PackedStringArray("level_music_player", "timer")]
 process_mode = 3

@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3gjnn0npytvq"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scenes/menus/title_screen.gd" id="1_4w0q5"]
-[ext_resource type="Texture2D" uid="uid://bwin2hlvow6js" path="res://assets/menus/clouds-4258726_1280.jpg" id="2_oacx6"]
-[ext_resource type="Texture2D" uid="uid://b3yy7mvloos1c" path="res://assets/menus/game_logo.png" id="3_4gwu1"]
-[ext_resource type="Theme" uid="uid://dp6k6ogyibshp" path="res://assets/theme/menu.tres" id="4_r3gqn"]
-[ext_resource type="FontFile" uid="uid://bfg3x82e0mrlp" path="res://assets/fonts/hog danish.ttf" id="5_h6tor"]
+[ext_resource type="Texture2D" uid="uid://bwin2hlvow6js" path="res://assets/sprites/ui/clouds-4258726_1280.jpg" id="2_oacx6"]
+[ext_resource type="Texture2D" uid="uid://b3yy7mvloos1c" path="res://assets/sprites/ui/game_logo.png" id="3_4gwu1"]
+[ext_resource type="Theme" path="res://assets/themes/ui.tres" id="4_r3gqn"]
+[ext_resource type="FontFile" uid="uid://bfg3x82e0mrlp" path="res://assets/themes/fonts/hog danish.ttf" id="5_h6tor"]
 
 [node name="TitleScreen" type="Control" node_paths=PackedStringArray("play_button", "settings_button", "quit_button")]
 process_mode = 3

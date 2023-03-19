@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh4coyprw5b37"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="Texture2D" uid="uid://c7v723bm4e4i" path="res://assets/sprites/cloudyboysLayer 1.png" id="1_3inhs"]
-[ext_resource type="Texture2D" uid="uid://c2a7vjkxjpqi4" path="res://assets/sprites/bg_top.png" id="1_ly1ox"]
-[ext_resource type="Texture2D" uid="uid://dsnvpisjkpgis" path="res://assets/sprites/sunguy123Layer 1.png" id="2_jnmlp"]
+[ext_resource type="Texture2D" uid="uid://c7v723bm4e4i" path="res://assets/sprites/levels/meal_meadows/cloudyboysLayer 1.png" id="1_3inhs"]
+[ext_resource type="Texture2D" uid="uid://c2a7vjkxjpqi4" path="res://assets/sprites/levels/meal_meadows/bg_top.png" id="1_ly1ox"]
+[ext_resource type="Texture2D" uid="uid://dsnvpisjkpgis" path="res://assets/sprites/levels/meal_meadows/sunguy123Layer 1.png" id="2_jnmlp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5r8r"]
 atlas = ExtResource("2_jnmlp")

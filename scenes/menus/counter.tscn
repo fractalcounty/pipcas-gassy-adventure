@@ -1,23 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbbq00jp5k1sk"]
+[gd_scene load_steps=14 format=3 uid="uid://dkdoj0gmg41wv"]
 
 [ext_resource type="Script" path="res://scenes/menus/counter.gd" id="1_2hcrb"]
 [ext_resource type="Shader" path="res://assets/shaders/flag_wave.gdshader" id="1_8fjc5"]
-[ext_resource type="Material" uid="uid://bmhfxxkvceqye" path="res://assets/shaders/rainbow_text.tres" id="1_npowq"]
-[ext_resource type="PackedScene" uid="uid://d1nqptj5gcqhe" path="res://scenes/menus/particle_label.tscn" id="3_lieh6"]
-[ext_resource type="FontFile" uid="uid://dk47kjvrloydw" path="res://assets/fonts/hog_danish.otf" id="4_bocce"]
-[ext_resource type="LabelSettings" uid="uid://c1goffiab8jsb" path="res://scenes/menus/counter.tres" id="4_rawor"]
+[ext_resource type="PackedScene" uid="uid://wpl3h7lr7cfc" path="res://scenes/menus/particle_label.tscn" id="3_lieh6"]
+[ext_resource type="FontFile" uid="uid://dk47kjvrloydw" path="res://assets/themes/fonts/hog_danish.otf" id="4_cnqxv"]
+[ext_resource type="LabelSettings" path="res://scenes/menus/counter.tres" id="4_rawor"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_leq8h"]
 shader = ExtResource("1_8fjc5")
 shader_parameter/height = 3.0
-shader_parameter/frequency = 5.0
+shader_parameter/frequency = 3.0
 shader_parameter/speed = 3.0
 
 [sub_resource type="SystemFont" id="SystemFont_d8wfu"]
 font_names = PackedStringArray("Sans-Serif")
 
 [sub_resource type="FontVariation" id="FontVariation_iocxo"]
-base_font = ExtResource("4_bocce")
+base_font = ExtResource("4_cnqxv")
 fallbacks = Array[Font]([SubResource("SystemFont_d8wfu")])
 spacing_glyph = 4
 spacing_space = 15
@@ -26,10 +25,10 @@ spacing_bottom = -3
 
 [sub_resource type="LabelSettings" id="LabelSettings_vrbsy"]
 font = SubResource("FontVariation_iocxo")
-font_size = 64
-outline_size = 13
+font_size = 80
+outline_size = 9
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 12
+shadow_size = 14
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(-3, 3)
 
@@ -56,10 +55,10 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
 "transitions": PackedFloat32Array(-0.5, 0.5, 2),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.03, 1.03), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(0.985, 0.985), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -68,10 +67,10 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 4
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
 "transitions": PackedFloat32Array(-0.5, 0.5, 2),
 "update": 0,
-"values": [0.0, 0.0261799, 0.0]
+"values": [0.0, 0.00349066, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -80,7 +79,7 @@ tracks/3/path = NodePath("MarginContainer/HBoxContainer/PointsLabel:modulate")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0833333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.0833333, 0.266667),
 "transitions": PackedFloat32Array(1, -2, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 1, 0.0980392, 1), Color(0.0705882, 0.768627, 0.596078, 1), Color(1, 1, 1, 1)]
@@ -109,10 +108,10 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
 "transitions": PackedFloat32Array(-0.5, 0.5, 2),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -121,10 +120,10 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 4
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
 "transitions": PackedFloat32Array(-0.5, 0.5, 2),
 "update": 0,
-"values": [0.0, -0.0261799, 0.0]
+"values": [0.0, 0.00698132, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -133,7 +132,7 @@ tracks/3/path = NodePath("MarginContainer/HBoxContainer/PointsLabel:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0833333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.0833333, 0.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 1, 1, 1), Color(0.0901961, 0.596078, 1, 1), Color(1, 1, 1, 1)]
@@ -162,10 +161,10 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
 "transitions": PackedFloat32Array(-0.5, 0.5, 2),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.06, 1.06), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(0.98, 0.98), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -174,10 +173,10 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 4
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.266667),
 "transitions": PackedFloat32Array(-0.5, 0.5, 2),
 "update": 0,
-"values": [0.0, 0.0174533, 0.0]
+"values": [0.0, -0.010472, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -186,7 +185,7 @@ tracks/3/path = NodePath("MarginContainer/HBoxContainer/PointsLabel:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0833333, 0.266667),
+"times": PackedFloat32Array(0, 0.0166667, 0.0833333, 0.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.890196, 0.329412, 1, 1), Color(0.654902, 0.627451, 0.854902, 1), Color(1, 1, 1, 1)]
@@ -200,15 +199,8 @@ _data = {
 }
 
 [node name="Counter" type="Control" node_paths=PackedStringArray("label", "anim")]
-material = ExtResource("1_npowq")
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 0
 pivot_offset = Vector2(-200.105, 54.218)
 script = ExtResource("1_2hcrb")
 label = NodePath("MarginContainer/HBoxContainer/PointsLabel")
@@ -217,34 +209,18 @@ anim = NodePath("AnimationPlayer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -351.0
-offset_top = -94.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 37
-theme_override_constants/margin_bottom = 10
+offset_right = 351.0
+offset_bottom = 118.0
+pivot_offset = Vector2(171, 64)
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 17
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="LabelLabel" type="Label" parent="MarginContainer/HBoxContainer"]
-material = SubResource("ShaderMaterial_leq8h")
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "POINTS:  "
-label_settings = ExtResource("4_rawor")
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 0
 
 [node name="PointsLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+texture_filter = 1
 material = SubResource("ShaderMaterial_leq8h")
 layout_mode = 2
 size_flags_horizontal = 10
@@ -252,6 +228,18 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0"
 label_settings = SubResource("LabelSettings_vrbsy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_leq8h")
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = " POINTS"
+label_settings = ExtResource("4_rawor")
 horizontal_alignment = 1
 vertical_alignment = 1
 

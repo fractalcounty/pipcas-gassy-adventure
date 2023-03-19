@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnmpjq3i3pnk"]
+[gd_scene load_steps=6 format=3 uid="uid://m1pmdcx6lorj"]
 
 [ext_resource type="Script" path="res://scenes/ui.gd" id="1_cb7xs"]
-[ext_resource type="Theme" uid="uid://chubprkmexsng" path="res://assets/theme/user_interface.tres" id="2_hturg"]
+[ext_resource type="Theme" path="res://assets/themes/ui.tres" id="2_ee1ta"]
 
 [sub_resource type="Animation" id="Animation_63554"]
 resource_name = "ease_in"
@@ -82,7 +82,6 @@ level_title = NodePath("ColorRect/VBoxContainer/LevelTitle")
 level_subtitle = NodePath("ColorRect/VBoxContainer/LevelSubtitle")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 clip_contents = true
 custom_minimum_size = Vector2(0, 142)
 layout_mode = 1
@@ -90,8 +89,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -690.0
-offset_bottom = -547.999
+offset_top = -390.0
+offset_bottom = -247.999
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.509804)
@@ -112,7 +111,8 @@ grow_vertical = 2
 
 [node name="LevelTitle" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_hturg")
+theme = ExtResource("2_ee1ta")
+theme_override_font_sizes/font_size = 32
 text = "LEVEL   1:"
 horizontal_alignment = 1
 
@@ -122,7 +122,8 @@ layout_mode = 2
 
 [node name="LevelSubtitle" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_hturg")
+theme = ExtResource("2_ee1ta")
+theme_override_font_sizes/font_size = 48
 text = "MEAL   MEADOWS"
 horizontal_alignment = 1
 

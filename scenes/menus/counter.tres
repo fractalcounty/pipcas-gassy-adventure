@@ -1,6 +1,6 @@
-[gd_resource type="LabelSettings" load_steps=4 format=3 uid="uid://c1goffiab8jsb"]
+[gd_resource type="LabelSettings" load_steps=4 format=3]
 
-[ext_resource type="FontFile" uid="uid://dk47kjvrloydw" path="res://assets/fonts/hog_danish.otf" id="1_rqr1a"]
+[ext_resource type="FontFile" uid="uid://dk47kjvrloydw" path="res://assets/themes/fonts/hog_danish.otf" id="1_rqr1a"]
 
 [sub_resource type="SystemFont" id="SystemFont_d8wfu"]
 font_names = PackedStringArray("Sans-Serif")
@@ -15,9 +15,9 @@ spacing_bottom = -3
 
 [resource]
 font = SubResource("FontVariation_j4ete")
-font_size = 38
-outline_size = 10
+font_size = 32
+outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(-3, 3)
+shadow_offset = Vector2(-2, 3)

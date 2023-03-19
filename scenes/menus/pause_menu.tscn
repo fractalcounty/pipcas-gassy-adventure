@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://i4go24n1ygry"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_uwsxj"]
 [ext_resource type="Shader" path="res://assets/shaders/flag_wave.gdshader" id="2_5ling"]
-[ext_resource type="Theme" uid="uid://dp6k6ogyibshp" path="res://assets/theme/menu.tres" id="3_hcguf"]
+[ext_resource type="Theme" path="res://assets/themes/ui.tres" id="3_hcguf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6nh6q"]
 shader = ExtResource("2_5ling")

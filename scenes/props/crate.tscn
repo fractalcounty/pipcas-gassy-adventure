@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://coed4sysgdp60"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Texture2D" uid="uid://dtt0dj75xrlpx" path="res://assets/sprites/dungeon/props/diffuse/22.png" id="1_hpq0v"]
-[ext_resource type="Texture2D" uid="uid://06a1hr03kfem" path="res://assets/sprites/dungeon/props/normal/22.png" id="2_53gf4"]
-[ext_resource type="Texture2D" uid="uid://bcigj040ovtej" path="res://assets/sprites/dungeon/props/specular/22.png" id="3_ngd1b"]
+[ext_resource type="Texture2D" uid="uid://dtt0dj75xrlpx" path="res://assets/sprites/levels/dungeon/props/diffuse/22.png" id="1_hpq0v"]
+[ext_resource type="Texture2D" uid="uid://06a1hr03kfem" path="res://assets/sprites/levels/dungeon/props/normal/22.png" id="2_53gf4"]
+[ext_resource type="Texture2D" uid="uid://bcigj040ovtej" path="res://assets/sprites/levels/dungeon/props/specular/22.png" id="3_ngd1b"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1hgj8"]
 diffuse_texture = ExtResource("1_hpq0v")

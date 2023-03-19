@@ -39,11 +39,11 @@ script/templates_search_path="res://addons/xsm/templates/"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/xsm/plugin.cfg", "res://addons/random_audio_player/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/nklbdev.previewing_parallax_background/plugin.cfg", "res://addons/nklbdev.parallax/plugin.cfg", "res://addons/codeandweb.texturepacker/plugin.cfg", "res://addons/better-terrain/plugin.cfg", "res://addons/trail_2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/xsm/plugin.cfg", "res://addons/random_audio_player/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/nklbdev.previewing_parallax_background/plugin.cfg", "res://addons/nklbdev.parallax/plugin.cfg", "res://addons/better-terrain/plugin.cfg", "res://addons/trail_2d/plugin.cfg")
 
 [gui]
 
-theme/custom_font="res://assets/fonts/BerkeleyMonoTrial-Regular.otf"
+theme/custom_font="res://assets/themes/fonts/berkeley_mono.otf"
 theme/default_font_multichannel_signed_distance_field=true
 theme/default_font_generate_mipmaps=true
 

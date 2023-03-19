@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsrmd84lkprnr"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="AudioStream" uid="uid://tpddofwlxig2" path="res://assets/sfx/ui/WAV/Wood Block3.wav" id="1_ctny8"]
+[ext_resource type="AudioStream" uid="uid://tpddofwlxig2" path="res://assets/sounds/sfx/ui/wood_block_2.wav" id="1_ctny8"]
 [ext_resource type="Script" path="res://src/singletons/ui_audio.gd" id="1_uh48l"]
-[ext_resource type="AudioStream" uid="uid://bcve1j6tddhrf" path="res://assets/sfx/ui/WAV/Wood Block1.wav" id="2_dw44i"]
-[ext_resource type="AudioStream" uid="uid://cx31083yj60se" path="res://assets/sfx/ui/WAV/Wood Block2.wav" id="3_142h2"]
+[ext_resource type="AudioStream" uid="uid://bcve1j6tddhrf" path="res://assets/sounds/sfx/ui/wood_block_1.wav" id="2_dw44i"]
+[ext_resource type="AudioStream" uid="uid://cx31083yj60se" path="res://assets/sounds/sfx/ui/wood_block_3.wav" id="3_142h2"]
 
 [node name="UIAudio" type="Node" node_paths=PackedStringArray("double_click", "click", "unclick")]
 process_mode = 3
