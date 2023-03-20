@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhdkmlx8a7ocx"]
+[gd_scene load_steps=13 format=3 uid="uid://dhdkmlx8a7ocx"]
 
 [ext_resource type="Script" path="res://src/ui/counter.gd" id="1_yok6j"]
-[ext_resource type="PackedScene" uid="uid://bfmvjw1l7e0y4" path="res://src/ui/points_label.tscn" id="2_atdlq"]
 [ext_resource type="Shader" path="res://assets/shaders/flag_wave.gdshader" id="3_koch5"]
 [ext_resource type="FontFile" uid="uid://dk47kjvrloydw" path="res://assets/themes/fonts/hog_danish.otf" id="4_j6hl4"]
 [ext_resource type="LabelSettings" uid="uid://cnhkxnnrpuemm" path="res://assets/themes/counter.tres" id="5_2m7m2"]
@@ -197,14 +196,13 @@ _data = {
 "text_juice_3": SubResource("Animation_7k5rv")
 }
 
-[node name="Counter" type="Control" node_paths=PackedStringArray("label", "anim")]
+[node name="Counter" type="Control" node_paths=PackedStringArray("label", "animation_player")]
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(-200.105, 54.218)
 script = ExtResource("1_yok6j")
 label = NodePath("MarginContainer/VBoxContainer/PointsLabel")
-points_label = ExtResource("2_atdlq")
-anim = NodePath("AnimationPlayer")
+animation_player = NodePath("CounterJuiceAnimations")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -241,7 +239,7 @@ label_settings = SubResource("LabelSettings_vrbsy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="CounterJuiceAnimations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pqq45")
 }

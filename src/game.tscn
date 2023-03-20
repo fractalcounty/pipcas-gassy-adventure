@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://dxacvaogbhpuf"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_upm08"]
-[ext_resource type="PackedScene" path="res://src/scenes/level_1/level.tscn" id="2_ix71s"]
-[ext_resource type="PackedScene" uid="uid://cutkdk2633rr7" path="res://src/scenes/_pipca/pipca.tscn" id="3_5yhei"]
+[ext_resource type="PackedScene" uid="uid://dqc0207xdht6r" path="res://src/scenes/level_1/level.tscn" id="2_ix71s"]
+[ext_resource type="PackedScene" uid="uid://01xhyrang34i" path="res://src/scenes/_peppino/peppino.tscn" id="3_ei1tg"]
 [ext_resource type="PackedScene" uid="uid://e1xj0q880ead" path="res://src/ui/pause_menu.tscn" id="4_wxl7u"]
 [ext_resource type="PackedScene" path="res://src/ui/title_screen.tscn" id="5_8vvub"]
 [ext_resource type="PackedScene" uid="uid://smudea8jmp0j" path="res://src/ui/level_banner.tscn" id="6_0edct"]
@@ -154,7 +154,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_upm08")
 level = ExtResource("2_ix71s")
-pipca = ExtResource("3_5yhei")
+player = ExtResource("3_ei1tg")
 subviewport_container = NodePath("SubViewportContainer")
 subviewport = NodePath("SubViewportContainer/SubViewport")
 intro = NodePath("Intro")

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var hitbox : CollisionShape2D
 @export var agent : NavigationAgent2D
 @export var timer: Timer
-@export var target : Pipca
+@export var target : Player
 
 @export_category("Properties")
 @export var gravity_multiplier : Vector2 = Vector2(0, 0)
@@ -50,7 +50,7 @@ func _physics_process(delta) -> void:
 	_set_rotation(delta)
 
 func _update_pathfinding() -> void:
-	agent.target_position = Global.pipca.global_position
+	agent.target_position = Global.player.global_position
 	var final_pos : Vector2 = agent.get_next_path_position()
 	var angle : Vector2 = global_position.direction_to(final_pos)
 	
@@ -63,7 +63,7 @@ func _set_rotation(delta) -> void:
 	sprite.rotation = lerp(sprite.rotation, angle, delta * 1)
 
 func _set_scale(delta) -> void:
-	var dist = position.distance_to(Global.pipca.global_position)
+	var dist = position.distance_to(Global.player.global_position)
 	var scale_factor = (max_distance - dist) / (max_distance - min_distance)
 	var scalex = clamp(scale_factor * max_scale, min_scale, max_scale)
 	var scaley = clamp(scale_factor * max_scale, min_scale, max_scale)

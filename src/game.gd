@@ -2,7 +2,7 @@ extends Node
 
 @export_category("Game")
 @export var level : PackedScene
-@export var pipca : PackedScene
+@export var player : PackedScene
 @export var subviewport_container : SubViewportContainer
 @export var subviewport : SubViewport
 
@@ -21,7 +21,7 @@ extends Node
 @onready var pause_menu_instance : Control = null
 @onready var level_instance : Node2D = null
 @onready var level_banner_instance : Control = null
-@onready var pipca_instance : Node2D = null
+@onready var player_instance : Player = null
 @onready var title_screen_instance : Control = null
 @onready var trans_in_progress : bool = false
 @onready var counter_instance : Control = null
@@ -76,12 +76,12 @@ func load_level() -> void:
 	
 	await is_instance_valid(level_instance)
 	
-	_spawn_pipca(level_instance)
+	_spawn_player(level_instance)
 
-func _spawn_pipca(level_instance) -> void:
-	pipca_instance = pipca.instantiate()
-	level_instance.add_child(pipca_instance)
-	await is_instance_valid(pipca_instance)
+func _spawn_player(level_instance) -> void:
+	player_instance = player.instantiate()
+	level_instance.add_child(player_instance)
+	await is_instance_valid(player_instance)
 	_load_counter(level_instance)
 	
 func _load_counter(level_instance) -> void:
@@ -144,7 +144,7 @@ func _unhandled_input(event) -> void:
 			UIAudio.unclick.play()
 			pause_menu_instance.on_pause_close()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if Global.game_state == Global.state.GAME and is_instance_valid(pipca_instance):
+	if Global.game_state == Global.state.GAME and is_instance_valid(player_instance):
 		if event.is_action_pressed("in_look"):
 			Global.camera.mouse_movement = true
 		if event.is_action_released("in_look"):

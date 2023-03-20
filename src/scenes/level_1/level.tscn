@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3]
+[gd_scene load_steps=109 format=3 uid="uid://dqc0207xdht6r"]
 
 [ext_resource type="Script" path="res://src/scenes/level_1/level.gd" id="1_0yt0g"]
 [ext_resource type="AudioStream" uid="uid://mis3u6wd4gf" path="res://assets/sounds/music/temp_song.ogg" id="2_1b2u3"]
@@ -96,9 +96,9 @@
 [ext_resource type="Texture2D" uid="uid://c5v3nlm1k1m1g" path="res://assets/sprites/characters/enemies/cado/dance/griddy_00085.png" id="94_2bej4"]
 [ext_resource type="Texture2D" uid="uid://dlg4dykiosrkm" path="res://assets/sprites/characters/enemies/cado/dance/griddy_00086.png" id="95_qjy3d"]
 [ext_resource type="TileSet" uid="uid://cf711kq5rpk0a" path="res://assets/tilesets/tileset.tres" id="96_fyd3l"]
-[ext_resource type="PackedScene" path="res://src/scenes/_camera/camera.tscn" id="97_i0ej8"]
+[ext_resource type="PackedScene" uid="uid://eb6rif5oukyb" path="res://src/scenes/_camera/camera.tscn" id="97_i0ej8"]
 [ext_resource type="PackedScene" path="res://src/scenes/_spawn/spawn.tscn" id="98_cpl1d"]
-[ext_resource type="PackedScene" uid="uid://cf1uiriw2i88" path="res://src/scenes/_collectibles/fries.tscn" id="99_wnfeu"]
+[ext_resource type="PackedScene" uid="uid://skqc4ofr7eb6" path="res://src/scenes/_collectibles/fries.tscn" id="99_wnfeu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5r8r"]
 atlas = ExtResource("5_rcg06")
@@ -453,7 +453,7 @@ color = Color(0.568627, 0.8, 0.898039, 1)
 [node name="Sun" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/Sun"]
-position = Vector2(834.011, 114.15)
+position = Vector2(268.479, -77.5958)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.95, 0.95)
@@ -496,7 +496,7 @@ motion_mirroring = Vector2(1496, 0)
 [node name="CloudsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsFar"]
-position = Vector2(613.99, 57.3869)
+position = Vector2(66.3167, -128.303)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.92, 0.92)
@@ -624,7 +624,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsMid" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsMid"]
-position = Vector2(600.642, 52.8785)
+position = Vector2(64.875, -128.775)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.9, 0.9)
@@ -1161,7 +1161,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsClose"]
-position = Vector2(587.294, 48.3701)
+position = Vector2(63.4333, -129.247)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.88, 0.88)
@@ -1357,7 +1357,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="MountainsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsFar"]
-position = Vector2(487.166, 232.794)
+position = Vector2(70.4583, 91.5083)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.7, 0.7)
@@ -1384,7 +1384,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Parallax" type="Node2D" parent="Background/Node2D"]
 visible = false
-position = Vector2(400.428, 185.252)
+position = Vector2(43.25, 64.15)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.6, 0.6)
@@ -1399,7 +1399,7 @@ frame_progress = 0.5881
 [node name="MountainsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsClose"]
-position = Vector2(308.69, 282.71)
+position = Vector2(11.0417, 181.792)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.5, 0.5)
@@ -1442,224 +1442,168 @@ position = Vector2(4, 345)
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(113, 360)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D2" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(170, 360)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D3" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(218, 360)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D4" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(264, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D5" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(312, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D6" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(361, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D7" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(405, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D8" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(457, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D9" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(502, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D10" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(553, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D11" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(599, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D12" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(646, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D13" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(692, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D14" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(743, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D15" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(790.5, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D16" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(847.5, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D17" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(895.5, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D18" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(941.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D19" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(989.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D20" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1038.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D21" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1082.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D22" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1134.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D23" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1179.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D24" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1230.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D25" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1276.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D26" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1323.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D27" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1369.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D28" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1420.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D29" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1464.5, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D30" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1521.5, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D31" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1569.5, 361)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D32" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1615.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D33" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1663.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D34" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1712.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D35" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1756.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D36" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1808.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D37" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1853.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D38" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1904.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D39" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1950.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D40" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(1997.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D41" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2043.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D42" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2094.5, 362)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D43" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2136.5, 364)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D44" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2193.5, 364)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D45" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2241.5, 364)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D46" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2287.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D47" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2335.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D48" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2384.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D49" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2428.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D50" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2480.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D51" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2525.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D52" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2576.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D53" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2622.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D54" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2669.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D55" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2715.5, 365)
-lerp_time = 0.5
 
 [node name="AnimatedSprite2D56" parent="." instance=ExtResource("99_wnfeu")]
 position = Vector2(2766.5, 365)
-lerp_time = 0.5

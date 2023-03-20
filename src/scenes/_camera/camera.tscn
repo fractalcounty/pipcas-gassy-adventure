@@ -1,16 +1,17 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://eb6rif5oukyb"]
 
 [ext_resource type="Script" path="res://src/scenes/_camera/camera.gd" id="1_rd4kw"]
 
 [node name="Camera2D" type="Camera2D"]
+offset = Vector2(0, -60)
 zoom = Vector2(4, 4)
 process_callback = 0
 script = ExtResource("1_rd4kw")
 freelook_distance = 0.8
 freelook_lerp = 5.0
-cam_follow_lerp_weight = 0.5
-cam_follow_lerp_multiplier = 15.0
-zoom_default = 3.0
+cam_follow_lerp_weight = 0.8
+cam_follow_lerp_multiplier = 18.0
+zoom_default = 2.0
 zoom_min = 2.0
 zoom_reset_timer = 3.0
 zoom_reset_speed = 1.0

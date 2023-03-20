@@ -1,6 +1,6 @@
 extends Line2D
 
-@export var pipca_center : Marker2D
+@export var player_center : Marker2D
 @export var crosshair_final : Sprite2D
 @export var crosshair_far : Sprite2D
 @export var crosshair_close : Sprite2D
@@ -8,7 +8,7 @@ extends Line2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var pointcount = self.get_point_count()
-	var line = crosshair_close.position.distance_to(pipca_center.position)
+	var line = crosshair_close.position.distance_to(player_center.position)
 	var center_pos = get_parent().global_transform.origin
 	var inner_pos = get_global_mouse_position()
 	var mouse_dir = (inner_pos - center_pos).normalized()

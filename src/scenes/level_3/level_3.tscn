@@ -435,7 +435,8 @@ attenuation = 2.73208
 offset = Vector2(0, -60)
 editor_draw_limits = true
 editor_draw_drag_margin = true
-zoom_duration = 0.2
+zoom_max = null
+zoom_duration = null
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Camera2D"]
 
@@ -1143,11 +1144,15 @@ hitbox = NodePath("CollisionShape2D")
 agent = NodePath("NavigationAgent2D")
 timer = NodePath("Timer")
 target = NodePath("../../Pipca")
+gravity_multiplier = null
 mass = 55.0
+speed = null
 acceleration = 1.0
 max_scale = 0.65
 min_scale = 0.15
 max_distance = 800.0
+min_distance = null
+flip_offset = null
 hitbox_radius = 20.0
 
 [node name="Line2D" type="Line2D" parent="CanvasLayer/enemy"]

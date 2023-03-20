@@ -1,4 +1,4 @@
 extends Marker2D
 
-func _on_pipca_ready() -> void:
-	Global.pipca.position = position
+func _on_player_ready() -> void:
+	Global.player.position = position

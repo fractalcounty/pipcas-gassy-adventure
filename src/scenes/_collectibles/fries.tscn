@@ -439,7 +439,7 @@ animations = [{
 "speed": 60.0
 }]
 
-[node name="Fries" type="AnimatedSprite2D" node_paths=PackedStringArray("anim", "eat_sound")]
+[node name="Fries" type="AnimatedSprite2D" node_paths=PackedStringArray("collect_sound")]
 texture_filter = 1
 position = Vector2(-1299, 363)
 sprite_frames = SubResource("SpriteFrames_fiict")
@@ -447,10 +447,8 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.507962
 script = ExtResource("2_8pfl7")
-anim = NodePath("AnimationPlayer")
-lerp_time = 0.35
 points_worth = 10.0
-eat_sound = NodePath("EatSound")
+collect_sound = NodePath("CollectSound")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -458,7 +456,7 @@ eat_sound = NodePath("EatSound")
 position = Vector2(-0.75, -1)
 shape = SubResource("RectangleShape2D_3cjck")
 
-[node name="EatSound" type="AudioStreamPlayer" parent="."]
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_awscj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

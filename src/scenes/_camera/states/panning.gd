@@ -49,11 +49,11 @@ func _on_update(delta: float) -> void:
 	
 	
 	
-	var mixed_pos = target.pipca.global_position + added_offset
+	var mixed_pos = target.player.global_position + added_offset
 	
 	#print (mixed_pos)
 	
-	var cam_pos : Vector2 = lerp(target.pipca.global_position, mixed_pos, target.grounded_lerp_weight)
+	var cam_pos : Vector2 = lerp(target.player.global_position, mixed_pos, target.grounded_lerp_weight)
 	target.actual_cam_pos = target.actual_cam_pos.lerp(cam_pos, delta*target.grounded_lerp_multiplier)
 	var subpixel_position = target.actual_cam_pos.round() - target.actual_cam_pos
 	Global.viewport_container.material.set_shader_parameter("cam_offset", subpixel_position)

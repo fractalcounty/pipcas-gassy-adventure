@@ -2,10 +2,10 @@ extends AnimationPlayer
 
 @export var cutscene : Resource
 @export var focus : Node2D
-@export var pipca : CharacterBody2D
+@export var player : CharacterBody2D
 
 func _on_ready():
-	Global.focus = pipca
+	Global.focus = player
 
 func _on_cutscene_1_body_entered(body: Node2D) -> void:
 	Global.game_state = Global.state.CUTSCENE
@@ -21,4 +21,4 @@ func _on_cutscene_end() -> void:
 	queue_free()
 	
 func set_pipca_focus() -> void:
-	Global.focus = pipca
+	Global.focus = player

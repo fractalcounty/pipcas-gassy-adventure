@@ -44,8 +44,8 @@ var dir : float
 var pull_length : float
 
 func _ready():
-	Events.pipca_spawned.emit(self)
-	Global.pipca = self
+	Events.player_spawned.emit(self)
+	Global.player = self
 	anim.play("idle_still")
 
 func _physics_process(delta: float) -> void:
@@ -84,4 +84,4 @@ func _auto_rotate() -> void:
 			tween.tween_property(skin, "offset:y", 0.0, 0.1)
 
 func _exit_tree() -> void:
-	Global.pipca = null
+	Global.player = null

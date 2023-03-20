@@ -1,7 +1,8 @@
 extends Node
 
-var pipca = null
-var pipca_origin : Marker2D = null
+var player = null
+
+
 var camera : Camera2D = null
 var remote_transform : RemoteTransform2D = null
 var skin : Sprite2D = null

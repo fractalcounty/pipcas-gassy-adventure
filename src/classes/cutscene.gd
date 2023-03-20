@@ -1,7 +1,7 @@
 extends Resource
 class_name CutsceneResource
 
-@export var pipca: Node2D
+@export var player: Node2D
 @export var camera : Camera2D
 @export var target: Node2D
 

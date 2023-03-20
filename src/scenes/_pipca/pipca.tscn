@@ -787,7 +787,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CanCharge")
+next_state = NodePath("")
 
 [node name="CanCharge" type="Node" parent="StateMachine/RegionFartPossible"]
 script = ExtResource("12_2lxag")
@@ -799,7 +799,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Charging")
+next_state = NodePath("")
 
 [node name="Charging" type="Node" parent="StateMachine/RegionFartPossible"]
 script = ExtResource("13_o77by")
@@ -811,7 +811,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Full")
+next_state = NodePath("")
 
 [node name="Full" type="Node" parent="StateMachine/RegionFartPossible"]
 script = ExtResource("14_01w6y")
@@ -847,7 +847,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../FallTop")
+next_state = NodePath("")
 
 [node name="FallTop" type="Node" parent="StateMachine/Movement/InAir"]
 script = ExtResource("18_25u71")
@@ -863,7 +863,7 @@ disabled = false
 debug_mode = true
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Farts")
+next_state = NodePath("")
 
 [node name="Idle" type="Node" parent="StateMachine/Movement/OnGround"]
 script = ExtResource("20_fc0ad")
