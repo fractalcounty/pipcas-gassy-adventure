@@ -5,6 +5,7 @@ enum PlayerState {IDLE, MOVE, CROUCH, JUMP, FALL, CRAWL, TAUNT}
 
 @export_group("Anatomy")
 @export var state_label : Label
+@export var last_state_label : Label
 @export var sprite : AnimatedSprite2D
 @export var collision : CollisionShape2D
 @export var consumer : Area2D
@@ -28,24 +29,45 @@ var play_crouch_start : bool = true
 var jump_buffer_timer: float = 0.0
 var crouch_buffer_timer: float = 0.0
 var emit_dust: bool = false
-var state: PlayerState = PlayerState.IDLE
-var state_str: String = "IDLE"
 var input_enabled: bool = true
 var move_input_vector : Vector2 = Vector2.ZERO
 var move_input_float : float = 0.0
+var landing : bool = false
+
+var state: PlayerState = PlayerState.IDLE
+var last_state : PlayerState
+var state_str: String = "IDLE"
+var last_state_str: String = "IDLE"
 
 func _ready():
 	Events.player_spawned.emit(self)
 	Global.player = self
+	landing = false
 
 func _input(event: InputEvent) -> void:
 	taunt_input = event.is_action_pressed("taunt")
 
-func set_state(new_state: PlayerState) -> void:
-	if state != PlayerState.CRAWL and new_state == PlayerState.CROUCH:
-		play_crouch_start = true
+func _match_last_state(new_state: PlayerState) -> void:
+	last_state = state
+	match last_state:
+		PlayerState.IDLE:
+			last_state_str = "IDLE"
+		PlayerState.MOVE:
+			last_state_str = "MOVE"
+		PlayerState.JUMP:
+			last_state_str = "JUMP"
+		PlayerState.CROUCH:
+			last_state_str = "CROUCH"
+		PlayerState.FALL:
+			last_state_str = "FALL"
+		PlayerState.CRAWL:
+			last_state_str = "CRAWL"
+		PlayerState.TAUNT:
+			last_state_str = "TAUNT"
+
+func _match_new_state(new_state: PlayerState) -> void:
 	state = new_state
-	_play_state_sound(new_state)
+	_on_state_enter(new_state)
 	match new_state:
 		PlayerState.IDLE:
 			state_str = "IDLE"
@@ -62,6 +84,11 @@ func set_state(new_state: PlayerState) -> void:
 		PlayerState.TAUNT:
 			state_str = "TAUNT"
 
+func set_state(new_state: PlayerState) -> void:
+	_match_last_state(new_state)
+	_on_state_change(new_state)
+	_match_new_state(new_state)
+	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = jump_buffer_time
@@ -81,33 +108,28 @@ func _physics_process(delta: float) -> void:
 	match state:
 		PlayerState.IDLE:
 			_idle_state(delta)
-			state_label.set_text("IDLE")
 		PlayerState.MOVE:
 			_move_state(delta)
-			state_label.set_text("MOVE")
 		PlayerState.JUMP:
 			_jump_state(delta)
-			state_label.set_text("JUMP")
 		PlayerState.CROUCH:
 			_crouch_state(delta)
-			state_label.set_text("CROUCH")
 		PlayerState.FALL:
 			_fall_state(delta)
-			state_label.set_text("FALL")
 		PlayerState.CRAWL:
 			_crawl_state(delta)
-			state_label.set_text("CRAWL")
 		PlayerState.TAUNT:
 			_taunt_state(delta)
-			state_label.set_text("TAUNT")
 	
+	state_label.set_text(str(state_str))
+	last_state_label.set_text(str(last_state_str))
 	_apply_gravity(delta)
 	_auto_flip()
 
 func _idle_state(delta: float) -> void:
+	
 	emit_dust = false
 	velocity.x = 0
-	sprite.play("idle")
 
 	if not is_on_floor():
 		set_state(PlayerState.FALL)
@@ -236,10 +258,6 @@ func _crouch_state(delta: float) -> void:
 	
 	move_and_slide()
 
-func _on_crouch_start_animation_finished() -> void:
-	if state == PlayerState.CROUCH and sprite.animation == "crouch_start":
-		sprite.play("crouch")
-
 func _crawl_state(delta: float) -> void:
 	emit_dust = false
 	if not Input.is_action_pressed("crouch"):
@@ -300,7 +318,13 @@ func _play_step_sound() -> void:
 	elif state == PlayerState.CRAWL:
 		footstep_timer = randf_range(0.4, 0.45)
 
-func _play_state_sound(new_state: PlayerState) -> void:
+func _on_state_change(new_state: PlayerState) -> void:
+	if state != PlayerState.CRAWL and new_state == PlayerState.CROUCH:
+		play_crouch_start = true
+	if state == PlayerState.FALL and new_state == PlayerState.IDLE:
+		sprite.play("land_to_idle")
+
+func _on_state_enter(new_state: PlayerState) -> void:
 	match new_state:
 		PlayerState.JUMP:
 			#jump_sound.pitch_scale = 1.0 + ( randf() - 0.5 ) / 3
@@ -313,6 +337,11 @@ func _play_state_sound(new_state: PlayerState) -> void:
 			taunt_effect.show()
 			taunt_effect.play("taunt_effect")
 
+func _on_sprite_animation_finished():
+	if state == PlayerState.CROUCH and sprite.animation == "crouch_start":
+		sprite.play("crouch")
+	if state == PlayerState.IDLE and sprite.animation == "land_to_idle":
+		sprite.play("idle")
+
 func _exit_tree() -> void:
 	Global.player = null
-

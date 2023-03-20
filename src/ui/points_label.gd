@@ -34,7 +34,7 @@ func init(value: float, move_speed: float, shrink_delay: float, shrink_speed : f
 		$Label.text = str(_value)
 		global_position = _startpos
 		$Label/Timer.start(_shrink_delay)
-		$Label.position = $Label.size / 2
+		$Label.pivot_offset = $Label.size / 2
 
 func _physics_process(delta: float) -> void:
 	var tween = get_tree().create_tween()

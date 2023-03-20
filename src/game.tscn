@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_upm08"]
 [ext_resource type="PackedScene" uid="uid://dqc0207xdht6r" path="res://src/scenes/level_1/level.tscn" id="2_ix71s"]
-[ext_resource type="PackedScene" uid="uid://01xhyrang34i" path="res://src/scenes/_peppino/peppino.tscn" id="3_ei1tg"]
+[ext_resource type="PackedScene" uid="uid://ctx4vitu4xngb" path="res://src/scenes/_peppino/peppino.tscn" id="3_ei1tg"]
 [ext_resource type="PackedScene" uid="uid://e1xj0q880ead" path="res://src/ui/pause_menu.tscn" id="4_wxl7u"]
 [ext_resource type="PackedScene" path="res://src/ui/title_screen.tscn" id="5_8vvub"]
 [ext_resource type="PackedScene" uid="uid://smudea8jmp0j" path="res://src/ui/level_banner.tscn" id="6_0edct"]
@@ -172,8 +172,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1280.0
-offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
@@ -186,7 +184,7 @@ handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(640, 360)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 0
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="TransitionSubViewportContainer/TransitionSubViewport"]
@@ -214,10 +212,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-disable_3d = true
-transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true

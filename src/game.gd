@@ -28,6 +28,10 @@ extends Node
 
 
 func _ready():
+#	get_viewport().size_changed.connect(_on_screen_resized)
+#	subviewport_container.size = Vector2(ProjectSettings["display/window/size/viewport_width"], ProjectSettings["display/window/size/viewport_height"])
+#	_on_screen_resized()
+	
 	set_process(false)
 	get_tree().root.title = "Pipca's Gassy Adventure"
 	
@@ -35,6 +39,14 @@ func _ready():
 		load_level()
 	else:
 		_load_intro()
+
+#func _on_screen_resized() -> void:
+#	print ("ON SCREEN RESIZED")
+#	var window_size := DisplayServer.window_get_size()
+#	var possible_scale := window_size / Vector2i(subviewport_container.size)
+#	var final_scale: Vector2i = max(1, min(possible_scale.x, possible_scale.y)) * Vector2i.ONE
+#	subviewport_container.scale = final_scale
+#	subviewport_container.position = Vector2(window_size) / 2 - subviewport_container.size * subviewport_container.scale / 2
 
 func _load_intro():
 	Global.game_state = Global.state.INTRO
