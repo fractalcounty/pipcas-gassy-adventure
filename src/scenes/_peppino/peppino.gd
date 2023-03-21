@@ -19,20 +19,24 @@ enum PlayerState {IDLE, MOVE, CROUCH, JUMP, FALL, CRAWL, TAUNT}
 @export var speed : float = 200.0
 @export var crawl_speed : float = 0.5
 @export var jump_strength : float = 500.0
-@export var gravity : float = 1000.0
+@export var max_jump_hold_time : float = 0.3
 @export var jump_buffer_time : float = 0.15
+@export var minimum_jump_force: float = 200.0
+@export var gravity : float = 1000.0
 @export var crouch_buffer_time : float = 0.15
 
 var footstep_timer: float = 0.0
 var taunt_input: bool = false
 var play_crouch_start : bool = true
 var jump_buffer_timer: float = 0.0
+var jump_hold_timer : float = 0.0
 var crouch_buffer_timer: float = 0.0
 var emit_dust: bool = false
 var input_enabled: bool = true
 var move_input_vector : Vector2 = Vector2.ZERO
 var move_input_float : float = 0.0
-var landing : bool = false
+var landed : bool = false
+var jump_animation_finished: bool = false
 
 var state: PlayerState = PlayerState.IDLE
 var last_state : PlayerState
@@ -40,9 +44,9 @@ var state_str: String = "IDLE"
 var last_state_str: String = "IDLE"
 
 func _ready():
+	landed = false
 	Events.player_spawned.emit(self)
 	Global.player = self
-	landing = false
 
 func _input(event: InputEvent) -> void:
 	taunt_input = event.is_action_pressed("taunt")
@@ -90,6 +94,7 @@ func set_state(new_state: PlayerState) -> void:
 	_match_new_state(new_state)
 	
 func _physics_process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = jump_buffer_time
 	if Input.is_action_just_pressed("crouch"):
@@ -130,6 +135,11 @@ func _idle_state(delta: float) -> void:
 	
 	emit_dust = false
 	velocity.x = 0
+	
+	if last_state == PlayerState.FALL and not landed:
+		sprite.play("land_to_idle")
+	else:
+		sprite.play("idle")
 
 	if not is_on_floor():
 		set_state(PlayerState.FALL)
@@ -143,7 +153,6 @@ func _idle_state(delta: float) -> void:
 		set_state(PlayerState.JUMP)
 	
 	if Input.is_action_just_pressed("taunt"):
-		print ("taunt input")
 		set_state(PlayerState.TAUNT)
 	
 	if jump_buffer_timer > 0:
@@ -191,30 +200,33 @@ func _move_state(delta: float) -> void:
 		crouch_buffer_timer -= delta
 
 	if Input.is_action_just_pressed("taunt"):
-		print ("taunt input")
 		set_state(PlayerState.TAUNT)
 	
 	_apply_gravity(delta)
 	move_and_slide()
 
 func _jump_state(delta: float) -> void:
-	
 	sprite.play("jump")
 	emit_dust = false
 	
 	if is_on_floor():
 		if Input.is_action_pressed("jump"):
 			velocity.y = -jump_strength
+			jump_hold_timer = max_jump_hold_time
+			jump_animation_finished = false
 		else:
 			set_state(PlayerState.IDLE)
 	else:
-		if velocity.y > 0:
+		if Input.is_action_just_released("jump") or jump_hold_timer <= 0.0:
 			set_state(PlayerState.FALL)
+			if velocity.y < -minimum_jump_force:
+				velocity.y = -minimum_jump_force
+		else:
+			jump_hold_timer -= delta
 
 	velocity.x = move_input_vector.x * speed
 
 	if Input.is_action_just_pressed("taunt"):
-		print ("taunt input")
 		set_state(PlayerState.TAUNT)
 	
 	_apply_gravity(delta)
@@ -222,11 +234,12 @@ func _jump_state(delta: float) -> void:
 
 func _fall_state(delta: float) -> void:
 	
-	sprite.play("fall")
+	if jump_animation_finished:
+		sprite.play("fall")
 	emit_dust = false
+	landed = false
 	
 	if Input.is_action_just_pressed("taunt"):
-		print ("taunt input")
 		set_state(PlayerState.TAUNT)
 	
 	if is_on_floor():
@@ -253,7 +266,6 @@ func _crouch_state(delta: float) -> void:
 		set_state(PlayerState.IDLE)
 
 	if Input.is_action_just_pressed("taunt"):
-		print ("taunt input")
 		set_state(PlayerState.TAUNT)
 	
 	move_and_slide()
@@ -267,7 +279,6 @@ func _crawl_state(delta: float) -> void:
 			play_crouch_start = false
 			set_state(PlayerState.CROUCH)
 		if Input.is_action_just_pressed("taunt"):
-			print ("taunt input")
 			set_state(PlayerState.TAUNT)
 		else:
 			velocity.x = move_input_float * speed * crawl_speed
@@ -321,13 +332,11 @@ func _play_step_sound() -> void:
 func _on_state_change(new_state: PlayerState) -> void:
 	if state != PlayerState.CRAWL and new_state == PlayerState.CROUCH:
 		play_crouch_start = true
-	if state == PlayerState.FALL and new_state == PlayerState.IDLE:
-		sprite.play("land_to_idle")
 
 func _on_state_enter(new_state: PlayerState) -> void:
 	match new_state:
 		PlayerState.JUMP:
-			#jump_sound.pitch_scale = 1.0 + ( randf() - 0.5 ) / 3
+			jump_sound.pitch_scale = 1.0 + ( randf() - 0.5 ) / 3
 			jump_sound.play()
 		PlayerState.TAUNT:
 			taunt_sound.pitch_scale = 1.0 + ( randf() - 0.3 ) / 3
@@ -341,7 +350,10 @@ func _on_sprite_animation_finished():
 	if state == PlayerState.CROUCH and sprite.animation == "crouch_start":
 		sprite.play("crouch")
 	if state == PlayerState.IDLE and sprite.animation == "land_to_idle":
+		landed = true
 		sprite.play("idle")
+	if sprite.animation == "jump":
+		jump_animation_finished = true
 
 func _exit_tree() -> void:
 	Global.player = null
