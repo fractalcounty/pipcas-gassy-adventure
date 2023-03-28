@@ -57,6 +57,7 @@ _data = {
 [node name="Music" type="Node" node_paths=PackedStringArray("level_music_player", "timer", "anim")]
 process_mode = 3
 script = ExtResource("1_3xjrn")
+muted = true
 level_music_player = NodePath("LevelMusicPlayer")
 pause_muffle_lerp = 41.943
 new_cutoff_hz = 500.0
@@ -66,6 +67,7 @@ anim = NodePath("AnimationPlayer")
 [node name="LevelMusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("2_wpqr3")
+volume_db = -80.0
 bus = &"Music"
 
 [node name="Timer" type="Timer" parent="."]

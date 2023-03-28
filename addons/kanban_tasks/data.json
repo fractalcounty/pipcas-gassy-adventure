@@ -1,0 +1,270 @@
+{
+	"categories": [
+		{
+			"uuid": "0806a723-e269-42c4-b61c-70e5c0d54bea",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "d796135f-d935-4836-9680-10c8bf18fcc3",
+			"title": "Short term",
+			"tasks": [
+				"fed452d2-245d-43d1-b840-3cf1670e6854",
+				"f9439c0f-f8f7-478d-84a8-1485dd202b3d",
+				"9a674a36-eeb0-4942-8b8f-c525bfd79f71",
+				"cc2171fc-d672-40d7-a445-e75ab48ce6ae",
+				"d9ef8da5-71aa-45e1-ad40-b574f9cc7afe",
+				"97726974-f8db-4b56-9d55-cab94f68e6a2",
+				"fb4b4980-17d7-4a25-8f08-64b9fbdead5e"
+			]
+		},
+		{
+			"uuid": "981e4b2e-b251-4089-9750-fc357003cb43",
+			"title": "Medium term",
+			"tasks": [
+				"a4b6f377-33e4-48e6-b085-11c5214d62ab",
+				"c4e1f735-51f2-4c14-bc6d-33f439aaadec",
+				"a29bf1af-340d-462f-9d0d-c1be43bfd3ff",
+				"cf2f682e-7d02-4ad8-a4b0-7c1b6e1e6872",
+				"802a9a2a-c294-4d60-b69d-ac11e64222c4",
+				"c32868e7-6d1f-4569-92e3-85b8f03e20c2",
+				"460e79a9-27e9-4b69-8db6-b5d281ab4b49",
+				"677411bc-52dc-4010-a171-40488bbc2d09",
+				"8ce6a8c0-4618-48b1-bbfb-ca3a5f3479fb"
+			]
+		},
+		{
+			"uuid": "dd5ec780-a865-408c-9eae-42c1aa454379",
+			"title": "Long term",
+			"tasks": [
+				"89c8b85f-210e-4d0e-a2b1-cb0db7e905fd",
+				"54c6f902-66e7-4130-a2be-b08710dae066",
+				"12e1b5a8-3d4b-4c3e-9b0a-c3fd10f20006",
+				"4f505777-4d84-4e7b-95d5-f54467d0d7ff",
+				"260764bc-3cf5-4bd4-8177-2cbf1b47a775",
+				"3e4f220c-7733-4fb7-b70e-92f0f2646ac3",
+				"9d984ee4-0055-4fc5-8797-6b571c01263d",
+				"22a0d6b4-287e-4ab1-a30b-8e0ef8850677",
+				"b141a71f-0e4f-4236-b9a4-d72f9f71b599",
+				"13fe3698-0b73-449b-ade6-fbc0720c53b0",
+				"2e476bf0-42e0-46ea-b0fd-ce65869fb924",
+				"14dcdc3b-828d-4fd5-b834-f6930d59d402",
+				"986ff05a-6864-4369-b1c5-89ca58cfa539"
+			]
+		},
+		{
+			"uuid": "b839aba9-375f-40c8-b449-30d8d4f877f0",
+			"title": "Completed",
+			"tasks": [
+				"b28d4622-a9ec-4201-a6d6-a8435dcfa024",
+				"f170cd25-25f8-4f18-944e-d4b76788a647"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "fed452d2-245d-43d1-b840-3cf1670e6854",
+			"title": "Add particles to effects node",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "f170cd25-25f8-4f18-944e-d4b76788a647",
+			"title": "Implement global state timer",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "f9439c0f-f8f7-478d-84a8-1485dd202b3d",
+			"title": "Add feet to effects node",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "b28d4622-a9ec-4201-a6d6-a8435dcfa024",
+			"title": "Make state logic presentable",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "a4b6f377-33e4-48e6-b085-11c5214d62ab",
+			"title": "Find brake audio",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "260764bc-3cf5-4bd4-8177-2cbf1b47a775",
+			"title": "Main menu",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "3e4f220c-7733-4fb7-b70e-92f0f2646ac3",
+			"title": "Settings menu",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "9d984ee4-0055-4fc5-8797-6b571c01263d",
+			"title": "Pause menu",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "9a674a36-eeb0-4942-8b8f-c525bfd79f71",
+			"title": "Fix jumping, crouchjumping, and bodyslam gravity issues",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "c4e1f735-51f2-4c14-bc6d-33f439aaadec",
+			"title": "Fart blasting",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "a29bf1af-340d-462f-9d0d-c1be43bfd3ff",
+			"title": "Fix particle queue free bug",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "cc2171fc-d672-40d7-a445-e75ab48ce6ae",
+			"title": "Testing area",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "d9ef8da5-71aa-45e1-ad40-b574f9cc7afe",
+			"title": "Fix long jump loop anim when falling",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "97726974-f8db-4b56-9d55-cab94f68e6a2",
+			"title": "Recreate pizza tower level for shiggles",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "cf2f682e-7d02-4ad8-a4b0-7c1b6e1e6872",
+			"title": "Input manager node + gamepad support",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "802a9a2a-c294-4d60-b69d-ac11e64222c4",
+			"title": "Refactor camera w/ state support",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "89c8b85f-210e-4d0e-a2b1-cb0db7e905fd",
+			"title": "Cutscene refactor",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "54c6f902-66e7-4130-a2be-b08710dae066",
+			"title": "Finish level 1",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "12e1b5a8-3d4b-4c3e-9b0a-c3fd10f20006",
+			"title": "Pipca moveset",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "c32868e7-6d1f-4569-92e3-85b8f03e20c2",
+			"title": "Intro anim",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "4f505777-4d84-4e7b-95d5-f54467d0d7ff",
+			"title": "Codecs",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "460e79a9-27e9-4b69-8db6-b5d281ab4b49",
+			"title": "Level switcher",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "677411bc-52dc-4010-a171-40488bbc2d09",
+			"title": "Consolidate game loading nodes",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "22a0d6b4-287e-4ab1-a30b-8e0ef8850677",
+			"title": "Enemies",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "b141a71f-0e4f-4236-b9a4-d72f9f71b599",
+			"title": "FNF meme",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "13fe3698-0b73-449b-ade6-fbc0720c53b0",
+			"title": "Vision cones on snake enemy",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "8ce6a8c0-4618-48b1-bbfb-ca3a5f3479fb",
+			"title": "Rumble",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "2e476bf0-42e0-46ea-b0fd-ce65869fb924",
+			"title": "Discord integration",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "fb4b4980-17d7-4a25-8f08-64b9fbdead5e",
+			"title": "Teaser website",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "14dcdc3b-828d-4fd5-b834-f6930d59d402",
+			"title": "Cado fight",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		},
+		{
+			"uuid": "986ff05a-6864-4369-b1c5-89ca58cfa539",
+			"title": "Incredible gassy fight",
+			"description": "",
+			"category": "0806a723-e269-42c4-b61c-70e5c0d54bea"
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"d796135f-d935-4836-9680-10c8bf18fcc3"
+			],
+			[
+				"981e4b2e-b251-4089-9750-fc357003cb43"
+			],
+			[
+				"dd5ec780-a865-408c-9eae-42c1aa454379"
+			],
+			[
+				"b839aba9-375f-40c8-b449-30d8d4f877f0"
+			]
+		]
+	}
+}

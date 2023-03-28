@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://bd8o5880va2tn"]
+[gd_scene load_steps=110 format=3 uid="uid://bd8o5880va2tn"]
 
 [ext_resource type="AudioStream" uid="uid://mis3u6wd4gf" path="res://assets/sounds/music/temp_song.ogg" id="2_1b2u3"]
 [ext_resource type="Script" path="res://src/scenes/level_1/infinite_scrolling_background.gd" id="3_kbuat"]
@@ -97,6 +97,7 @@
 [ext_resource type="TileSet" uid="uid://cf711kq5rpk0a" path="res://assets/tilesets/tileset.tres" id="96_fyd3l"]
 [ext_resource type="PackedScene" uid="uid://eb6rif5oukyb" path="res://src/scenes/_camera/camera.tscn" id="97_i0ej8"]
 [ext_resource type="PackedScene" path="res://src/scenes/_spawn/spawn.tscn" id="98_cpl1d"]
+[ext_resource type="Script" path="res://src/scenes/_effects.gd" id="98_d4ojj"]
 [ext_resource type="PackedScene" uid="uid://skqc4ofr7eb6" path="res://src/scenes/_collectibles/fries.tscn" id="99_wnfeu"]
 
 [sub_resource type="GDScript" id="GDScript_iq2e8"]
@@ -468,7 +469,7 @@ color = Color(0.568627, 0.8, 0.898039, 1)
 [node name="Sun" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/Sun"]
-position = Vector2(278.506, -44.5417)
+position = Vector2(142.606, -199.547)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.95, 0.95)
@@ -501,12 +502,12 @@ scroll_limit_end = Vector2(5, 1)
 script = ExtResource("6_cctww")
 
 [node name="Mountains2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(49.4143, 35.0263)
+position = Vector2(-36.3677, -62.8719)
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(1200, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2(41.1786, 79.1886)
+position = Vector2(-30.3064, -2.39328)
 motion_scale = Vector2(0.5, 0.5)
 motion_offset = Vector2(0, 50)
 motion_mirroring = Vector2(1496, 0)
@@ -514,7 +515,7 @@ motion_mirroring = Vector2(1496, 0)
 [node name="CloudsFar" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsFar"]
-position = Vector2(76.0265, -96.293)
+position = Vector2(-55.5815, -246.404)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.92, 0.92)
@@ -642,7 +643,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsMid" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsMid"]
-position = Vector2(74.3738, -97.4605)
+position = Vector2(-54.3732, -244.308)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.9, 0.9)
@@ -1179,7 +1180,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CloudsClose" type="Node2D" parent="Background"]
 
 [node name="Parallax" type="Node2D" parent="Background/CloudsClose"]
-position = Vector2(72.721, -98.6281)
+position = Vector2(-53.1649, -242.212)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.88, 0.88)
@@ -1373,9 +1374,10 @@ metadata/_aseprite_wizard_config_ = {
 }
 
 [node name="MountainsFar" type="Node2D" parent="Background"]
+position = Vector2(0, -82)
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsFar"]
-position = Vector2(77.8463, 115.864)
+position = Vector2(-22.2903, 59.0494)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.7, 0.7)
@@ -1402,7 +1404,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Parallax" type="Node2D" parent="Background/Node2D"]
 visible = false
-position = Vector2(49.5825, 85.0263)
+position = Vector2(-36.2488, -12.8719)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.6, 0.6)
@@ -1415,9 +1417,10 @@ autoplay = "default"
 frame_progress = 0.5881
 
 [node name="MountainsClose" type="Node2D" parent="Background"]
+position = Vector2(0, -82)
 
 [node name="Parallax" type="Node2D" parent="Background/MountainsClose"]
-position = Vector2(16.3188, 199.189)
+position = Vector2(-55.2073, 158.607)
 script = ExtResource("4_e6h63")
 enabled_in_editor = true
 motion_scale = Vector2(0.5, 0.5)
@@ -1455,6 +1458,9 @@ zoom_duration = 0.2
 
 [node name="Spawn" parent="." instance=ExtResource("98_cpl1d")]
 gizmo_extents = 45.4
+
+[node name="Effects" type="Node2D" parent="."]
+script = ExtResource("98_d4ojj")
 
 [node name="Collectibles" type="Node2D" parent="."]
 

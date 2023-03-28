@@ -2,24 +2,26 @@ extends Camera2D
 
 @export_category("Player Camera Settings")
 
+@export var shaker : Shaker
+
 @export_subgroup("Freelook")
-@export var freelook_distance : float = 0.7
-@export var freelook_lerp : float = 0.5
+@export var freelook_distance : float = 0.8
+@export var freelook_lerp : float = 5.0
 
 @export_subgroup("Tracking")
-@export var cam_follow_lerp_weight : float = 0.7
-@export var cam_follow_lerp_multiplier : float = 0.5
+@export var cam_follow_lerp_weight : float = 0.5
+@export var cam_follow_lerp_multiplier : float = 40
 
 @export_subgroup("Zoom")
-@export var zoom_default : float = 4.0
-@export var zoom_min : float = 3.0
+@export var zoom_default : float = 2.0
+@export var zoom_min : float = 1.0
 @export var zoom_max : float = 4.0
-@export var zoom_reset_timer : float = 5.0
-@export var zoom_reset_speed : float = 0.5
-@export var zoom_factor : float = 0.1
-@export var zoom_duration : float = 0.2
+@export var zoom_reset_timer : float = 3.0
+@export var zoom_reset_speed : float = 1.0
+@export var zoom_factor : float = 0.25
+@export var zoom_duration : float = 0.25
 
-@onready var global_offset : Vector2
+@export var global_offset : Vector2
 @onready var only_once : bool = true
 @onready var zoom_level : float = 3.0: set = _set_zoom
 @onready var zoom_timer : float = zoom_reset_timer
@@ -33,14 +35,24 @@ extends Camera2D
 @onready var _mouse_pos : Vector2 
 @onready var _target_pos : Vector2
 @onready var mouse_movement : bool = false
+@onready var _initial_window_size : Vector2 = DisplayServer.window_get_size()
+
+
+
+var player_spawned : bool = false
+
+func shake(time) -> void:
+	shaker.start(time)
 
 func _ready() -> void:
+	Global.subviewport.size_changed.connect(_on_viewport_size_changed)
 	set_physics_process(false)
 	Events.player_spawned.connect(_on_player_spawned)
 	Global.camera = self
 
 func _on_player_spawned(player) -> void:
 	_player = player
+	player_spawned = true
 	set_physics_process(true)
 	reset_zoom()
 
@@ -50,6 +62,11 @@ func _physics_process(delta: float) -> void:
 		_tracking_physics(delta)
 	else:
 		_freelook_physics(delta)
+
+func _on_viewport_size_changed() -> void:
+	if player_spawned:
+		print ("Viewport size changed")
+		reset_zoom()
 
 func _freelook_physics(delta) -> void:
 	_mouse_pos = _viewport.get_mouse_position() / _window_scale - (_game_size/3) + _player.global_position + global_offset
@@ -84,8 +101,18 @@ func _set_zoom(value: float) -> void:
 
 func reset_zoom() -> void:
 	_mouse_pos = _player.global_position
-	zoom_level = zoom_default
-	print ("[camera] Reseting zoom level")
+	var current_window_size : Vector2 = DisplayServer.window_get_size()
+	
+	# Calculate the scale factor based on the current window size and the game's rendered resolution (1280x720)
+	var scale_factor : float = min(current_window_size.x / 640, current_window_size.y / 360)
+	
+	# Calculate the zoom level based on the initial zoom level and the scale factor
+	zoom_level = zoom_default * scale_factor
+
+	print ("[Camera] Reseting zoom level")
 	var tween: Tween = get_tree().create_tween()
 	await tween.tween_property(self, "zoom", Vector2(zoom_level, zoom_level), zoom_reset_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT).finished
 	zoom_timer = zoom_reset_timer
+
+func _exit_tree():
+	Global.camera = null

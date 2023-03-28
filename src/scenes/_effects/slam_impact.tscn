@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbxererxnndn6"]
+
+[ext_resource type="Texture2D" uid="uid://dcsalmlgixed7" path="res://assets/sprites/peppino/slam/spr_groundpoundeffect_0.png" id="1_mawq5"]
+[ext_resource type="Texture2D" uid="uid://8pxfcn7v4hei" path="res://assets/sprites/peppino/slam/spr_groundpoundeffect_1.png" id="2_rtn4j"]
+[ext_resource type="Texture2D" uid="uid://cl55mw0gfmifm" path="res://assets/sprites/peppino/slam/spr_groundpoundeffect_2.png" id="3_p11ap"]
+[ext_resource type="Texture2D" uid="uid://bvvv765gev24p" path="res://assets/sprites/peppino/slam/spr_groundpoundeffect_3.png" id="4_e4sjg"]
+[ext_resource type="Texture2D" uid="uid://dg2sw6oe005dt" path="res://assets/sprites/peppino/slam/spr_groundpoundeffect_4.png" id="5_0cqo7"]
+[ext_resource type="Texture2D" uid="uid://bba1ti5fygqav" path="res://assets/sprites/peppino/slam/spr_groundpoundeffect_5.png" id="6_jeogy"]
+[ext_resource type="Texture2D" uid="uid://djs44qr45g3mr" path="res://assets/sprites/peppino/slam/spr_groundpoundeffect_6.png" id="7_d1uh6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t18xb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mawq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rtn4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p11ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e4sjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0cqo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jeogy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d1uh6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="Animation" id="Animation_5gvx0"]
+resource_name = "posfix"
+length = 0.291671
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0416667, 0.0666667, 0.0833333, 0.1, 0.116667, 0.133333, 0.166667, 0.183333, 0.2, 0.216667, 0.233333, 0.25, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -24), Vector2(0, -24), Vector2(0, -44), Vector2(0, -44), Vector2(0, -43), Vector2(0, -43), Vector2(0, -43), Vector2(0, -42), Vector2(0, -37), Vector2(0, -37), Vector2(0, -37), Vector2(0, -26), Vector2(0, -26), Vector2(0, -18), Vector2(0, -18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8m16l"]
+_data = {
+"posfix": SubResource("Animation_5gvx0")
+}
+
+[node name="BodySlam" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(0, 6)
+sprite_frames = SubResource("SpriteFrames_t18xb")
+offset = Vector2(0, -24)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "posfix"
+libraries = {
+"": SubResource("AnimationLibrary_8m16l")
+}

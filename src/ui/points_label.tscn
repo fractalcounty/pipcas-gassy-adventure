@@ -37,6 +37,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="PointsLabel" type="Node2D"]
+process_mode = 1
 z_index = 1000
 texture_filter = 1
 material = SubResource("ShaderMaterial_on5p6")

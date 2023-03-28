@@ -1,21 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxacvaogbhpuf"]
+[gd_scene load_steps=18 format=3 uid="uid://dxacvaogbhpuf"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_upm08"]
-[ext_resource type="PackedScene" uid="uid://bd8o5880va2tn" path="res://src/scenes/level_1/level.tscn" id="2_ix71s"]
-[ext_resource type="PackedScene" uid="uid://ctx4vitu4xngb" path="res://src/scenes/_peppino/peppino.tscn" id="3_ei1tg"]
+[ext_resource type="PackedScene" uid="uid://caoub02qp77m" path="res://src/scenes/level_debug/level_debug.tscn" id="2_tvppf"]
+[ext_resource type="PackedScene" uid="uid://cxrkostmmyoxa" path="res://src/scenes/_peppino/peppino.tscn" id="3_ei1tg"]
 [ext_resource type="PackedScene" uid="uid://e1xj0q880ead" path="res://src/ui/pause_menu.tscn" id="4_wxl7u"]
-[ext_resource type="PackedScene" path="res://src/ui/title_screen.tscn" id="5_8vvub"]
+[ext_resource type="PackedScene" uid="uid://654m6xm7x1sv" path="res://src/ui/title_screen.tscn" id="5_8vvub"]
 [ext_resource type="PackedScene" uid="uid://smudea8jmp0j" path="res://src/ui/level_banner.tscn" id="6_0edct"]
 [ext_resource type="PackedScene" uid="uid://dhdkmlx8a7ocx" path="res://src/ui/counter.tscn" id="6_fa2yg"]
 [ext_resource type="Shader" path="res://assets/shaders/transition.gdshader" id="7_rgthi"]
+[ext_resource type="PackedScene" uid="uid://d0dr76keqrax1" path="res://src/ui/debug/debug_panel.tscn" id="8_3u8ff"]
 [ext_resource type="VideoStream" path="res://assets/video/game_intro.ogv" id="8_xq1ap"]
+[ext_resource type="PackedScene" uid="uid://dw723w40pnm5c" path="res://src/ui/debug/state_debug_label.tscn" id="9_278j7"]
+[ext_resource type="Script" path="res://src/debug.gd" id="10_0k1jg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvfyo"]
+shader = ExtResource("7_rgthi")
+shader_parameter/progress = 0.8
+shader_parameter/diamondPixelSize = 21.752
+shader_parameter/magicNumber = 4.0
 
 [sub_resource type="Animation" id="Animation_c4nie"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer/TransitionSurface:material:shader_parameter/progress")
+tracks/0/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionSurface:material:shader_parameter/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +36,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer/TransitionSurface:color")
+tracks/1/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionSurface:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -56,7 +65,7 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer/TransitionSurface:material:shader_parameter/progress")
+tracks/0/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionSurface:material:shader_parameter/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -68,7 +77,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer/TransitionSurface:color")
+tracks/1/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionSurface:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -96,7 +105,7 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer/TransitionSurface:material:shader_parameter/progress")
+tracks/0/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionSurface:material:shader_parameter/progress")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer/TransitionSurface:color")
+tracks/1/path = NodePath("TransitionSubViewportContainer/TransitionSubViewport/TransitionSurface:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -137,13 +146,7 @@ _data = {
 "fade_out": SubResource("Animation_qtxrj")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvfyo"]
-shader = ExtResource("7_rgthi")
-shader_parameter/progress = 0.8
-shader_parameter/diamondPixelSize = 21.752
-shader_parameter/magicNumber = 4.0
-
-[node name="Game" type="Control" node_paths=PackedStringArray("subviewport_container", "subviewport", "intro", "transition_player")]
+[node name="Game" type="Control" node_paths=PackedStringArray("subviewport_container", "subviewport", "debug", "intro", "transition_player")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -153,10 +156,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_upm08")
-level = ExtResource("2_ix71s")
+level = ExtResource("2_tvppf")
 player = ExtResource("3_ei1tg")
 subviewport_container = NodePath("SubViewportContainer")
 subviewport = NodePath("SubViewportContainer/SubViewport")
+debug = NodePath("Debug")
 intro = NodePath("Intro")
 pause_menu = ExtResource("4_wxl7u")
 title_screen = ExtResource("5_8vvub")
@@ -166,7 +170,6 @@ transition_player = NodePath("TransitionSubViewportContainer/TransitionSubViewpo
 
 [node name="TransitionSubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
-z_index = 4096
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -184,17 +187,11 @@ handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
+gui_disable_input = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 0
 
-[node name="TransitionPlayer" type="AnimationPlayer" parent="TransitionSubViewportContainer/TransitionSubViewport"]
-process_mode = 3
-root_node = NodePath("../../..")
-libraries = {
-"": SubResource("AnimationLibrary_csf1b")
-}
-
-[node name="TransitionSurface" type="ColorRect" parent="TransitionSubViewportContainer/TransitionSubViewport/TransitionPlayer"]
+[node name="TransitionSurface" type="ColorRect" parent="TransitionSubViewportContainer/TransitionSubViewport"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lvfyo")
 anchors_preset = 15
@@ -202,6 +199,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="TransitionSubViewportContainer/TransitionSubViewport"]
+process_mode = 3
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_csf1b")
+}
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 1
@@ -215,21 +220,31 @@ mouse_filter = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-gui_disable_input = true
-size = Vector2i(1920, 1080)
+size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Intro" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
+mouse_filter = 2
 stream = ExtResource("8_xq1ap")
 autoplay = true
 paused = true
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_0k1jg")
+debug_panel = ExtResource("8_3u8ff")
+state_label = ExtResource("9_278j7")
 
 [connection signal="finished" from="Intro" to="." method="_on_intro_finished"]

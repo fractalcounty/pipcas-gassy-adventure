@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3twwndyuoruh"]
+
+[ext_resource type="Script" path="res://src/scenes/_peppino/dash_cloud.gd" id="1_bbhb1"]
+[ext_resource type="PackedScene" uid="uid://db5gunifti1gq" path="res://src/scenes/_effects/dash_cloud_small.tscn" id="2_ptuj7"]
+[ext_resource type="PackedScene" uid="uid://be6j1n183aayg" path="res://src/scenes/_effects/dash_cloud_large.tscn" id="3_ydhs4"]
+[ext_resource type="PackedScene" uid="uid://ymlr6gex12t5" path="res://src/scenes/_effects/dash_cloud_huge.tscn" id="4_grl6o"]
+
+[node name="DashCloud" type="Node2D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_bbhb1")
+dash_sprite_small = ExtResource("2_ptuj7")
+dash_sprite_large = ExtResource("3_ydhs4")
+dash_sprite_huge = ExtResource("4_grl6o")
+timer = NodePath("")

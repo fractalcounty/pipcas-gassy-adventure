@@ -1,12 +1,103 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=17 format=3 uid="uid://654m6xm7x1sv"]
 
 [ext_resource type="Script" path="res://src/ui/title_screen.gd" id="1_4w0q5"]
-[ext_resource type="Texture2D" uid="uid://bwin2hlvow6js" path="res://assets/sprites/ui/clouds-4258726_1280.jpg" id="2_oacx6"]
+[ext_resource type="Material" uid="uid://dpepgw77s6fkj" path="res://assets/shaders/dither.tres" id="2_ev7d6"]
+[ext_resource type="Shader" path="res://assets/shaders/fart_pp.gdshader" id="2_htqcw"]
+[ext_resource type="Material" uid="uid://cmtnxj3kv2kku" path="res://assets/shaders/mats/newpsych.tres" id="2_xeo3n"]
 [ext_resource type="Texture2D" uid="uid://b3yy7mvloos1c" path="res://assets/sprites/ui/game_logo.png" id="3_4gwu1"]
-[ext_resource type="Theme" path="res://assets/themes/ui.tres" id="4_r3gqn"]
+[ext_resource type="Shader" path="res://assets/shaders/squash.gdshader" id="3_e13ov"]
+[ext_resource type="Theme" uid="uid://befmjph1k4vuc" path="res://assets/themes/ui.tres" id="4_r3gqn"]
 [ext_resource type="FontFile" uid="uid://bfg3x82e0mrlp" path="res://assets/themes/fonts/hog danish.ttf" id="5_h6tor"]
+[ext_resource type="AudioStream" uid="uid://cho1o8pmxba22" path="res://assets/sounds/music/menu.ogg" id="9_8nfni"]
 
-[node name="TitleScreen" type="Control" node_paths=PackedStringArray("play_button", "settings_button", "quit_button")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xivq"]
+shader = ExtResource("2_htqcw")
+shader_parameter/scale = Vector2(-3, 3)
+shader_parameter/opacity = 0.094
+shader_parameter/animation_speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2j4ci"]
+resource_local_to_scene = true
+shader = ExtResource("3_e13ov")
+shader_parameter/uv_mode = false
+shader_parameter/x_factor = 2.0
+shader_parameter/bulge = -0.0462496
+
+[sub_resource type="Animation" id="Animation_qwkxh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(920, 275)]
+}
+
+[sub_resource type="Animation" id="Animation_83bua"]
+resource_name = "floating_logo"
+length = 36.25
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.75, 4.25, 7.75, 10.25, 14.75, 17, 19.5, 22.25, 23.75, 27.25, 29.75, 31.75, 34.25, 36.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(950, 298), Vector2(884, 271), Vector2(853, 250), Vector2(878, 275), Vector2(950, 280), Vector2(1050, 297), Vector2(1003, 250), Vector2(933, 286), Vector2(884, 271), Vector2(853, 297), Vector2(878, 345), Vector2(950, 298), Vector2(1015, 250), Vector2(1050, 297), Vector2(950, 298)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 4.5, 7.25, 9.75, 12.25, 15.5, 18.5, 21.25, 22.5, 24.5, 31, 33.75, 36.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.010472, -0.00523599, -0.0226893, 0.00523599, 0.020944, -0.0244346, 0.0139626, 0.0226893, -0.00523599, 0.0226893, -0.0244346, 0.0226893, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7as06"]
+_data = {
+"RESET": SubResource("Animation_qwkxh"),
+"floating_logo": SubResource("Animation_83bua")
+}
+
+[sub_resource type="Animation" id="Animation_2nioi"]
+resource_name = "pulse"
+length = 70.0
+loop_mode = 1
+step = 1.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_te7vj"]
+_data = {
+"pulse": SubResource("Animation_2nioi")
+}
+
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("play_button", "settings_button", "quit_button", "clouds", "shader_display", "shader_viewport", "label1", "label2", "label3", "label4", "label5", "label6", "logo1", "logo2", "logo3", "logo4", "logo5", "logo6")]
 process_mode = 3
 texture_filter = 1
 layout_mode = 3
@@ -15,106 +106,224 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_4w0q5")
-play_button = NodePath("TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/PlayButton")
-settings_button = NodePath("TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/SettingsButton")
-quit_button = NodePath("TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/QuitButton")
+play_button = NodePath("HBoxContainer/VBoxContainer2/PlayButton")
+settings_button = NodePath("")
+quit_button = NodePath("")
+clouds = NodePath("FartContainer/FartViewport/FartShader")
+shader_display = NodePath("")
+shader_viewport = NodePath("FartContainer/FartViewport")
+label1 = NodePath("Debug/VBoxContainer/Label")
+label2 = NodePath("Debug/VBoxContainer/Label2")
+label3 = NodePath("Debug/VBoxContainer/Label3")
+label4 = NodePath("Debug/VBoxContainer/Label4")
+label5 = NodePath("Debug/VBoxContainer/Label5")
+label6 = NodePath("Debug/VBoxContainer/Label6")
+logo1 = NodePath("GameLogoTrail/GameLogo")
+logo2 = NodePath("GameLogoTrail/GameLogo2")
+logo3 = NodePath("GameLogoTrail/GameLogo3")
+logo4 = NodePath("GameLogoTrail/GameLogo4")
+logo5 = NodePath("GameLogoTrail/GameLogo5")
+logo6 = NodePath("GameLogoTrail/GameLogo6")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
+[node name="NoiseShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6xivq")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_oacx6")
+mouse_filter = 2
 
-[node name="MainMenu" type="MarginContainer" parent="TextureRect"]
+[node name="FartContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("2_ev7d6")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+mouse_filter = 2
+stretch = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MainMenu"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MainMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 430
-theme_override_constants/margin_right = 430
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(698.137, 0)
-layout_mode = 2
-texture = ExtResource("3_4gwu1")
-expand_mode = 5
-
-[node name="MarginContainer4" type="MarginContainer" parent="TextureRect/MainMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 20
-
-[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/MainMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 650
-theme_override_constants/margin_right = 650
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer2"]
+[node name="FartViewport" type="SubViewport" parent="FartContainer"]
 process_mode = 3
-layout_mode = 2
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+canvas_item_default_texture_repeat = 1
+gui_disable_input = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
 
-[node name="PlayButton" type="Button" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+[node name="FartShader" type="ColorRect" parent="FartContainer/FartViewport"]
+process_mode = 3
+z_index = -4096
+texture_filter = 1
+material = ExtResource("2_xeo3n")
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-focus_next = NodePath("../SettingsButton")
-focus_previous = NodePath("../QuitButton")
+offset_left = 280.0
+offset_right = 1000.0
+offset_bottom = 720.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -99.0
+offset_right = 111.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
 theme = ExtResource("4_r3gqn")
 theme_override_fonts/font = ExtResource("5_h6tor")
 theme_override_font_sizes/font_size = 55
 text = "PLAY"
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_top = 36
 
-[node name="SettingsButton" type="Button" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
-layout_mode = 2
-focus_next = NodePath("../QuitButton")
-focus_previous = NodePath(".")
-theme = ExtResource("4_r3gqn")
-theme_override_fonts/font = ExtResource("5_h6tor")
-theme_override_font_sizes/font_size = 55
-text = "SETTINGS"
+[node name="GameLogoTrail" type="Node2D" parent="."]
+z_index = 4096
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(343, 33)
 
-[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 10
+[node name="GameLogo2" type="Sprite2D" parent="GameLogoTrail"]
+modulate = Color(1, 1, 1, 0.647059)
+z_index = 31
+position = Vector2(942, 220)
+scale = Vector2(2.15, 2.15)
+texture = ExtResource("3_4gwu1")
+offset = Vector2(0, -40)
 
-[node name="QuitButton" type="Button" parent="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2"]
+[node name="GameLogo3" type="Sprite2D" parent="GameLogoTrail"]
+modulate = Color(1, 1, 1, 0.466667)
+self_modulate = Color(1, 1, 1, 0.113725)
+z_index = 32
+position = Vector2(942, 220)
+scale = Vector2(2.15, 2.15)
+texture = ExtResource("3_4gwu1")
+offset = Vector2(0, -40)
+
+[node name="GameLogo4" type="Sprite2D" parent="GameLogoTrail"]
+modulate = Color(1, 1, 1, 0.294118)
+z_index = 33
+position = Vector2(942, 220)
+scale = Vector2(2.15, 2.15)
+texture = ExtResource("3_4gwu1")
+offset = Vector2(0, -40)
+
+[node name="GameLogo5" type="Sprite2D" parent="GameLogoTrail"]
+modulate = Color(1, 1, 1, 0.188235)
+z_index = 34
+position = Vector2(942, 220)
+scale = Vector2(2.15, 2.15)
+texture = ExtResource("3_4gwu1")
+offset = Vector2(0, -40)
+
+[node name="GameLogo6" type="Sprite2D" parent="GameLogoTrail"]
+modulate = Color(1, 1, 1, 0.0627451)
+z_index = 35
+position = Vector2(942, 220)
+scale = Vector2(2.15, 2.15)
+texture = ExtResource("3_4gwu1")
+offset = Vector2(0, -40)
+
+[node name="GameLogo" type="Sprite2D" parent="GameLogoTrail"]
+z_index = 36
+material = SubResource("ShaderMaterial_2j4ci")
+position = Vector2(920, 275)
+scale = Vector2(2.15, 2.15)
+texture = ExtResource("3_4gwu1")
+offset = Vector2(0, -40)
+region_enabled = true
+region_rect = Rect2(1, 1, 369, 173)
+
+[node name="LogoAnimations" type="AnimationPlayer" parent="GameLogoTrail"]
+root_node = NodePath("../GameLogo")
+autoplay = "floating_logo"
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_7as06")
+}
+
+[node name="Debug" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug"]
 layout_mode = 2
-focus_next = NodePath("../PlayButton")
-focus_previous = NodePath("../SettingsButton")
-theme = ExtResource("4_r3gqn")
-theme_override_fonts/font = ExtResource("5_h6tor")
-theme_override_font_sizes/font_size = 55
-text = "QUIT"
+
+[node name="Label" type="Label" parent="Debug/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Screen size:"
+
+[node name="Label2" type="Label" parent="Debug/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Screen size:"
+
+[node name="Label3" type="Label" parent="Debug/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Screen size:"
+
+[node name="Label4" type="Label" parent="Debug/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Screen size:"
+
+[node name="Label5" type="Label" parent="Debug/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Screen size:"
+
+[node name="Label6" type="Label" parent="Debug/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Screen size:"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+autoplay = "pulse"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_te7vj")
+}
 
-[connection signal="button_up" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/PlayButton" to="." method="_on_play_button_button_up"]
-[connection signal="mouse_entered" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/PlayButton" to="." method="_on_play_button_mouse_entered"]
-[connection signal="pressed" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="button_up" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/SettingsButton" to="." method="_on_settings_button_button_up"]
-[connection signal="mouse_entered" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
-[connection signal="button_up" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/QuitButton" to="." method="_on_quit_button_button_up"]
-[connection signal="mouse_entered" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="pressed" from="TextureRect/MainMenu/VBoxContainer/MarginContainer2/VBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_8nfni")
+volume_db = 1.0
+autoplay = true
+
+[connection signal="button_up" from="HBoxContainer/VBoxContainer2/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer2/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]

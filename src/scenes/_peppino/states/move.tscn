@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2dtht30sbggb"]
+
+[ext_resource type="Script" path="res://src/scenes/_peppino/states/move.gd" id="1_kpsk4"]
+
+[node name="Move" type="Node2D"]
+script = ExtResource("1_kpsk4")

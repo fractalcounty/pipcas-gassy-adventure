@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://e1xj0q880ead"]
+[gd_scene load_steps=6 format=3 uid="uid://e1xj0q880ead"]
 
 [ext_resource type="Script" path="res://src/ui/pause_menu.gd" id="1_uwsxj"]
 [ext_resource type="Shader" path="res://assets/shaders/flag_wave.gdshader" id="2_5ling"]
-[ext_resource type="Theme" path="res://assets/themes/ui.tres" id="3_hcguf"]
+[ext_resource type="FontFile" uid="uid://bsc5e1bqx08ys" path="res://assets/themes/fonts/pizza_tower.otf" id="2_fa1j6"]
+[ext_resource type="Theme" uid="uid://befmjph1k4vuc" path="res://assets/themes/ui.tres" id="3_hcguf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nh6q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_typxk"]
 shader = ExtResource("2_5ling")
-shader_parameter/height = 3.0
+shader_parameter/height = 6.0
 shader_parameter/frequency = 20.0
 shader_parameter/speed = 3.0
 
@@ -25,9 +26,9 @@ resume_button = NodePath("ColorRect/CenterContainer/VBoxContainer/ResumeButton")
 quit_button = NodePath("ColorRect/CenterContainer/VBoxContainer/QuitButton")
 color_rect = NodePath("ColorRect")
 timer = NodePath("Timer")
-active_color = Color(0, 0, 0, 0.341176)
-inactive_color = Color(0, 0, 0, 0)
-transition_speed = 0.0559531
+active_color = Color(1, 1, 1, 0.470588)
+inactive_color = Color(1, 1, 1, 0)
+transition_speed = 0.111907
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -36,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
 layout_mode = 1
@@ -50,25 +52,33 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_6nh6q")
+material = SubResource("ShaderMaterial_typxk")
 layout_mode = 2
-theme = ExtResource("3_hcguf")
-theme_override_constants/outline_size = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_font_sizes/font_size = 85
-text = "GAME   PAUSED"
+theme_override_fonts/font = ExtResource("2_fa1j6")
+theme_override_font_sizes/font_size = 72
+text = "PAUSED"
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 24
+
+[node name="ResumeButton2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_hcguf")
+text = "RESUME"
+
+[node name="MarginContainer3" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
 
 [node name="ResumeButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hcguf")
-text = "RESUME"
+text = "SETTINGS"
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -79,11 +89,16 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hcguf")
-text = "MAIN MENU"
+text = "EXIT"
 
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="button_down" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton2" to="." method="_on_resume_button_button_down"]
+[connection signal="button_up" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton2" to="." method="_on_resume_button_button_up"]
+[connection signal="mouse_entered" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton2" to="." method="_on_resume_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton2" to="." method="_on_resume_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton2" to="." method="_on_resume_button_pressed"]
 [connection signal="button_down" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_button_down"]
 [connection signal="button_up" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_button_up"]
 [connection signal="mouse_entered" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_mouse_entered"]

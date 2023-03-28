@@ -5,6 +5,8 @@ extends Node
 @export var player : PackedScene
 @export var subviewport_container : SubViewportContainer
 @export var subviewport : SubViewport
+@export var debug : Control
+
 
 @export_category("UI")
 @export var skip_intro : bool = false
@@ -13,6 +15,7 @@ extends Node
 @export var title_screen : PackedScene
 @export var level_banner : PackedScene
 @export var counter : PackedScene
+
 
 @export var transition_player : AnimationPlayer
 
@@ -33,7 +36,8 @@ func _ready():
 #	_on_screen_resized()
 	
 	set_process(false)
-	get_tree().root.title = "Pipca's Gassy Adventure"
+	randomize()
+	get_tree().root.title = "Chip's Big Game!!!"
 	
 	if skip_intro:
 		load_level()
@@ -50,7 +54,7 @@ func _ready():
 
 func _load_intro():
 	Global.game_state = Global.state.INTRO
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	intro.paused = false
 	intro.show()
 
@@ -60,6 +64,7 @@ func _on_intro_finished() -> void:
 
 func _load_title_screen():
 	Global.game_state == Global.state.MENU
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 	set_process(false)
 	
@@ -69,6 +74,7 @@ func _load_title_screen():
 	add_child(title_screen_instance)
 	
 	await is_instance_valid(title_screen_instance)
+	debug.load_debug_panel()
 	Global.game_state = Global.state.MENU
 	
 	Input.set_custom_mouse_cursor(arrow)
@@ -94,6 +100,8 @@ func _spawn_player(level_instance) -> void:
 	player_instance = player.instantiate()
 	level_instance.add_child(player_instance)
 	await is_instance_valid(player_instance)
+	debug.load_state_label()
+	Global.player = player_instance
 	_load_counter(level_instance)
 	
 func _load_counter(level_instance) -> void:
@@ -145,6 +153,7 @@ func return_to_menu() -> void:
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
+		
 		if Global.game_state == Global.state.INTRO:
 			_on_intro_finished()
 		if Global.game_state == Global.state.GAME:
@@ -152,29 +161,16 @@ func _unhandled_input(event) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			pause_menu_instance.on_pause_open()
 			get_viewport().set_input_as_handled()
-		if Global.game_state == Global.state.PAUSE:
+		if Global.game_state == Global.state.PAUSE and pause_menu_instance.open:
 			UIAudio.unclick.play()
 			pause_menu_instance.on_pause_close()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Global.game_state == Global.state.GAME and is_instance_valid(player_instance):
-		if event.is_action_pressed("in_look"):
+		if event.is_action_pressed("look"):
 			Global.camera.mouse_movement = true
-		if event.is_action_released("in_look"):
+		if event.is_action_released("look"):
 			Global.camera.mouse_movement = false
 		if event.is_action_pressed("zoom_in") && Global.camera.only_once:
 			Global.camera._set_zoom(Global.camera.zoom_level - Global.camera.zoom_factor)
 		if event.is_action_pressed("zoom_out") && Global.camera.only_once:
 			Global.camera._set_zoom(Global.camera.zoom_level + Global.camera.zoom_factor)
-
-func _input(event: InputEvent) -> void:
-	var velocity = Input.get_vector("look_up", "look_down", "look_left", "look_right")
-
-	if event is InputEventMouseMotion:
-		Global.mouse_moving = true
-		Global.joy_moving = false
-
-	if velocity != Vector2(0, 0):
-		Global.mouse_moving = false
-		Global.joy_moving = true
-	else:
-		Global.joy_moving = false

@@ -44,44 +44,45 @@ var dir : float
 var pull_length : float
 
 func _ready():
-	Events.player_spawned.emit(self)
-	Global.player = self
-	anim.play("idle_still")
+	pass
+#	Events.player_spawned.emit(self)
+#	Global.player = self
+#	anim.play("idle_still")
 
-func _physics_process(delta: float) -> void:
-	if enable_physics:
-		move_and_slide()
-		_auto_flip()
-		
-		if is_on_floor():
-			Global.is_grounded = true
-			_auto_rotate()
-
-func _auto_flip() -> void:
-	if velocity.x > 0:
-		skin.flip_h = false
-		occluder.scale.x = 1
-	elif velocity.x < 0:
-		skin.flip_h = true
-		occluder.scale.x = -1
-
-func _auto_rotate() -> void:
-	var slopeAngle = 0
-	var slopeNormal = Vector2.ZERO
-	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		slopeAngle = -get_floor_angle()
-		skin.rotation = slopeAngle
-		var tweener = get_tree().create_tween()
-		tweener.tween_property(skin, "rotation", slopeAngle, 0.8)
-		
-		if skin.rotation != 0:
-			var tween = get_tree().create_tween()
-			tween.tween_property(skin, "offset:y", 6.0, 0.5)
-		else:
-			var tween = get_tree().create_tween()
-			tween.tween_property(skin, "offset:y", 0.0, 0.1)
-
-func _exit_tree() -> void:
-	Global.player = null
+#func _physics_process(delta: float) -> void:
+#	if enable_physics:
+#		move_and_slide()
+#		_auto_flip()
+#
+#		if is_on_floor():
+#			Global.is_grounded = true
+#			_auto_rotate()
+#
+#func _auto_flip() -> void:
+#	if velocity.x > 0:
+#		skin.flip_h = false
+#		occluder.scale.x = 1
+#	elif velocity.x < 0:
+#		skin.flip_h = true
+#		occluder.scale.x = -1
+#
+#func _auto_rotate() -> void:
+#	var slopeAngle = 0
+#	var slopeNormal = Vector2.ZERO
+#
+#	for i in get_slide_collision_count():
+#		var collision = get_slide_collision(i)
+#		slopeAngle = -get_floor_angle()
+#		skin.rotation = slopeAngle
+#		var tweener = get_tree().create_tween()
+#		tweener.tween_property(skin, "rotation", slopeAngle, 0.8)
+#
+#		if skin.rotation != 0:
+#			var tween = get_tree().create_tween()
+#			tween.tween_property(skin, "offset:y", 6.0, 0.5)
+#		else:
+#			var tween = get_tree().create_tween()
+#			tween.tween_property(skin, "offset:y", 0.0, 0.1)
+#
+#func _exit_tree() -> void:
+#	Global.player = null

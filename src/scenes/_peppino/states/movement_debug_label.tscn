@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8cx8liyfeqte"]
+
+[ext_resource type="FontFile" uid="uid://bsc5e1bqx08ys" path="res://assets/themes/fonts/pizza_tower.otf" id="1_togqp"]
+
+[node name="MovementDebugLabel" type="Label"]
+z_index = 2899
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = -140.0
+offset_right = 370.0
+offset_bottom = -72.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(67, 17)
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_togqp")
+theme_override_font_sizes/font_size = 18
+text = "on floor: true
+on wall: false"
+vertical_alignment = 2

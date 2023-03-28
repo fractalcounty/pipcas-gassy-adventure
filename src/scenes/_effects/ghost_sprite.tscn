@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx4euxpr4v0o3"]
+
+[ext_resource type="Material" uid="uid://lk8rtxtvo1f1" path="res://assets/shaders/pallete_swap_ghost.tres" id="1_pdcyf"]
+[ext_resource type="Texture2D" uid="uid://dc7bupbstk87o" path="res://icon.svg" id="2_y4jqa"]
+[ext_resource type="Script" path="res://src/scenes/_effects/ghost_sprite.gd" id="3_hcy7x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxojm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y4jqa")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GhostSprite" type="AnimatedSprite2D"]
+texture_filter = 1
+material = ExtResource("1_pdcyf")
+sprite_frames = SubResource("SpriteFrames_cxojm")
+script = ExtResource("3_hcy7x")

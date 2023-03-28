@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://ng1qcnab8r14"]
+
+[ext_resource type="Texture2D" uid="uid://buhpkg58anuea" path="res://assets/sprites/effects/jump_cloud/spr_highjumpcloud2_0.png" id="1_fdsfe"]
+[ext_resource type="Texture2D" uid="uid://bjsu7qe7uplt" path="res://assets/sprites/effects/jump_cloud/spr_highjumpcloud2_1.png" id="2_eqhlc"]
+[ext_resource type="Texture2D" uid="uid://b0d802extg6dm" path="res://assets/sprites/effects/jump_cloud/spr_highjumpcloud2_2.png" id="3_5s8pm"]
+[ext_resource type="Texture2D" uid="uid://dqicuhtphwkfd" path="res://assets/sprites/effects/jump_cloud/spr_highjumpcloud2_3.png" id="4_kesrw"]
+[ext_resource type="Texture2D" uid="uid://7p57y2spkqnd" path="res://assets/sprites/effects/jump_cloud/spr_highjumpcloud2_4.png" id="5_71hem"]
+[ext_resource type="Texture2D" uid="uid://culnxjlmke7fs" path="res://assets/sprites/effects/jump_cloud/spr_highjumpcloud2_5.png" id="6_36x36"]
+[ext_resource type="Texture2D" uid="uid://c7pn8cposil2e" path="res://assets/sprites/effects/jump_cloud/spr_highjumpcloud2_6.png" id="7_ioeul"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qn1mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fdsfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eqhlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5s8pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kesrw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_71hem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_36x36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ioeul")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="Animation" id="Animation_5e3w2"]
+resource_name = "new_animation"
+length = 0.250004
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -21), Vector2(0, -26), Vector2(0, -25), Vector2(0, -23.423), Vector2(0, -18.633), Vector2(0, -7.361), Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bs7fx"]
+_data = {
+"new_animation": SubResource("Animation_5e3w2")
+}
+
+[node name="JumpCloud" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qn1mn")
+autoplay = "default"
+frame = 6
+offset = Vector2(0, -4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_bs7fx")
+}

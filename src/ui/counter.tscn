@@ -200,6 +200,7 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(-200.105, 54.218)
+mouse_filter = 2
 script = ExtResource("1_yok6j")
 label = NodePath("MarginContainer/VBoxContainer/PointsLabel")
 animation_player = NodePath("CounterJuiceAnimations")
@@ -209,12 +210,14 @@ layout_mode = 1
 offset_right = 351.0
 offset_bottom = 118.0
 pivot_offset = Vector2(171, 64)
+mouse_filter = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_top = 17
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="LabelLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1

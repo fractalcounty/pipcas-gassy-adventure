@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://ymlr6gex12t5"]
+
+[ext_resource type="Texture2D" uid="uid://co763w1unowph" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_0.png" id="1_xel0e"]
+[ext_resource type="Texture2D" uid="uid://dkt1w0qykrddw" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_1.png" id="2_oya1i"]
+[ext_resource type="Texture2D" uid="uid://gxunyyurevph" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_2.png" id="3_6py3h"]
+[ext_resource type="Texture2D" uid="uid://b1int25250k4e" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_3.png" id="4_0r1sm"]
+[ext_resource type="Texture2D" uid="uid://cy14twdfvliw8" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_4.png" id="5_y3r1w"]
+[ext_resource type="Texture2D" uid="uid://v01t7u74pnje" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_5.png" id="6_hnusv"]
+[ext_resource type="Texture2D" uid="uid://dmdlumbul5akj" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_6.png" id="7_8csxm"]
+[ext_resource type="Texture2D" uid="uid://caceug2ftsu55" path="res://assets/sprites/peppino/super_dash_cloud/spr_superdashcloud_7.png" id="8_hqgw2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdhdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xel0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oya1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6py3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0r1sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y3r1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hnusv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8csxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hqgw2")
+}],
+"loop": false,
+"name": &"dash_cloud_huge",
+"speed": 24.0
+}]
+
+[sub_resource type="Animation" id="Animation_nqs2p"]
+length = 0.333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["dash_cloud_huge"]
+}
+
+[sub_resource type="Animation" id="Animation_0tjsc"]
+resource_name = "new_animation"
+length = 0.291671
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -9), Vector2(0, -12), Vector2(0, -20), Vector2(0, -27), Vector2(0, -32), Vector2(0, -20), Vector2(0, -14), Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.291667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8b4ap"]
+_data = {
+"dash_cloud_huge": SubResource("Animation_nqs2p"),
+"new_animation": SubResource("Animation_0tjsc")
+}
+
+[node name="DashCloudHuge" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_jdhdd")
+animation = &"dash_cloud_huge"
+frame = 6
+offset = Vector2(0, -14)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_8b4ap")
+}

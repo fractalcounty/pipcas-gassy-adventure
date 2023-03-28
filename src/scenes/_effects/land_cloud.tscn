@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://c452vlaxx3p8f"]
+
+[ext_resource type="Texture2D" uid="uid://lr0r0ek7avba" path="res://assets/sprites/effects/land_cloud/spr_landcloud_0.png" id="1_727hu"]
+[ext_resource type="Texture2D" uid="uid://dxhrhfthr5qkd" path="res://assets/sprites/effects/land_cloud/spr_landcloud_1.png" id="2_vw50n"]
+[ext_resource type="Texture2D" uid="uid://b4djv276qq5wi" path="res://assets/sprites/effects/land_cloud/spr_landcloud_2.png" id="3_6r67s"]
+[ext_resource type="Texture2D" uid="uid://dctwyyvuf52hi" path="res://assets/sprites/effects/land_cloud/spr_landcloud_3.png" id="4_m7fy1"]
+[ext_resource type="Texture2D" uid="uid://k635pq5waisv" path="res://assets/sprites/effects/land_cloud/spr_landcloud_4.png" id="5_unsxv"]
+[ext_resource type="Texture2D" uid="uid://b0l0v3ba6wwnr" path="res://assets/sprites/effects/land_cloud/spr_landcloud_5.png" id="6_o8tx3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3q1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_727hu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vw50n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6r67s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m7fy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_unsxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o8tx3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="Animation" id="Animation_j8vvd"]
+resource_name = "new_animation"
+length = 0.250004
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -9), Vector2(0, -10), Vector2(0, -8), Vector2(0, -5), Vector2(0, -3), Vector2(0, -2), Vector2(0, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wbhe6"]
+_data = {
+"new_animation": SubResource("Animation_j8vvd")
+}
+
+[node name="LandCloud" type="AnimatedSprite2D"]
+z_index = 1826
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_y3q1y")
+autoplay = "default"
+offset = Vector2(0, -9)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_wbhe6")
+}

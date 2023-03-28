@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://smudea8jmp0j"]
 
 [ext_resource type="Script" path="res://src/ui/level_banner.gd" id="1_ql1wx"]
-[ext_resource type="Theme" path="res://assets/themes/ui.tres" id="2_tdbc8"]
+[ext_resource type="Theme" uid="uid://befmjph1k4vuc" path="res://assets/themes/ui.tres" id="2_tdbc8"]
 
 [sub_resource type="Animation" id="Animation_63554"]
 resource_name = "ease_in"
@@ -68,7 +68,6 @@ _data = {
 
 [node name="LevelBanner" type="Control" node_paths=PackedStringArray("anim", "level_title", "level_subtitle")]
 process_mode = 1
-z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,6 +75,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 script = ExtResource("1_ql1wx")
 anim = NodePath("BannerAnimations")
 level_title = NodePath("ColorRect/VBoxContainer/LevelTitle")
@@ -94,6 +94,7 @@ offset_top = -690.0
 offset_bottom = -547.999
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.509804)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
@@ -109,6 +110,7 @@ offset_right = 72.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="LevelTitle" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -122,6 +124,7 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LevelSubtitle" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2

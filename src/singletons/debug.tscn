@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkjv64tgcwsv6"]
+
+[ext_resource type="Script" path="res://src/scenes/debug_overlay.gd" id="1_lfb3q"]
+[ext_resource type="PackedScene" uid="uid://dw723w40pnm5c" path="res://src/ui/debug/state_debug_label.tscn" id="2_0h3sd"]
+[ext_resource type="PackedScene" uid="uid://d0dr76keqrax1" path="res://src/ui/debug/debug_panel.tscn" id="2_cmuc2"]
+
+[node name="Debug" type="Control" node_paths=PackedStringArray("debug_panel")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfb3q")
+state_label = ExtResource("2_0h3sd")
+debug_panel = NodePath("DebugPanel")
+
+[node name="DebugPanel" parent="." instance=ExtResource("2_cmuc2")]
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_bottom = 439.0
+grow_vertical = 1

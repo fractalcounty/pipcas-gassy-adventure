@@ -68,9 +68,6 @@ one_shot = true
 explosiveness = 0.87
 randomness = 0.15
 fixed_fps = 120
-trail_lifetime = 0.01
-trail_sections = 2
-trail_section_subdivisions = 1
 script = ExtResource("1_xgae7")
 
 [node name="Timer" type="Timer" parent="."]

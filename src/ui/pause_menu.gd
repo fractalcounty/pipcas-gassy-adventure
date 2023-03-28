@@ -13,16 +13,17 @@ extends Control
 @export var inactive_color : Color
 @export_exp_easing("positive_only") var transition_speed : float
 
+@onready var open : bool = false
+
 var just_opened : bool
 
 func _ready() -> void:
 	Events.pause_opened.emit()
-	hide()
 	timer.stop()
 	timer.one_shot = true
 
 func _input(event: InputEvent) -> void:
-	if is_visible_in_tree():
+	if is_visible_in_tree() and open:
 		if event is InputEventMouseMotion:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
@@ -35,38 +36,41 @@ func _unhandled_input(event: InputEvent) -> void:
 			resume_button.grab_focus()
 
 func on_pause_open() -> void:
+	Global.game_state = Global.state.PAUSE
 	timer.start(time_cooldown)
-	var tween = get_tree().create_tween()
-	self.modulate.a = 0
 	color_rect.color = inactive_color
-	show()
+	var tween = self.create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.set_parallel(true)
-	tween.tween_property(color_rect, "color", active_color, transition_speed*1.5)
-	tween.tween_property(self, "modulate:a", 1, transition_speed*1.5)
-	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(color_rect, "color", active_color, transition_speed).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(self, "modulate:a", 1, transition_speed).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_OUT)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	await tween.finished
-	Global.game_state = Global.state.PAUSE
 	resume_button.disabled = false
 	quit_button.disabled = false
 	just_opened = true
+	open = true
 
 func on_pause_close() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	Events.pause_closed.emit()
-	var tween = get_tree().create_tween()
+	var tween = self.create_tween()
+	open = false
+	Global.game_state = Global.state.GAME
 	tween.set_parallel(true)
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(color_rect, "color", inactive_color, transition_speed)
+	tween.tween_property(color_rect, "modulate", inactive_color, transition_speed)
 	tween.tween_property(self, "modulate:a", 0, transition_speed)
-	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_IN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	await tween.finished
 	just_opened = true
 	resume_button.disabled = true
 	quit_button.disabled = true
 	await tween.finished
-	if Global.game_state == Global.state.PAUSE:
-		Global.game_state = Global.state.GAME
 	queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	hide()

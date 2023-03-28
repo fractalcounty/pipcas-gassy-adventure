@@ -1,6 +1,7 @@
 extends Node
 class_name level_music
 
+@export var muted : bool = false
 @export var level_music_player : AudioStreamPlayer
 @export_exp_easing("positive_only") var pause_muffle_lerp : float
 @export var new_cutoff_hz : float
@@ -19,7 +20,10 @@ func _ready() -> void:
 	AudioServer.set_bus_effect_enabled(music_bus, 0, false)
 
 func play(level_music) -> void:
-	level_music_player.set_volume_db(0.0)
+	if not muted:
+		level_music_player.set_volume_db(0.0)
+	else:
+		level_music_player.set_volume_db(-80.0)
 	level_music_player.set_stream(level_music)
 	level_music_player.play()
 

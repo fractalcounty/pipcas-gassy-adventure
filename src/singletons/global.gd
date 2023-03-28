@@ -2,7 +2,6 @@ extends Node
 
 var player = null
 
-
 var camera : Camera2D = null
 var remote_transform : RemoteTransform2D = null
 var skin : Sprite2D = null
@@ -14,10 +13,15 @@ var joy_moving = false
 var cutscene_focus : Node2D
 var focus : Node2D
 var cutscene_active : bool = false
-var debug : Control = null
 var debug2 : Control = null
 var is_grounded : bool
-var game_scene : Node
+var game_scene : Node = null
+var effects : Node2D = null
+var debug_overlay : Control = null
+
+var level : Node2D = null
+
+var debug : Control = null
 
 var counter : Control = null
 

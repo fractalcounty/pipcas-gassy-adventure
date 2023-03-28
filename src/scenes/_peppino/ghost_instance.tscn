@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw0724ae24jp0"]
+
+[ext_resource type="Script" path="res://src/scenes/_peppino/ghost_instance.gd" id="1_o1i3w"]
+[ext_resource type="PackedScene" uid="uid://cx4euxpr4v0o3" path="res://src/scenes/_effects/ghost_sprite.tscn" id="2_bbaeg"]
+
+[node name="GhostInstance" type="CanvasGroup"]
+script = ExtResource("1_o1i3w")
+sprite_scene = ExtResource("2_bbaeg")

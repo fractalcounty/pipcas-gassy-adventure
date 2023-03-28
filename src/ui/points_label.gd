@@ -50,5 +50,5 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_timer_timeout() -> void:
-		print ("[PointsLabel] Timer stopped.")
+		#print ("[PointsLabel] Timer stopped.")
 		_timed_out = true

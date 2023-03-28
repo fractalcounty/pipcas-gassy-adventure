@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://be6j1n183aayg"]
+
+[ext_resource type="Texture2D" uid="uid://22x3w2lvb5w8" path="res://assets/sprites/peppino/dash_cloud/spr_dashcloud2_0.png" id="1_rvhvr"]
+[ext_resource type="Texture2D" uid="uid://onaosqai117n" path="res://assets/sprites/peppino/dash_cloud/spr_dashcloud2_1.png" id="2_qyxxc"]
+[ext_resource type="Texture2D" uid="uid://2mewpn666508" path="res://assets/sprites/peppino/dash_cloud/spr_dashcloud2_2.png" id="3_gbalv"]
+[ext_resource type="Texture2D" uid="uid://5msk14euq2vo" path="res://assets/sprites/peppino/dash_cloud/spr_dashcloud2_3.png" id="4_jebk4"]
+[ext_resource type="Texture2D" uid="uid://xcq5tsdekvd5" path="res://assets/sprites/peppino/dash_cloud/spr_dashcloud2_4.png" id="5_307wa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yp62j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rvhvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qyxxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gbalv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jebk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_307wa")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="Animation" id="Animation_byugj"]
+resource_name = "new_animation"
+length = 0.166671
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -11.5), Vector2(0, -17.5), Vector2(0, -14), Vector2(0, -9), Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkdnf"]
+_data = {
+"new_animation": SubResource("Animation_byugj")
+}
+
+[node name="DashSpriteLarge" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_yp62j")
+autoplay = "default"
+offset = Vector2(0, -11.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_tkdnf")
+}
